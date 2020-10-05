@@ -25,6 +25,7 @@
 - has_many :favorite_items, through: :favorites, source: :item
 - has_many :comments
 - has_many :user_comments, through: :comments, source: :item
+- has_many :purchases
 
 ## cardsテーブル
 
@@ -97,6 +98,7 @@
 ### Association
 - belongs_to :item
 - belongs_to :address
+- belongs_to :purchase
 
 ## itemsテーブル
 
@@ -118,6 +120,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :purchase
 - belongs_to_active_hash :prefecture
 - has_many :favorites
 - has_many :favorite_items, through: :favorites, source: :user
@@ -186,3 +189,55 @@
 
 ### Association
 - belongs_to :item
+
+## purchasesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|paymet_way|integer|null: false|
+|prefecture_id|integer|null: false|
+|paymet_status|integer|null: false|
+|shipping_status|integer|null: false|
+|delivery_status|integer|null: false|
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+## payment_waysテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|way|string|null: false|
+
+### Association
+- belongs_to :purchase
+
+## payment_statusesテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|status|string|null: false|
+
+### Association
+- belongs_to :purchase
+
+## shipping_statusesテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|status|string|null: false|
+
+### Association
+- belongs_to :purchase
+
+## delivery_statusesテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|status|string|null: false|
+
+### Association
+- belongs_to :purchase
