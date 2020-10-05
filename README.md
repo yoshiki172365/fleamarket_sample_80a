@@ -205,6 +205,11 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+- belongs_to_active_hash :payment_way
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :payment_status
+- belongs_to_active_hash :shipping_status
+- belongs_to_active_hash :delivery_status
 
 ## payment_waysテーブル(gem 'active_hash')
 
