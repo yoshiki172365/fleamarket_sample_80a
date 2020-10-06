@@ -9,15 +9,18 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|birthday_yyyy|date|null: false|
-|birthday_mm|date|null: false|
-|birthday_dd|date|null: false|
+|birthday_yyyy_id|integer|null: false|
+|birthday_mm_id|integer|null: false|
+|birthday_dd_id|integer|null: false|
 |phone_number|integer|null: false, unique: true, limit: 11|
 |introduction|string|limit: 1000|
 |icon_image|string||
 
 ### Association
 - belongs_to :address
+- belongs_to_active_hash :birthday_yyyy
+- belongs_to_active_hash :birthday_mm
+- belongs_to_active_hash :birthday_dd
 - has_many :cards
 - has_many :sns_credentials
 - has_many :items
@@ -26,6 +29,33 @@
 - has_many :comments
 - has_many :user_comments, through: :comments, source: :item
 - has_many :purchases
+
+## birthdays_yyyyテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|birthday_yyyy|integer|null: false|
+
+### Association
+- has_many :users
+
+## birthdays_mmテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|birthday_mm|integer|null: false|
+
+### Association
+- has_many :users
+
+## birthdays_ddテーブル(gem 'active_hash')
+
+|Column|Type|Options|
+|------|----|-------|
+|birthday_dd|integer|null: false|
+
+### Association
+- has_many :users
 
 ## cardsテーブル
 
@@ -196,11 +226,11 @@
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
-|paymet_way|integer|null: false|
+|paymet_way_id|integer|null: false|
 |prefecture_id|integer|null: false|
-|paymet_status|integer|null: false|
-|shipping_status|integer|null: false|
-|delivery_status|integer|null: false|
+|paymet_status_id|integer|null: false|
+|shipping_status_id|integer|null: false|
+|delivery_status_id|integer|null: false|
 
 ### Association
 - belongs_to :item
