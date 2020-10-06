@@ -61,7 +61,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|string|null: false|
 |card_number|integer|null: false|
 |validity_date|date|null: false|
 |security_code|integer|null: false|
