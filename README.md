@@ -53,8 +53,8 @@
 |zip_code|string|null: false|
 |prefecture_id|references|null: false, foreign_key: true|
 |city|string|null: false|
-|address1|string|null: false|
-|address2|string||
+|block_number|string|null: false|
+|apartment_name|string||
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -112,8 +112,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|references|null: false, foreign_key: true|
-|ancestry|||
+|name|string|null: false|
+|ancestry|string||
 
 ### Association
 - has_many :items
