@@ -1,0 +1,26 @@
+%h1
+  クレジットカード情報の追加（saccでborder-bottom入れて）
+  %br
+    カード会社のゴロを入れる visa,master, セゾン、JCB,アメリカンExpress、ダイナース
+
+  .card-form
+    = form_with model: @cards do |f|
+      .form-wrap
+        = f.label :number, "カード番号"
+      = f.text_field :number, placeholder: "カード番号(半角)", class: "input-number", maxlength:"16"
+
+      .form-wrap
+        = f.label :cvc, "セキュリティコード"
+      = f.text_field :number, placeholder: "000", class: "input-cvc", maxlength:"4"
+
+      .form-wrap
+        %p
+          有効期限
+        .validity-date
+          = f.text_field :validity_month, calss: "validity_month", placeholder: "12",maxlength:"2"
+          %span
+            月
+          = f.text_field :validity_year, calss: "validity_year", placeholder: "24",maxlength:"2"
+          %span
+            年
+      = f.submit "登録する", class:"button"

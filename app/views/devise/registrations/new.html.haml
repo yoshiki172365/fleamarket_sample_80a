@@ -1,88 +1,82 @@
-.form-first
-  %h1
-    会員情報入力
-  .form-user
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
+.registration-new
+  .form-first
+    .form-first-nav
+      会員情報入力
+    .form-user-wrapper
+      .form-user
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
 
-      .form-user__nickname
-        = f.label :ニックネーム
-        %span.form-required
-          必須
-        %br/
-        = f.text_field :nickname, placeholder: "例）フリマ太郎", class: "input-default"
+          .form-user__nickname
+            = f.label :ニックネーム
+            %span.form-required
+              必須
+            %br/
+            = f.text_field :nickname, placeholder: "例）フリマ太郎", class: "input-default"
 
-      .form-user__email
-        = f.label :メールアドレス
-        %span.form-required
-          必須
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
+          .form-user__email
+            = f.label :メールアドレス
+            %span.form-required
+              必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
 
-      .form-user__password
-        = f.label :パスワード
-        %span.form-required
-          必須
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上の半角英数字", class: "input-default"
-        %p
-        ＊英字と数字の両方を含めて設定してください。
+          .form-user__password
+            = f.label :パスワード
+            %span.form-required
+              必須
+            %br/
+            = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上の半角英数字", class: "input-default"
+          %p
+            ＊英字と数字の両方を含めて設定してください。
 
-      -# .field
-      -#   = f.label :password_confirmation
-      -#   %br/
-      -#   = f.password_field :password_confirmation, autocomplete: "new-password"
+          -# .field
+          -#   = f.label :password_confirmation
+          -#   %br/
+          -#   = f.password_field :password_confirmation, autocomplete: "new-password"
 
-      .form-user_identification
-        本人確認
-        %p
-        安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .form-user__identification
+            本人確認
+          %p
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
-      .form-user_name
-        = f.label :お名前（全角）
-        %span.form-required
-          必須
-        %br/
-        .input-name
-        = f.text_field :first_name, placeholder: "例)千年の", class: "input-default"
-        = f.text_field :last_name, placeholder: "例)眠り", class: "input-default"
+          .form-user__name
+            = f.label :お名前（全角）
+            %span.form-required
+              必須
+          .form-user__nameInput
+            = f.text_field :first_name, placeholder: "例)千年の", class: "input-default-name"
+            = f.text_field :last_name, placeholder: "例)眠り", class: "input-default-name"
 
-      .form-user_name--kana
-        = f.label :お名前カナ（全角）
-        %span.form-required
-          必須
-        %br/
-        .input-name
-        = f.text_field :first_name_kana, placeholder: "例)センネンノ", class: "input-default"
-        = f.text_field :last_name_kana, placeholder: "例)ネムリ", class: "input-default"
+          .form-user__kana
+            = f.label :お名前カナ（全角）
+            %span.form-required
+              必須
+          .form-user__kanaInput
+            = f.text_field :first_name_kana, placeholder: "例)センネンノ", class: "input-default-name"
+            = f.text_field :last_name_kana, placeholder: "例)ネムリ", class: "input-default-name"
 
-      .form-user_birthday
-        = f.label :生年月日
-        %span.form-required
-          必須
-        %br/
-        = f.text_field :birth_year, placeholdr: "例）1990（年）", class: "input-default"
-        %span
-          年
+          .form-user__birthday
+            = f.label :生年月日
+            %span.form-required
+              必須
+          .form-user__birthdayInput
+            = f.text_field :birth_year, placeholdr: "例）1990（年）", class: "input-default-bithday"
+            .form-user__birthdayInput--year
+              年
 
-        = f.text_field :birth_month, placeholdr: "例）4（月）", class: "input-default"
-        %span
-          月
+            = f.text_field :birth_month, placeholdr: "例）4（月）", class: "input-default-bithday"
+            .form-user__birthdayInput--month
+              月
 
-        = f.text_field :birth_day, placeholdr: "例）10（日）", class: "input-default"
-        %span
-          日
-        %p
-        本人情報は正しく入力してください。会員登録後、修正するにはお時間を
-        頂く場合があります。
+            = f.text_field :birth_day, placeholdr: "例）10（日）", class: "input-default-bithday"
+            .form-user__birthdayInput--day
+              日
+          %p
+            本人情報は正しく入力してください。会員登録後、修正するにはお時間を
+            頂く場合があります。
 
-      .form-user__button
-        = f.submit "次へ進む", class: "submit"
-      .form-user__info
-        %p
-          本人情報の登録について
+          .form-user__button
+            = f.submit "次へ進む", class: "submit"
 
-    -# = render "devise/shared/links"
+      -# = render "devise/shared/links"
