@@ -61,15 +61,15 @@
             %span.form-required
               必須
           .form-user__birthdayInput
-            = f.text_field :birth_year, placeholdr: "例）1990（年）", class: "input-default-bithday"
+            = f.collection_select(:birth_year_id, BirthYear.all, :id, :name, {}, {class:"input-default-bithday"})
             .form-user__birthdayInput--year
               年
 
-            = f.text_field :birth_month, placeholdr: "例）4（月）", class: "input-default-bithday"
+            = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name, {}, {class:"input-default-bithday"})
             .form-user__birthdayInput--month
               月
 
-            = f.text_field :birth_day, placeholdr: "例）10（日）", class: "input-default-bithday"
+            = f.collection_select(:birth_day_id, BirthDay.all, :id, :name, {}, {class:"input-default-bithday"})
             .form-user__birthdayInput--day
               日
           %p

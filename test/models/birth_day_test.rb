@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdressTest < ActiveSupport::TestCase
+class BirthDayTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
