@@ -1,28 +1,3 @@
-$skyblue: #78C3C6;
-$red: #CA3831;
-$white: #fff;
-$gray: #F5F5F5;
-
-* {
-  box-sizing: border-box;
-}
-
-.form-required {
-  background-color: $skyblue;
-  color: $white;
-  font-size: 12px;
-  margin: 0 0 0 4px;
-  padding: 2px 2px;
-  border-radius: 2px;
-}
-
-.input-default {
-  width: 300px;
-  height: 40px;
-  color: $gray;
-  font-size: 12px;
-}
-
 .input-default-name {
   width: 150px;
   height: 40px;
@@ -35,11 +10,6 @@ $gray: #F5F5F5;
   width: 85px;
   height: 40px;
   color: $gray;
-  font-size: 12px;
-}
-
-
-p {
   font-size: 12px;
 }
 
@@ -68,31 +38,31 @@ p {
       margin: 0 auto;
       .form-user {
         &__nickname {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__email {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__password {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__identification {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__name {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__nameInput {
           display: inline-flex;
         }
         &__kana {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__kanaInput {
           display: inline-flex;
         }
         &__birthday {
-          margin-top: 15px;
+          @include m-top15;
         }
         &__birthdayInput {
           display: flex;
@@ -102,14 +72,4 @@ p {
       }
     }
   }
-}
-.submit {
-  margin-top: 15px;
-  margin-bottom: 30px;
-  font-size: 12px;
-  color: $white;
-  background-color: $skyblue;
-  width: 300px;
-  padding: 10px;
-  border: none;
 }

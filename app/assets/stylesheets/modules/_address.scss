@@ -1,36 +1,9 @@
-$skyblue: #78C3C6;
-$red: #CA3831;
-$white: #fff;
-$gray: #F5F5F5;
-
-* {
-  box-sizing: border-box;
-}
-
-.form-required {
-  background-color: $skyblue;
-  color: $white;
-  font-size: 12px;
-  margin: 0 0 0 4px;
-  padding: 2px 2px;
-  border-radius: 2px;
-}
-
-.input-default {
-  width: 300px;
-  height: 40px;
-  color: $gray;
-  font-size: 12px;
-}
-
 .prefecutre-select {
   width: 150px;
   height: 40px;
   font-size: 12px;
 }
-p {
-  font-size: 12px;
-}
+
 
 .resgistration-new {
   height: 100vh;
@@ -58,32 +31,22 @@ p {
       .form-user {
         .address {
           &__zipCode {
-            margin-top: 15px;
+            @include m-top15;
           }
           &__prefecture {
-            margin-top: 15px;
+            @include m-top15;
           }
           &__city {
-            margin-top: 15px;
+            @include m-top15;
           }
           &__blockNumber {
-            margin-top: 15px;
+            @include m-top15;
           }
           &__apartmentName {
-            margin-top: 15px;
+            @include m-top15;
           }
           &__phoneNumber {
-            margin-top: 15px;
-          }
-          .submit {
-            margin-top: 15px;
-            margin-bottom: 30px;
-            font-size: 12px;
-            color: $white;
-            background-color: $skyblue;
-            width: 300px;
-            padding: 10px;
-            border: none;
+            @include m-top15;
           }
         }
       }

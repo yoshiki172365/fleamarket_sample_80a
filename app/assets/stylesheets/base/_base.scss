@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 12px;
+}
+
+.form-required {
+  background-color: $red;
+  color: $white;
+  font-size: 12px;
+  margin: 0 0 0 4px;
+  padding: 2px 2px;
+  border-radius: 2px;
+}
+
+.form-any {
+  background-color: $skyblue;
+  color: $white;
+  font-size: 12px;
+  margin: 0 0 0 4px;
+  padding: 2px 2px;
+  border-radius: 2px;
+}
+
+.input-default {
+  width: 300px;
+  height: 40px;
+  color: $gray;
+  font-size: 12px;
+}
+
+.submit {
+  background-color: $skyblue;
+  color: $white;
+  width: 100%;
+  height: auto;
+  line-height: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: none;
+}

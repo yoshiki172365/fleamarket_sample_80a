@@ -1,26 +1,17 @@
-* {
-  box-sizing: border-box;
-}
-
-.input-default {
-  width: 380px;
-  height: 45px;
-}
-
 .user-signIn-wrap {
   width: 100vw;
   height: 400px;
-  background-color: #f5f5f5;
+  background-color: $gray;
   padding-top: 25px;
   padding-bottom: 25px;
   .signIn-form {
-    background-color: white;
+    background-color: $white;
     width: 450px;
     height: 300px;
     margin-right: auto;
     margin-left: auto;
     .inputWrap {
-      width: 85%;
+      width: 70%;
       height: 85px;
       padding-top: 25px;
       padding: 25px, 30px;
@@ -29,14 +20,14 @@
 
       .user-sigUpWrap {
         border-bottom: solid 1px;
-        border-color: gray;
+        border-color: $gray;
 
         .user-signUp__info {
           font-size: 14px;
         }
         .user-signUp__button {
-          background-color: #0099e8;
-          color: white;
+          background-color: $bule;
+          color: $white;
           width: 100%;
           height: auto;
           line-height: 40px;
@@ -44,22 +35,14 @@
         }
       }
       .user-signUp__email {
-        margin-top: 10px;
+        @include m-top15;
       }
       .user-signUp__password {
-        margin-top: 10px;
+        @include m-top15;
       }
       .user-login__button {
-        margin-top: 10px;
+        @include m-top15;
       }
     }
   }
-}
-
-.submit {
-  background-color: #7ac7cb;
-  color: white;
-  width: 100%;
-  height: auto;
-  line-height: 40px;
 }
