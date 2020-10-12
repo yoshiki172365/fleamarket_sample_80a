@@ -48,7 +48,14 @@ p {
   text-align: center;
   padding-top: 20px;
 }
+.footer-sub {
+  background-color: $gray;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .logo-sub {
+  margin-top: 20px;
   background-color: $gray;
   width: 200px;
   height: auto;
