@@ -1,0 +1,49 @@
+.user-signIn-wrap {
+  width: 100vw;
+  height: 400px;
+  background-color: $gray;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  .signIn-form {
+    width: 450px;
+    height: 300px;
+    background-color: $white;
+    @include m-rl-auto;
+    .inputWrap {
+      width: 70%;
+      height: 85px;
+      padding-top: 25px;
+      padding: 25px, 30px;
+      text-align: center;
+      margin: auto;
+
+      .user-sigUpWrap {
+        border-bottom: solid 1px;
+        border-color: $gray;
+
+        .user-signUp__info {
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .user-signUp__button {
+          width: 100%;
+          height: auto;
+          background-color: $bule;
+          color: $white;
+          line-height: 40px;
+          margin-bottom: 10px;
+        }
+      }
+      .user-signUp__email {
+        @include m-top15;
+      }
+      .user-signUp__password {
+        @include m-top15;
+      }
+      .user-login__button {
+        @include m-top15;
+      }
+    }
+  }
+}
