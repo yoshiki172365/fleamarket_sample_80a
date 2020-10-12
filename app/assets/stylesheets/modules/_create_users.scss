@@ -8,8 +8,7 @@
     background-color: $white;
     width: 450px;
     height: 250px;
-    margin-right: auto;
-    margin-left: auto;
+    @include m-rl-auto;
     .finishWrap {
       width: 70%;
       height: 85px;

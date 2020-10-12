@@ -6,7 +6,7 @@
 
 
 .resgistration-new {
-  height: 100vh;
+  height: 800pxh;
   width: 100vw;
   background-color: $gray;
   padding-top: 30px;
@@ -15,8 +15,7 @@
     background-color: $white;
     width: 700px;
     height: auto;
-    margin-right: auto;
-    margin-left: auto;
+    @include m-rl-auto;
     .form-second-nav {
       font-size: 18px;
       text-align: center;

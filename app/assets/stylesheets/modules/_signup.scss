@@ -22,8 +22,7 @@
     background-color: $white;
     width: 700px;
     height: auto;
-    margin-right: auto;
-    margin-left: auto;
+    @include m-rl-auto;
     .form-first-nav {
       font-size: 18px;
       text-align: center;
@@ -65,8 +64,6 @@
         }
         &__birthdayInput {
           display: flex;
-          &--year {
-          }
         }
       }
     }
