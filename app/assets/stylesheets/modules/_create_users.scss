@@ -1,16 +1,16 @@
-.user-signIn-wrap {
+.user-finish-wrap {
   width: 100vw;
   height: 400px;
   background-color: $gray;
   padding-top: 25px;
   padding-bottom: 25px;
-  .signIn-form {
+  .finish-form {
     background-color: $white;
     width: 450px;
-    height: 300px;
+    height: 250px;
     margin-right: auto;
     margin-left: auto;
-    .inputWrap {
+    .finishWrap {
       width: 70%;
       height: 85px;
       padding-top: 25px;
@@ -18,32 +18,21 @@
       text-align: center;
       margin: auto;
 
-      .user-sigUpWrap {
+      .user-infoWrap {
         border-bottom: solid 1px;
         border-color: $gray;
 
-        .user-signUp__info {
+        .user-finish__info {
           font-size: 14px;
           font-weight: bold;
           margin-bottom: 10px;
         }
-        .user-signUp__button {
-          background-color: $bule;
-          color: $white;
-          width: 100%;
-          height: auto;
-          line-height: 40px;
-          margin-bottom: 10px;
-        }
-      }
-      .user-signUp__email {
-        @include m-top15;
-      }
-      .user-signUp__password {
-        @include m-top15;
-      }
       .user-login__button {
         @include m-top15;
+        }
+      .card-info {
+        font-size: 10px;
+        }
       }
     }
   }
