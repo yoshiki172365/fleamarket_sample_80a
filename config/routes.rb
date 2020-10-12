@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
 
   root to:'items#index'
-  resources :addresses
+  resources :addresses, only: [:new]
 end
