@@ -1,0 +1,52 @@
+.show-main
+  .show-wrapper
+    .show-contents
+      .show-contents__topContent
+        .show-itemBox
+          %h2.show-itemBox__name
+            アイテム名前
+          .show-itemBox__photo
+            %ul.show-itemBox__photos
+              %li.show-itemBox__top-photo
+                メイン画像
+              %ul.inner-photo
+                %li.under-photo
+                  サブ画像
+          .show-itemBox__price
+            %span
+              = "¥price"
+            .show-itemBox__price__tax
+              %span (税込)
+              %span 送料込
+          .snow-itemBox__buyscreen
+            購入画面に進む
+          .show-itemBox__table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    太郎
+                %tr
+                  %th カテゴリー
+                  %td
+                    メンズなど
+                %tr
+                  %th 商品の状態
+                  %td
+                    未使用に近い
+                %tr
+                  %th 配送料の負担
+                  %td
+                    送料込み
+                %tr
+                  %th 配送元の地域
+                  %td
+                    福岡県
+                %tr
+                  %th 発送日の目安
+                  %td
+                    1~2日で発送
+
+            
+              
