@@ -1,0 +1,32 @@
+.Header
+  .Header__inner
+    .Header__inner__main
+      %h1.Header__inner__main__logo
+        =link_to "#" do
+          = image_tag '/assets/material/logo/logo.png'
+      .Header__inner__main__search
+        %form{:action => "#"}
+          %input.Header__inner__main__search__input{:placeholder => "キーワードから探す"}
+          %button{type: "submit"}
+            .Header__inner__main__search__icon
+              = image_tag "/assets/material/icon/icon-search 1.png"
+    .Header__inner__nav
+      %ul.Header__inner__nav__left
+        %li.Header__inner__nav__left__category
+          = link_to "#", id: "catBtn" do
+            カテゴリー
+          .Header__inner__nav__left__category__tree.display-none
+            %ul.Header__inner__nav__left__category__tree__category-tree.display-none
+              %li.Header__inner__nav__left__category__tree__category-tree__item
+                =link_to "#" do
+                  レディース
+        %li.Header__inner__nav__left__brand
+          = link_to "#", id: "brandBtn" do
+            ブランド
+      %ul.Header__inner__nav__right
+        %li.Header__inner__nav__right__login
+          = link_to "#" do
+            ログイン
+        %li.Header__inner__nav__right__new
+          =link_to "#" do
+            新規会員登録
