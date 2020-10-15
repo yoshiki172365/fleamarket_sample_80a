@@ -43,6 +43,9 @@
         }
         &__password {
           @include m-top15;
+          &--confirmation {
+            @include m-top15;
+          }
         }
         &__identification {
           @include m-top15;
