@@ -4,20 +4,22 @@
       .show-contents__topContent
         .show-itemBox
           %h2.show-itemBox__name
-            アイテム名前
+            = @item.name
           .show-itemBox__photo
-            %ul.show-itemBox__photos
-              %li.show-itemBox__top-photo
+            %ul
+              %li
                 メイン画像
-              %ul.inner-photo
-                %li.under-photo
-                  サブ画像
+          .show-itemBox__inner-photo
+            .show-itemBox__under-photo
+              サブ画像
           .show-itemBox__price
             %span
               = "¥price"
             .show-itemBox__price__tax
-              %span (税込)
-              %span 送料込
+              %span 
+                (税込)
+              %span 
+                送料込
           .snow-itemBox__buyscreen
             購入画面に進む
           .show-itemBox__table
