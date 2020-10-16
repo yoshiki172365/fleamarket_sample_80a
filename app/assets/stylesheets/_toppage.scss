@@ -64,7 +64,9 @@
           text-decoration: none;
           padding: 0;
           line-height: 38px;
+          flex-flow: row wrap;
           &__tree {
+            display: none;
             z-index: 2;
             position: absolute;
             background-color: #fff;
@@ -88,15 +90,27 @@
           }
         }
         &__category a {
-          background-image: url("material/icon/icon_category.png");
-          &:hover {
-            display: inline-block;
-          }
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
         }
         &__brand {
           display: flex;
           line-height: 38px;
           padding: 0 0 0 16px;
+        }
+        &__brand a {
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
         }
       }
       &__right {
@@ -107,10 +121,28 @@
           line-height: 38px;
           padding: 0 0 0 16px;
         }
+        &__login a{
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+        }
         &__new {
           color: #333;
           line-height: 38px;
           padding: 0 0 0 16px;
+        }
+        &__new a {
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
         }
       }
     }
