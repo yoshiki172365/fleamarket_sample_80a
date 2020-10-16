@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_130100) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
-    t.integer "category", null: false
+    t.bigint "category_id", null: false
     t.integer "size", null: false
     t.string "brand"
     t.integer "status", null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_130100) do
     t.integer "seller", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_130100) do
   add_foreign_key "favorite_items", "items"
   add_foreign_key "favorite_items", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
   add_foreign_key "sns_credentials", "users"
