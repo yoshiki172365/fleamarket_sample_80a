@@ -66,10 +66,8 @@ group :production do
   gem 'unicorn'
 end
 
-gem "haml-rails", ">= 1.0", '<= 2.0.1'
+gem "haml-rails"
 gem 'font-awesome-sass'
 gem "devise"
 gem "active_hash"
 gem "payjp"
-gem 'jquery-rails'
-gem 'ancestry'
