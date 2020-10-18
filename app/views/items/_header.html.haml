@@ -9,7 +9,7 @@
           %input.Header__inner__main__search__input{:placeholder => "キーワードから探す"}
           %button{type: "submit"}
             .Header__inner__main__search__icon
-              = image_tag "/assets/material/icon/icon-search 1.png"
+              = image_tag asset_path("material/icon/icon-search 1.png")
     .Header__inner__nav
       %ul.Header__inner__nav__left
         %li.Header__inner__nav__left__category
@@ -61,10 +61,6 @@
             ブランド
       %ul.Header__inner__nav__right
         %li.Header__inner__nav__right__login
-          -# = link_to "#" do
-          -#   ログイン
           = link_to 'ログイン', new_user_session_path
         %li.Header__inner__nav__right__new
-          -# =link_to "#" do
-          -#   新規会員登録
           = link_to '新規会員登録', new_user_registration_path
