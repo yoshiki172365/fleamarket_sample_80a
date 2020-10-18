@@ -1,7 +1,6 @@
 .input-default-name {
   width: 150px;
   height: 40px;
-  color: $gray;
   font-size: 12px;
   margin-right: 5px;
 }
@@ -43,6 +42,9 @@
         }
         &__password {
           @include m-top15;
+          &--confirmation {
+            @include m-top15;
+          }
         }
         &__identification {
           @include m-top15;
