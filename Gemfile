@@ -71,3 +71,5 @@ gem 'font-awesome-sass'
 gem "devise"
 gem "active_hash"
 gem "payjp"
+gem "ancestry"
+gem "jquery-rails"
