@@ -61,8 +61,10 @@
             ブランド
       %ul.Header__inner__nav__right
         %li.Header__inner__nav__right__login
-          = link_to "#" do
-            ログイン
+          -# = link_to "#" do
+          -#   ログイン
+          = link_to 'ログイン', new_user_session_path
         %li.Header__inner__nav__right__new
-          =link_to "#" do
-            新規会員登録
+          -# =link_to "#" do
+          -#   新規会員登録
+          = link_to '新規作成', new_user_registration_path
