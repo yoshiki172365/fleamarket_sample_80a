@@ -3,7 +3,7 @@
 }
 
 .First-img {
-  background-image: url("material/pict/bg-mainVisual-pict_pc.jpg");
+  background-image: image-url("material/pict/bg-mainVisual-pict_pc.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -119,7 +119,7 @@
 
 
 .Second-img {
-  background-image: url("material/pict/bg-topMiddleDl-pict.jpg");
+  background-image: image-url("material/pict/bg-topMiddleDl-pict.jpg");
   background-size: cover;
   background-position: bottom right;
   height: 400px;
@@ -362,7 +362,7 @@
 }
 
 .Third-img {
-  background-image: url("material/pict/bg-appBanner-pict.jpg");
+  background-image: image-url("material/pict/bg-appBanner-pict.jpg");
   background-size: cover;
   background-position: center;
   padding: 100px 40px;
