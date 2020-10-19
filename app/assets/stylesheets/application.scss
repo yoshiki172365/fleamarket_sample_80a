@@ -1,13 +1,13 @@
 @import "base/reset";
 @import "config/variables";
 @import "base/base";
+@import "base/head_footer";
 @import "mixin/margin";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/signup";
 @import "modules/signin";
 @import "modules/address";
-@import "modules/items";
 @import "modules/create_users";
 @import "modules/toppage";
 @import "modules/flash";
