@@ -4,11 +4,11 @@
 .show-main{
     background-color: #f8f8f8;
     .show-wrapper{
-      padding: 40px;
-      margin: 0 auto;
-      .show-contents{
-        width: 700px;
+        padding: 40px;
         margin: 0 auto;
+      .show-contents{
+          width: 700px;
+          margin: 0 auto;
         .show-contents__topContent{
           .show-itemBox{
             background-color: #fff;
@@ -19,10 +19,10 @@
               font-size: 24px;
           }
           &__photo{
-            margin: 16px 0 0;
+              margin: 16px 0 0;
             ul{
-              display: flex;
-              position: relative;
+                display: flex;
+                position: relative;
               li{
                 display: flex;
                 flex-direction: column;
@@ -36,6 +36,7 @@
               height: 120px;
               display: flex;
               flex-wrap: wrap;
+              margin-top: 10px;
             }
           }
           &__price{
@@ -43,17 +44,17 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-             span{
+            span{
                font-size: 46px;
                font-weight: bold;
                margin: 0 10px 0 0;
-             }
-             &__tax{
+            }
+            &__tax{
                font-size: 16px;
                 span{
                   font-size: 16px;
                 }
-             }
+            }
           }
           .snow-itemBox__buyscreen{
             display: block;
