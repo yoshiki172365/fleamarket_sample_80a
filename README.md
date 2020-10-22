@@ -12,7 +12,7 @@
 |birth_year|integer|null: false|
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
-|phone_number|integer|null: false, unique: true, limit: 11|
+|phone_number|string|null: false, unique: true, limit: 11|
 |introduction|string|limit: 1000|
 |icon_image|string||
 
@@ -29,7 +29,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user|references|foreign_key: true|
 |customer_id|string|null: false|
 
 ### Association
@@ -41,7 +41,7 @@
 |------|----|-------|
 |provider|string|null: false|
 |uid|string|null: false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -51,11 +51,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |zip_code|string|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id|integer|null: false|
 |city|string|null: false|
 |block_number|string|null: false|
 |apartment_name|string||
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -64,8 +64,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -76,8 +76,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null: false|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -89,7 +89,7 @@
 |------|----|-------|
 |name|string|null: false, limit: 40, add_index: true|
 |description|string|null: false, limit: 1000|
-|category_id|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |size_id|integer|null: false|
 |brand|string||
 |status_id|integer|null: false|
@@ -123,7 +123,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image_src|string|null: false|
-|item_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -132,8 +132,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |paymet_way_id|integer|null: false|
 |prefecture_id|integer|null: false|
 |paymet_status_id|integer|null: false|
