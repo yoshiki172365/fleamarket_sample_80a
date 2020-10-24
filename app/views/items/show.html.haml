@@ -1,3 +1,36 @@
+.header
+  .headerInner
+    .mainHeader
+      .icon
+        = link_to root_path do
+          = image_tag 'logo.png'
+      .searchBox
+        .form
+          .input 
+          %input#serchInput.searchBox--input{name: "key", placeholder: "キーワードから探す"}
+            .button{type: 'submit'}
+              .serchBox_icon
+                = image_tag 'icon-search 1.png'
+        .resultLists
+          
+
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__itemlistsLeft__item--first
+          = link_to '#' do
+            カテゴリー
+        %li.listsLeft__item
+          =link_to '#' do
+            ブランド
+      .listsRight
+        .listsRight__itemlistsRight__item--login
+          ログイン
+        .listsRight__itemlistsRight__item--new
+          新規登録
+
+
+
+
 .show-main
   .show-wrapper
     .show-contents
@@ -57,5 +90,9 @@
             %ul.optional
               %li.optionalBtn
                 不適切な商品の通報
-            
+%aside.appBanner
+  .inner
+    %h2.inner__title 誰でもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
               
