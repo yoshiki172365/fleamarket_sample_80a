@@ -1,0 +1,2 @@
+class Adderss < ApplicationRecord
+end
