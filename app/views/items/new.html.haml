@@ -15,7 +15,13 @@
               .products_new-content
               .products_new-uploader-box
                 %label.products_new-uploader__label
-                  = render partial: "form"
+                  %div#image-box
+                    = f.fields_for :images do |image|
+                      %div.js-file_group{data: {index: "image.index"}}
+                        .js-file
+                          = image.file_field :image_src
+                          %br
+                          %span.js-remove 削除
         .products_new-title
           .products_new-product__headline
             .products_new-product__headline--title 商品名
