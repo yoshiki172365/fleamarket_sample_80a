@@ -1,4 +1,10 @@
 .wrapper
-  = render "header"
+  = render "shared/header"
   = render "main"
-  = render "fotter"
+  = render "shared/fotter"
+  .item-icon-wrap
+    = link_to new_item_path do
+      .item-icon-wrap__inner
+        .item-icon-wrap__inner--text
+          出品する
+        = icon('fas', 'camera', class:'item-icon')

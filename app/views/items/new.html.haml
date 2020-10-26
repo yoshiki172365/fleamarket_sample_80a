@@ -1,3 +1,4 @@
+= render "shared/header"
 .products_new-header
 .products_new-main
   .products_new-main__form
@@ -68,3 +69,4 @@
                 = form.number_field :price, class: "products_new-product_price--box", placeholder:"0"
         .products_new-product__submit
           = form.submit '出品する', class: "products_new-product__submit--btn"
+= render "shared/fotter"

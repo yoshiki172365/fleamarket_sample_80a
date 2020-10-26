@@ -359,36 +359,26 @@
   }
 }
 
-.Third-img {
-  background-image: image-url("material/pict/bg-appBanner-pict.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 100px 40px;
-  position: relative;
-  &__contents {
-    color: #fff;
-    text-align: center;
-    &__title {
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 1.4;
+.item-icon-wrap {
+  height: 150px;
+  width: 150px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: $skyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  &__inner {
+    color: $white;
+    display: block;
+    &--text {
+      margin-bottom: 10px;
     }
-    &__text {
-      font-size: 35px;
-    }
-    &__install {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 20px auto 0;
-      &__app {
-        margin-right: 10px;
-        width: 155px;
-      }
-      &__google {
-        width: 180px;
-        margin-top: -10px;
-      }
+    .item-icon {
+    font-size: 4em;
     }
   }
 }
