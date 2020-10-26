@@ -3,8 +3,8 @@
 .products_new-main
   .products_new-main__form
     = render 'layouts/notifications'
-    .products_new-main__form--product_new
-      = form_with model: @product, local: true, id:"new_product" do |form|
+    .products_new-main__f--product_new
+      = form_with model: @item, local: true, id:"new_product" do |f|
         .products_new-newimage
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
@@ -19,12 +19,12 @@
           .products_new-product__headline
             .products_new-product__headline--title 商品名
             .products_new-product__headline--required 必須
-          = form.text_field :name, class:"products_new-title--box", placeholder:"40字まで", maxlength:'40'
+          = f.text_field :name, class:"products_new-title--box", placeholder:"40字まで", maxlength:'40'
         .products_new-product__detaile
           .products_new-product__headline
             .products_new-product__headline--title 商品の説明
             .products_new-product__headline--required 必須
-          = form.text_area :detail, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
+          = f.text_area :detail, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
         .products_new-product_explanation
           .products_new-product_explanation__headline2 商品の詳細
           .products_new-product_explanation__category
@@ -36,28 +36,29 @@
             .products_new-product__headline
               .products_new-product__headline--title ブランド
               #products_new-product__headline--required 任意
-            = form.text_field :brand_id, class:"products_new-title--box", placeholder:"例)シャネル", maxlength:'40'
+            = f.text_field :brand_id, class:"products_new-title--box", placeholder:"例)シャネル", maxlength:'40'
           .products_new-product_explanation__condition
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
-            = form.select :condition, [["新品、未使用","新品、未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり","やや傷や汚れあり"],["汚れや傷あり","汚れや傷あり"],["全体的に状態が悪い","全体的に状態が悪い"]], prompt: "選択してください", class: "products_new-product_explanation__condition--box"
+            = f.select :condition, [["新品、未使用","新品、未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり","やや傷や汚れあり"],["汚れや傷あり","汚れや傷あり"],["全体的に状態が悪い","全体的に状態が悪い"]], prompt: "選択してください", class: "products_new-product_explanation__condition--box"
         .products_new-product_delivery
           .products_new-product_delivery__headline2 配送について
           .products_new-product_delivery__fee
             .products_new-product__headline
               .products_new-product__headline--title 配送料の負担
               .products_new-product__headline--required 必須
-            = form.select :delivery_fee, [["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], prompt: "選択してください", class: "products_new-product_delivery__fee--box"
+            = f.select :delivery_fee, [["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], prompt: "選択してください", class: "products_new-product_delivery__fee--box"
           .products_new-product_delivery__shipping_area
             .products_new-product__headline
               .products_new-product__headline--title 発送元の地域
               .products_new-product__headline--required 必須
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefecutre-select"})
           .products_new-product_delivery__shipping_days
             .products_new-product__headline
               .products_new-product__headline--title 発送までの日数
               .products_new-product__headline--required 必須
-            = form.select :shipping_days, [["1~2日で発送","1~2日で発送"],["2~3日で発送","2~3日で発送"],["4~7日で発送","4~7日で発送"]], prompt: "選択してください", class: "products_new-product_delivery__shipping_days--box"
+            = f.select :shipping_days, [["1~2日で発送","1~2日で発送"],["2~3日で発送","2~3日で発送"],["4~7日で発送","4~7日で発送"]], prompt: "選択してください", class: "products_new-product_delivery__shipping_days--box"
           .products_new-product_price
             .products_new-product_price__headline2 価格（¥300〜9,999,999）
             .products_new-product_price--displayflex
@@ -66,7 +67,7 @@
                 .products_new-product__headline--required 必須
               .products_new-product_price--select
                 %p.products_new-product_price--yen ¥
-                = form.number_field :price, class: "products_new-product_price--box", placeholder:"0"
+                = f.number_field :price, class: "products_new-product_price--box", placeholder:"0"
         .products_new-product__submit
-          = form.submit '出品する', class: "products_new-product__submit--btn"
+          = f.submit '出品する', class: "products_new-product__submit--btn"
 = render "shared/fotter"
