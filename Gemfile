@@ -39,6 +39,11 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  gem 'haml-rails'
+  gem 'font-awesome-sass'
+  gem 'devise'
+  gem 'active_hash'
+  gem 'ancestry'
 
 end
 
