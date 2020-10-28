@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
-  
+  before_action :set_parents, only: [:new, :create]
+
   def index
   end
 
@@ -10,6 +11,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+    @categories = Category.where(ancestry: nil)
   end
 
   def create
@@ -38,5 +40,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end
