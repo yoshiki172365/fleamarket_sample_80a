@@ -1,0 +1,54 @@
+.prefecutre-select {
+  width: 150px;
+  height: 40px;
+  font-size: 12px;
+}
+
+
+.resgistration-new {
+  height: 800pxh;
+  width: 100vw;
+  background-color: $gray;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .form-second {
+    background-color: $white;
+    width: 700px;
+    height: auto;
+    @include m-rl-auto;
+    .form-second-nav {
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      padding: 15px;
+      border-bottom: 2px solid;
+      border-color: $gray;
+    }
+    .form-user-wrapper {
+      width: 300px;
+      margin: 0 auto;
+      .form-user {
+        .address {
+          &__zipCode {
+            @include m-top15;
+          }
+          &__prefecture {
+            @include m-top15;
+          }
+          &__city {
+            @include m-top15;
+          }
+          &__blockNumber {
+            @include m-top15;
+          }
+          &__apartmentName {
+            @include m-top15;
+          }
+          &__phoneNumber {
+            @include m-top15;
+          }
+        }
+      }
+    }
+  }
+}

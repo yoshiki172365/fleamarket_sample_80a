@@ -1,0 +1,51 @@
+.Third-img
+  .Third-img__contents
+    .Third-img__contents__title だれでもかんたん、人生を変えるフリマアプリ
+    .Third-img__contents__text 今すぐ無料ダウンロード！
+    .Third-img__contents__install
+      =link_to "#" do
+        = image_tag asset_path('App_Store_Badge_US-UK_RGB_blk_092917.svg', alt: 'apple', class: 'Third-img__contents__install__app')
+      =link_to "#" do
+        = image_tag asset_path('google-play-badge_UK.png', alt: 'google', class: 'Third-img__contents__install__google')
+.Fotter
+  %ul.Fotter__contents
+    .Fotter__contents__content
+      %h2.Fotter__contents__content__title FURIMAについて
+      %ul
+        %li
+          = link_to "#" do
+            会社概要 （運営会社）
+        %li
+          = link_to "#" do
+            プライバシーポリシー
+        %li
+          = link_to "#" do
+            FURIMA利用規約
+        %li
+          = link_to "#" do
+            ポイントに関する特約
+    .Fotter__contents__content
+      %h2.Fotter__contents__content__title FURIMAを見る
+      %ul
+        %li
+          =link_to "#" do
+            カテゴリー一覧
+        %li
+          =link_to "#" do
+            ブランド一覧
+    .Fotter__contents__content
+      %h2.Fotter__contents__content__title ヘルプ＆ガイド
+      %ul
+        %li
+          =link_to "#" do
+            FURIMAガイド
+        %li
+          =link_to "#" do
+            FURIMAロゴ利用ガイドライン
+        %li
+          =link_to "#" do
+            お知らせ
+  .Fotter__logo
+    =link_to "#" do
+      =image_tag asset_path("material/logo/logo-white.png")
+  %p ＠FURIMA
