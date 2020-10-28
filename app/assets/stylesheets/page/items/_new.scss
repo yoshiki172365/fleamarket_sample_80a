@@ -59,42 +59,70 @@
   margin-bottom: 20px;
 }
 
-.products_new-image-box{
+.products_new-image-box {
   display: flex;
   min-height: 150px;
   width: 100%;
+  .products_new-content {
+    display: flex;
+    height: auto;
+    max-width: 100%;
+  }
+  #previews {
+    display: flex;
+    // text-align: center;
+    width: 500px;
+    height: auto;
+    // padding: 10px;
+    // margin: 0 10px;
+    // border: dashed 1px #d3d3d3;
+  }
+  .products_new-uploader-box {
+    height: 150px;
+    width: 100%;
+    background-color: #f8f8f8;
+    border: dashed 1px #d3d3d3;
+    // opacity: 0;
+    .products_new-uploader__label {
+      display:block;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
 }
 
-.products_new-content{
-  display: flex;
-  height: 150px;
-  max-width: 100%;
-}
 
-.products_new-uploader-box{
-  height: 150px;
-  width: 100%;
-  background-color: #f8f8f8;
-  border: dashed 1px #d3d3d3;
-}
-
-.products_new-uploader__label{
-  display:block;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-}
-
-.products_new-preview-box{
-  text-align: center;
-  padding: 10px;
-  margin: 0 10px;
-  border: dashed 1px #d3d3d3;
-}
 
 .products_new-main__form--product{
   height: 100%;
   width: 100%;
+}
+
+.image-box-form {
+  display: flex;
+  .camera-icon {
+  color: gray;
+  position: relative;
+  top: 70px;
+  }
+  #image-box {
+    height: 150px;
+    width: 620px;
+    #previews {
+      position: relative;
+      top:20px;
+    }
+  }
+}
+
+.js-remove {
+  text-align: center;
+  color: $skyblue;
+}
+
+.js-file {
+  // display: none;
 }
 
 .products_new-title{

@@ -13,15 +13,27 @@
           .products_new-image
             .products_new-image-box
               .products_new-content
-              .products_new-uploader-box
-                %label.products_new-uploader__label
-                  %div#image-box
-                    = f.fields_for :images do |image|
-                      %div.js-file_group{data: {index: "image.index"}}
-                        .js-file
-                          = image.file_field :image_src
-                          %br
-                          %span.js-remove 削除
+                #image-box
+                  #previews
+                    - if @item.persisted?
+                      - @item.images.each_with_index do |image, i|
+                        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
+                  = f.fields_for :images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :image, class: 'js-file'
+                      -# .js-remove
+                      -#   削除
+
+                    - if @item.persisted?
+                      = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+                  - if @item.persisted?
+                    .js-file_group{"data-index" => "#{@item.images.count}"}
+                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+                      .js-remove 削除
+
+
         .products_new-title
           .products_new-product__headline
             .products_new-product__headline--title 商品名
@@ -39,6 +51,7 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
+            
           .products_new-product_explanation__brand
             .products_new-product__headline
               .products_new-product__headline--title ブランド
