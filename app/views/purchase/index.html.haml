@@ -1,0 +1,36 @@
+/Purchase-confirmation/
+= render "shared/header"
+.main
+  .main__showmain
+    .main__showmain__title
+      購入内容の確認
+    .main__showmain__product
+      .main__showmain__product__right
+        = image_tag asset_path("material/icon/icon-01.png")
+      .main__showmain__product__left
+        %h1 aa
+        %p ¥1,111 (税込) 送料込み
+    .main__showmain__content
+      .main__showmain__content__confirmation
+        .main__showmain__content__confirmation__price
+          .main__showmain__content__confirmation__price__right
+            支払い金額
+          .main__showmain__content__confirmation__price__left
+            ￥1,111
+        .main__showmain__content__confirmation__method
+          %h6 支払い方法
+          %p クレジットカード
+          %p **** **** **** 4242
+          %p 12/22
+        .main__showmain__content__confirmation__address
+          %h6 配送先
+          %p 60
+          %p 北海道
+          %p 札幌市中央区大通西 11-44
+          %p 090 12345678
+          %p 山田 孝之
+        .main__showmain__content__confirmation__description
+          郵便局/コンビニ受け取りを希望の方は、購入後に取引画面から受け取り場所を変更することが可能です。出品者が発送作業を開始した後は受け取り場所の変更が出来ませんので、早めに変更を行なってください。
+        .main__showmain__content__confirmation__btn
+          %li= link_to '購入する', "#", class: "main__showmain__content__confirmation__btn__link"
+= render "shared/fotter"
