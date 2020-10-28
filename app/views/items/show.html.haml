@@ -1,0 +1,145 @@
+.header
+  .headerInner
+    .mainHeader
+      .icon
+        = link_to root_path do
+          = image_tag 'logo.png'
+      .searchBox
+        .form
+          .input 
+          %input#serchInput.searchBox--input{name: "key", placeholder: "キーワードから探す"}
+            .button{type: 'submit'}
+              .serchBox_icon
+                = image_tag 'icon-search 1.png'
+        .resultLists
+          
+
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__itemlistsLeft__item--first
+          = link_to '#' do
+            カテゴリー
+        %li.listsLeft__item
+          =link_to '#' do
+            ブランド
+      .listsRight
+        .listsRight__itemlistsRight__item--login
+          ログイン
+        .listsRight__itemlistsRight__item--new
+          新規登録
+
+
+
+
+.show-main
+  .show-wrapper
+    .show-contents
+      .show-contents__topContent
+        .show-itemBox
+          %h2.show-itemBox__name
+            = @item.name
+          .show-itemBox__photo
+            %ul
+              %li
+                = image_tag '2029.jpg', alt: 'シャツ', height: '346px', width: '100%', class: 'image'
+            .show-itemBox__photo__inner-photo
+              .show-itemBox__photo__inner-photo__under-photo
+                = image_tag '2029.jpg', alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
+          .show-itemBox__price
+            %span
+              = "¥9000"
+            .show-itemBox__price__tax
+              %span 
+                (税込)
+              %span 
+                送料込み
+          .snow-itemBox__buyscreen
+            購入画面に進む
+          .show-itemBox__table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    太郎
+                %tr
+                  %th カテゴリー
+                  %td
+                    メンズなど
+                %tr
+                  %th 商品の状態
+                  %td
+                    未使用に近い
+                %tr
+                  %th 配送料の負担
+                  %td
+                    送料込み
+                %tr
+                  %th 配送元の地域
+                  %td
+                    福岡県
+                %tr
+                  %th 発送日の目安
+                  %td
+                    1~2日で発送
+          
+          .optionalArea
+            %ul
+              %li.optionalBtnlikebtn
+                お気に入り
+            %ul.optional
+              %li.optionalBtn
+                不適切な商品の通報
+%aside.appBanner
+  .inner
+    %h2.inner__title 誰でもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
+      = link_to '#' do
+        = image_tag 'Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg'
+      = link_to '#' do
+        = image_tag 'google-play-badge.png'
+              
+.footer
+  %ul.contents
+    %li.content
+      %h2.content__head FURIMAについて
+      %ul
+        %li
+          = link_to '#' do
+            会社概要（運営会社）
+        %li
+          = link_to '#' do
+            プライバシーポリシー
+        %li
+          = link_to '#' do
+            FURIMA利用規約
+        %li
+          = link_to '#' do
+            ポイントに関する特約
+    %li.content
+      %h2.content__head FURIMAを見る
+      %ul
+        %li
+          = link_to '#' do
+            カテゴリー一覧
+        %li
+          = link_to '#' do
+            ブランド一覧
+    %li.content
+      %h2.content__head ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to '#' do
+            FURIMAガイド
+        %li
+          = link_to '#' do
+            FURIMAロゴガイドライン
+        %li
+          = link_to '#' do
+            お知らせ
+
+  .footer__logo
+    = link_to '#' do
+      = image_tag 'material/logo/logo-white.png'
+    .p ©︎FURIMA
