@@ -44,6 +44,7 @@ group :development, :test do
   gem 'devise'
   gem 'active_hash'
   gem 'ancestry'
+  gem 'rspec-rails'
 
 end
 
