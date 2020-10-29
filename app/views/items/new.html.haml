@@ -51,7 +51,8 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+              = f.collection_select :category_id, Category.all, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+
           .products_new-product_explanation__brand
             .products_new-product__headline
               .products_new-product__headline--title ブランド
@@ -90,4 +91,5 @@
                 = f.number_field :price, class: "products_new-product_price--box", placeholder:"0"
         .products_new-product__submit
           = f.submit '出品する', class: "products_new-product__submit--btn"
+        = render 'layouts/error_messages', model: f.object
 = render "shared/fotter"
