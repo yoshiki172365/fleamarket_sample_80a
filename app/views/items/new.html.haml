@@ -21,7 +21,7 @@
 
                   = f.fields_for :images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
-                      = image.file_field :image, class: 'js-file'
+                      = image.file_field :src, class: 'js-file', multipart: true
                       -# .js-remove
                       -#   削除
 
@@ -43,7 +43,7 @@
           .products_new-product__headline
             .products_new-product__headline--title 商品の説明
             .products_new-product__headline--required 必須
-          = f.text_area :detail, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
+          = f.text_area :description, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
         .products_new-product_explanation
           .products_new-product_explanation__headline2 商品の詳細
           .products_new-product_explanation__category
@@ -56,19 +56,19 @@
             .products_new-product__headline
               .products_new-product__headline--title ブランド
               #products_new-product__headline--required 任意
-            = f.text_field :brand_id, class:"products_new-title--box", placeholder:"例)シャネル", maxlength:'40'
+            = f.text_field :brand, class:"products_new-title--box", placeholder:"例)シャネル", maxlength:'40'
           .products_new-product_explanation__condition
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
-            = f.select :condition, Item.conditions_i18n.invert, class: "products_new-product_explanation__condition--box"
+            = f.select :status, Item.statuses_i18n.invert, class: "products_new-product_explanation__condition--box"
         .products_new-product_delivery
           .products_new-product_delivery__headline2 配送について
           .products_new-product_delivery__fee
             .products_new-product__headline
               .products_new-product__headline--title 配送料の負担
               .products_new-product__headline--required 必須
-            = f.select :delivery_fee, Item.delivery_fees_i18n.invert, class: "products_new-product_delivery__fee--box"
+            = f.select :delivery_charge, Item.delivery_charges_i18n.invert, class: "products_new-product_delivery__fee--box"
           .products_new-product_delivery__shipping_area
             .products_new-product__headline
               .products_new-product__headline--title 発送元の地域
@@ -78,7 +78,7 @@
             .products_new-product__headline
               .products_new-product__headline--title 発送までの日数
               .products_new-product__headline--required 必須
-            = f.select :shipping_day, Item.shipping_days_i18n.invert, class: "products_new-product_delivery__shipping_days--box"
+            = f.select :delivery_date, Item.delivery_dates_i18n.invert, class: "products_new-product_delivery__shipping_days--box"
           .products_new-product_price
             .products_new-product_price__headline2 価格（¥300〜9,999,999）
             .products_new-product_price--displayflex

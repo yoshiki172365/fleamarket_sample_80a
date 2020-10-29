@@ -1,13 +1,45 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-  validates :prefecture, presence: true
-  validates :prefecture_id, numericality: { other_than: 0 }
 
-  enum condition: [:condition_sentaku, :shinpin, :hobomishi, :kizunahi, :yayakizuari, :kizuari]
-  enum delivery_fee: [:delivery_fee_sentaku, :seller, :buyer]
-  enum shipping_day: [:shipping_day_sentaku, :until_two_days, :until_three_days, :until_seven_days]
-
+  belongs_to :category
   has_many :images
+
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  validates :name, :price, :description, :status, :delivery_charge, :delivery_date, :prefecture_id, :category_id, presence: true
+  validates_associated :images
+
+
+
+
+
+  enum status: {
+    status_sentaku:0,
+    shinpin:1,
+    hobomishi:2,
+    kizunahi:3,
+    yayakizuari:4,
+    kizuari:5
+  }
+
+  enum delivery_charge: {
+    delivery_charge_sentaku:0,
+    seller:1,
+    buyer:2
+  }
+
+  enum delivery_date: {
+    delivery_date_sentaku:0,
+    until_two_days:1,
+    until_three_days:2,
+    until_seven_days:3
+  }
+
+  enum trading_status: {
+    trading_sentaku:0,
+    sale:1,
+    sold:2
+  }
+
 end
