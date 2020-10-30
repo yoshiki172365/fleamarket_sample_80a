@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      @item.images.new
+      @categories = Category.where(ancestry: nil)
       render :new
     end
   end

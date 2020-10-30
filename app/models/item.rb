@@ -7,8 +7,16 @@ class Item < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :name, :price, :description, :status, :delivery_charge, :delivery_date, :prefecture_id, :category_id, presence: true
-  validates_associated :images
+  validates :name, presence: true, length: {maximum: 40}
+  validates :description, presence: true, length: {maximum: 1000}
+  validates :category_id, presence: true
+  validates :status, presence: true, numericality: { other_than: 0 }
+  validates :delivery_charge, presence: true, numericality: { other_than: 0 }
+  validates :prefecture_id, presence: true, numericality: { other_than: 0 }
+  validates :delivery_date, presence: true
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "300以上9999999以下で入力して下さい"}
+
+  validates :images, length: {minimum: 1}
 
 
 
