@@ -56,7 +56,7 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select :category_id, Category.all, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
               #required_error_category_id
 
           .products_new-product_explanation__brand
