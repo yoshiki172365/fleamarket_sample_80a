@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_10_28_072527) do
 
+
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "zip_code", null: false
     t.integer "prefecture_id", null: false
@@ -52,6 +53,40 @@ ActiveRecord::Schema.define(version: 2020_10_28_072527) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "trading_status", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image_src", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.bigint "category_id", null: false
+    t.integer "size", null: false
+    t.string "brand"
+    t.integer "status", null: false
+    t.integer "delivery_charge", null: false
+    t.integer "delivery_way", null: false
+    t.integer "prefecture", null: false
+    t.integer "delivery_date", null: false
+    t.integer "price", null: false
+    t.integer "buyer"
+    t.integer "seller", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 

@@ -58,5 +58,4 @@ class Item < ApplicationRecord
   #   sale:1,
   #   sold:2
   # }
-
 end

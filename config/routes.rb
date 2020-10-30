@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'purchase/index'
   devise_for :users, controllers: {
     resgistration: 'users/registrations'
   }
@@ -9,6 +10,6 @@ Rails.application.routes.draw do
 
   root to:'items#index'
   resources :addresses, only: [:new]
-  resources :items
+  resources :items only: [:index, :new, :edit, :show]
   resources :categories, only: [:index]
 end
