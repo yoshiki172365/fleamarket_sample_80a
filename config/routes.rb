@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   root to:'items#index'
   resources :addresses, only: [:new]
-  resources :items, only: [:index, :new, :show]
+  resources :items
   resources :categories, only: [:index]
 end

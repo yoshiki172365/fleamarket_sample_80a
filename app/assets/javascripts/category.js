@@ -1,4 +1,4 @@
-$(function(){
+$(window).load(function(){
   $('.products_new-product_explanation__category--box').on('change','select',function(){
     $(this).nextAll('select').remove()
     let id = $(this).get(0).value
