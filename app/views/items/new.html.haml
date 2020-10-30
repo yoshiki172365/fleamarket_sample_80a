@@ -2,7 +2,6 @@
 .products_new-header
 .products_new-main
   .products_new-main__form
-    -# = render 'layouts/notifications'
     .products_new-main__f--product_new
       = form_with model: @item, local: true, id:"new_product" do |f|
         .products_new-newimage
@@ -23,8 +22,6 @@
                   = f.fields_for :images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
                       = image.file_field :src, class: 'js-file', multipart: true
-                      -# .js-remove
-                      -#   削除
 
                     - if @item.persisted?
                       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
@@ -69,6 +66,7 @@
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
+            //以下説明の為enumを使った記法は一旦コメントアウト
             -# = f.select :status, Item.statuses_i18n.invert, class: "products_new-product_explanation__condition--box"
             = f.collection_select(:status_id, Status.all, :id, :name, {}, class: "products_new-product_explanation__condition--box")
             #required_error_status
