@@ -121,6 +121,11 @@ GEM
     erubi (1.9.0)
     erubis (2.7.0)
     excon (0.76.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.13.1)
     fog-aws (3.6.6)
       fog-core (~> 2.1)
@@ -369,6 +374,7 @@ DEPENDENCIES
   carrierwave
   devise
   enum_help
+  factory_bot_rails
   fog-aws
   font-awesome-sass
   haml-rails

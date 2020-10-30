@@ -84,3 +84,4 @@ gem "carrierwave"
 gem "mini_magick"
 gem "pry-rails"
 gem "fog-aws"
+gem 'factory_bot_rails'

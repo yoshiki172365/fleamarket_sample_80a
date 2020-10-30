@@ -30,7 +30,7 @@ class Item < ApplicationRecord
 
 
 
-
+#activehashに変更のために一度コメントアウト
   # enum status: {
   #   status_sentaku:0,
   #   shinpin:1,
