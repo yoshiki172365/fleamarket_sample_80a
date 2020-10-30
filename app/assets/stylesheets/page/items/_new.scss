@@ -70,19 +70,14 @@
   }
   #previews {
     display: flex;
-    // text-align: center;
     width: 500px;
     height: auto;
-    // padding: 10px;
-    // margin: 0 10px;
-    // border: dashed 1px #d3d3d3;
   }
   .products_new-uploader-box {
     height: 150px;
     width: 100%;
     background-color: #f8f8f8;
     border: dashed 1px #d3d3d3;
-    // opacity: 0;
     .products_new-uploader__label {
       display:block;
       height: 100%;
@@ -120,10 +115,6 @@
   text-align: center;
   color: $skyblue;
 }
-
-// .js-file {
-//   // display: none;
-// }
 
 .products_new-title{
   height: 150px;
