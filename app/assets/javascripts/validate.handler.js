@@ -1,4 +1,5 @@
-$(function () {
+// $(document).on('turbolinks:load', () => {
+  $(function() {
   $('#new_product').validate({
     rules: {
       "item[name]": {
@@ -27,7 +28,7 @@ $(function () {
       "item[price]": {
         required: true
       },
-      previews: {
+      "item[images_attributes][0][src]": {
         required: true
       }
     },
@@ -58,11 +59,11 @@ $(function () {
       "item[price]": {
         required: "300〜9,999,999の間で入力してください",
       },
-      previews: {
+      "item[images_attributes][0][src]": {
         required: "最低1枚は画像をアップロードしてください"
       }
     },
-    errorPlacement: function(error, element) {
+    errorPlacement: function (error, element) {
 
       const elAttName = element.attr("name")
       switch (elAttName) {
@@ -98,8 +99,8 @@ $(function () {
           error.insertAfter('#required_error_price');
           break;
 
-        case previews:
-          error.insertAfter('#previews');
+        case "item[images_attributes][0][src]":
+          error.insertAfter('#required_error_image');
           break;
       }
     }

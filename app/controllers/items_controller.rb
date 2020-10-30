@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.images.new
-      # @categories = Category.where(ancestry: nil)
+      @categories = Category.where(ancestry: nil)
       render :new
     end
   end
