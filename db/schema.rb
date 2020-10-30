@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2020_10_28_072527) do
     t.string "description", null: false
     t.bigint "category_id", null: false
     t.string "brand"
-    t.integer "status", null: false
-    t.integer "delivery_charge", null: false
+    t.integer "status_id", null: false
+    t.integer "delivery_charge_id", null: false
     t.integer "prefecture_id", null: false
-    t.integer "delivery_date", null: false
+    t.integer "delivery_date_id", null: false
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

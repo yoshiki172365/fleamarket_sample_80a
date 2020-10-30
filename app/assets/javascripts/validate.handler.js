@@ -10,25 +10,25 @@ $(function () {
         maxlength: 1000
       },
       "item[category_id]": {
-        required: true,
+        required: true
       },
-      "item[status]": {
-        required: true,
+      "item[status_id]": {
+        min: 1
       },
-      "item[delivery_charge]": {
-        required: true,
+      "item[delivery_charge_id]": {
+        min: 1
       },
       "item[prefecture_id]": {
-        required: true,
+        min: 1
       },
-      "item[delivery_date]": {
-        required: true,
+      "item[delivery_date_id]": {
+        min: 1
       },
       "item[price]": {
-        required: true,
+        required: true
       },
       previews: {
-
+        required: true
       }
     },
     messages: {
@@ -43,23 +43,23 @@ $(function () {
       "item[category_id]": {
         required: "カテゴリーを選択してください",
       },
-      "item[status]": {
-        required: "商品の状態を選択してください",
+      "item[status_id]": {
+        min: "商品の状態を選択してください",
       },
-      "item[delivery_charge]": {
-        required: "配送料の負担を選択してください",
+      "item[delivery_charge_id]": {
+        min: "配送料の負担を選択してください",
       },
       "item[prefecture_id]": {
-        required: "発送元の地域を選択してください",
+        min: "発送元の地域を選択してください",
       },
-      "item[delivery_date]": {
-        required: "発送までの日数を選択してください",
+      "item[delivery_date_id]": {
+        min: "発送までの日数を選択してください",
       },
       "item[price]": {
         required: "300〜9,999,999の間で入力してください",
       },
       previews: {
-
+        required: "最低1枚は画像をアップロードしてください"
       }
     },
     errorPlacement: function(error, element) {
@@ -78,11 +78,11 @@ $(function () {
           error.insertAfter('#required_error_category_id');
           break;
 
-        case "item[status]":
+        case "item[status_id]":
           error.insertAfter('#required_error_status');
           break;
 
-        case "item[delivery_charge]":
+        case "item[delivery_charge_id]":
           error.insertAfter('#required_error_delivery_charge');
           break;
 
@@ -90,7 +90,7 @@ $(function () {
           error.insertAfter('#required_error_prefecture_id');
           break;
 
-        case "item[delivery_date]":
+        case "item[delivery_date_id]":
           error.insertAfter('#required_error_delivery_date');
           break;
 

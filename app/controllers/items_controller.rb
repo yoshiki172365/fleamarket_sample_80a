@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.images.new
-      @categories = Category.where(ancestry: nil)
+      # @categories = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item)
-          .permit(:name, :description, :brand, :category_id, :status, :delivery_charge, :prefecture_id, :delivery_date, :price, images_attributes: [:src, :_destroy, :id]).merge(trading_status: 1)
+          .permit(:name, :description, :brand, :category_id, :status_id, :delivery_charge_id, :prefecture_id, :delivery_date_id, :price, images_attributes: [:src, :_destroy, :id]).merge(trading_status: 1)
   end
 
   def set_item
