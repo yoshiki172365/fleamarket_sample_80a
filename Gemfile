@@ -44,6 +44,7 @@ group :development, :test do
   gem 'devise'
   gem 'active_hash'
   gem 'ancestry'
+  gem 'rspec-rails'
 
 end
 
@@ -78,3 +79,9 @@ gem "active_hash"
 gem "payjp"
 gem "ancestry"
 gem "jquery-rails"
+gem "enum_help"
+gem "carrierwave"
+gem "mini_magick"
+gem "pry-rails"
+gem "fog-aws"
+gem 'factory_bot_rails'

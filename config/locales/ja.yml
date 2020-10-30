@@ -1,5 +1,23 @@
 ---
 ja:
+  enums:
+    item:
+      # status:
+      #   status_sentaku: "選択してください"
+      #   shinpin: "新品、未使用"
+      #   hobomishi: "未使用に近い"
+      #   kizunahi: "目立った傷や汚れなし"
+      #   yayakizuari: "やや傷や汚れあり"
+      #   kizuari: "傷や汚れあり"
+      # delivery_charge:
+      #   delivery_charge_sentaku: "選択してください"
+      #   seller: "送料込み(出品者負担)"
+      #   buyer: "着払い(購入者負担)"
+      # delivery_date:
+      #   delivery_date_sentaku: "選択してください"
+      #   until_two_days: "1~2日で発送"
+      #   until_three_days: "2~3日で発送"
+      #   until_seven_days: "4~7日で発送"
   activerecord:
     errors:
       messages:
