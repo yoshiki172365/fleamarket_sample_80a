@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
-  
-  def index
 
+  def index
   end
 
   def edit
@@ -11,8 +10,10 @@ class ItemsController < ApplicationController
   def show
   end
 
+  private
+
   def set_item
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
 end
