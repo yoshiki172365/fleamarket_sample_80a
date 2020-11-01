@@ -24,8 +24,9 @@
     .main-contents
       .user-contents
         .user-inner
-          .user-icon
+          = image_tag asset_path('icon/member_photo_noimage_thumb.png', alt: 'icon', class: 'user-icon')
           .user-name フリマ太郎
-          .user-trading-status 出品数
+          .user-trading-num 出品数
+          .user-trading-result 0
 
 = render "shared/footer-sub"
