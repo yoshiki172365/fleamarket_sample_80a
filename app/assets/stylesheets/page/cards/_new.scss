@@ -1,0 +1,113 @@
+.card-wrap {
+  height: 550px;
+  width: 100vw;
+  background-color: $gray;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .card-main {
+    background-color: $white;
+    width: 700px;
+    height: auto;
+    @include m-rl-auto;
+    .card-inner {
+      &__head {
+        &--text {
+          font-size: 18px;
+          text-align: center;
+          font-weight: bold;
+          padding: 15px;
+          border-bottom: 2px solid;
+          border-color: $gray;
+        }
+      }
+      .card-inner-wrap {
+        width: 350px;
+        margin: 0 auto;
+        &__number-wrap {
+          display: flex;
+          &--text {
+            @include m-top15;
+          }
+          &--form-required {
+            background-color: $red;
+            color: $white;
+            font-size: 12px;
+            @include m-top15;
+            margin-left: 2px;
+            padding: 2px 2px;
+            border-radius: 2px;
+          }
+        }
+        &__number--textfield {
+          width: 100%;
+          height: 40px;
+          margin-top: 2px;
+        }
+
+        &__img {
+          @include m-top15;
+          display: flex;
+
+          &--cards {
+          }
+        }
+        &__validity-date {
+          display: flex;
+          @include m-top15;
+          &--text {
+          }
+          &--form-required {
+            background-color: $red;
+            color: $white;
+            font-size: 12px;
+            margin-left: 2px;
+            padding: 2px 2px;
+            border-radius: 2px;
+          }
+        }
+        .card-inner-wrap-input {
+          display: flex;
+          width: 100%;
+          padding: 0 10px;
+          text-align: center;
+          @include m-top15;
+          &__select-month {
+            width: 100%;
+          }
+          &__text-month {
+            width: 20px;
+            margin: 10px 5px;
+          }
+          &__select-year {
+            width: 100%;
+          }
+          &__text-year {
+            width: 20px;
+            margin: 10px 5px;
+          }
+        }
+        .card-inner-wrap-security {
+          display: flex;
+          width: 100%;
+          &__text {
+
+          }&__form-required {
+            background-color: $red;
+            color: $white;
+            font-size: 12px;
+            margin-left: 2px;
+            padding: 2px 2px;
+            border-radius: 2px;
+          }
+        }
+        .card-inner-wrap-security-input-number {
+          &__input {
+            width: 100%;
+            height: 40px;
+            margin-top: 2px;
+          }
+        }
+    }
+  }
+}
+}

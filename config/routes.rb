@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'purchase/index'
   get 'users/show'
-  get 'cards/new'
+
 
   # ユーザーログイン機能実装後に get 'users/:id/logout', to 'users/logout'にする
   get 'users/logout'
@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   root to:'items#index'
   resources :addresses, only: [:new]
   resources :items
+  resources :cards, only: [:new, :create]
   resources :categories, only: [:index]
 end

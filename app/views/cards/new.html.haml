@@ -1,40 +1,44 @@
+= render "shared/header-sub"
 .card-wrap
   .card-main
     .card-inner
-      .inner__head
-        .inner__head--text
+      .card-inner__head
+        .card-inner__head--text
           クレジットカード情報入力
-      .inner__number-wrap
-        .inner__number--text
-          カード番号
-        .inner__number--require
-          必須
-        .inner__number--textfield
-          半角英数字のみのプレースホルダー
-      .inner__img
-        .inner__img--cards
-          各社カード会社のimg
-      .inner-validity-date
-        .inner-validity-date__text
-          有効期限
-        .inner-validity-date__require
-          必須
-      .inner-input
-        .inner-input__select--month
-          月を選択する
-        .inner-input__text--month
-          月
-        .inner-input__select--year
-          年を選択する
-        .inner-input__text--year
-          年
-      .inner-security
-        .inner-security__text
-          セキュリティコード
-        .inner-security__require
-          必須
-      .inner-security-input-number
-        .inner-security-input-number__input
-          カード背面の3桁または4桁の番号のプレースホルダー
-      .inner-submit-btn
-        送信ボタンを配置
+      .card-inner-wrap
+        = form_with model: @card do |f|
+          .card-inner-wrap__number-wrap
+            .card-inner-wrap__number-wrap--text
+              カード番号
+            .card-inner-wrap__number-wrap--form-required
+              必須
+          = f.text_field :number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield"
+          .card-inner-wrap__img
+            = image_tag asset_path('cards_icon/visa.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/jcb.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/mastercard', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/diners.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/americanExpress.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+          .card-inner-wrap__validity-date
+            .card-inner-wrap__validity-date--text
+              有効期限
+            .card-inner-wrap__validity-date--form-required
+              必須
+          .card-inner-wrap-input
+            = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name, {}, {class:"card-inner-wrap-input__select-month"})
+            .card-inner-wrap-input__text-month
+              月
+            = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            .card-inner-wrap-input__text-year
+              年
+          .card-inner-wrap-security
+            .card-inner-wrap-security__text
+              セキュリティコード
+            .card-inner-wrap-security__form-required
+              必須
+          .card-inner-wrap-security-input-number
+            = f.text_field :code, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input"
+
+          = f.submit "登録する", class: "submit"
+          
+= render "shared/footer-sub"
