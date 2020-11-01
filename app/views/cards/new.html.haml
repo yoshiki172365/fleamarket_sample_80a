@@ -1,0 +1,44 @@
+= render "shared/header-sub"
+.card-wrap
+  .card-main
+    .card-inner
+      .card-inner__head
+        .card-inner__head--text
+          クレジットカード情報入力
+      .card-inner-wrap
+        = form_with model: @card do |f|
+          .card-inner-wrap__number-wrap
+            .card-inner-wrap__number-wrap--text
+              カード番号
+            .card-inner-wrap__number-wrap--form-required
+              必須
+          = f.text_field :number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield"
+          .card-inner-wrap__img
+            = image_tag asset_path('cards_icon/visa.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/jcb.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/mastercard', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/diners.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/americanExpress.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
+          .card-inner-wrap__validity-date
+            .card-inner-wrap__validity-date--text
+              有効期限
+            .card-inner-wrap__validity-date--form-required
+              必須
+          .card-inner-wrap-input
+            = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name, {}, {class:"card-inner-wrap-input__select-month"})
+            .card-inner-wrap-input__text-month
+              月
+            = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            .card-inner-wrap-input__text-year
+              年
+          .card-inner-wrap-security
+            .card-inner-wrap-security__text
+              セキュリティコード
+            .card-inner-wrap-security__form-required
+              必須
+          .card-inner-wrap-security-input-number
+            = f.text_field :code, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input"
+
+          = f.submit "登録する", class: "submit"
+          
+= render "shared/footer-sub"
