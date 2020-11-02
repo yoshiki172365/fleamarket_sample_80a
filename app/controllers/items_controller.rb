@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
       @item.images.new
       @categories = Category.where(ancestry: nil)
       render :new
-      logger.debug @item.errors.inspect
+      # logger.debug @item.errors.inspect
     end
   end
 

@@ -16,7 +16,7 @@
           .card-inner-wrap__img
             = image_tag asset_path('cards_icon/visa.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
             = image_tag asset_path('cards_icon/jcb.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
-            = image_tag asset_path('cards_icon/mastercard', alt: 'icon', class: 'card-inner-wrap__img--cards')
+            = image_tag asset_path('cards_icon/mastercard.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
             = image_tag asset_path('cards_icon/diners.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
             = image_tag asset_path('cards_icon/americanExpress.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
           .card-inner-wrap__validity-date
@@ -40,5 +40,5 @@
             = f.text_field :code, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input"
 
           = f.submit "登録する", class: "submit"
-          
+
 = render "shared/footer-sub"
