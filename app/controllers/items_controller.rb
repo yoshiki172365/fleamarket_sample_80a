@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
       @item.images.new
       @categories = Category.where(ancestry: nil)
       render :new
+      logger.debug @item.errors.inspect
     end
   end
 
@@ -47,7 +48,9 @@ class ItemsController < ApplicationController
                   :delivery_charge_id,
                   :prefecture_id,
                   :delivery_date_id,
-                  :price, images_attributes:
+                  :price,
+                  :brand,
+                  images_attributes:
                   [:src, :_destroy, :id]).merge(trading_status: 1)
   end
 

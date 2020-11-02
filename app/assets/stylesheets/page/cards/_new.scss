@@ -48,14 +48,10 @@
           @include m-top15;
           display: flex;
 
-          &--cards {
-          }
         }
         &__validity-date {
           display: flex;
           @include m-top15;
-          &--text {
-          }
           &--form-required {
             background-color: $red;
             color: $white;
@@ -89,9 +85,7 @@
         .card-inner-wrap-security {
           display: flex;
           width: 100%;
-          &__text {
-
-          }&__form-required {
+          &__form-required {
             background-color: $red;
             color: $white;
             font-size: 12px;
