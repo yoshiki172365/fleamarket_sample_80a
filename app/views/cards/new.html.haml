@@ -6,13 +6,13 @@
         .card-inner__head--text
           クレジットカード情報入力
       .card-inner-wrap
-        = form_with model: @card do |f|
+        = form_with url: pay_cards_path, method: :post, id: 'charge-form', html:{name: "inputForm"} do |f|
           .card-inner-wrap__number-wrap
             .card-inner-wrap__number-wrap--text
               カード番号
             .card-inner-wrap__number-wrap--form-required
               必須
-          = f.text_field :number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield"
+          = f.text_field :number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield", id: "card_number"
           .card-inner-wrap__img
             = image_tag asset_path('cards_icon/visa.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
             = image_tag asset_path('cards_icon/jcb.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
@@ -25,10 +25,38 @@
             .card-inner-wrap__validity-date--form-required
               必須
           .card-inner-wrap-input
-            = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name, {}, {class:"card-inner-wrap-input__select-month"})
+            // id付与のためにselect,optionに変更
+            -# = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name,{class:"card-inner-wrap-input__select-month"})
+            %select.card-inner-wrap-input__select-month#exp_month{name: "exp_month", type: "text"}
+              %option{value: ""} --
+              %option{value: "1"}01
+              %option{value: "2"}02
+              %option{value: "3"}03
+              %option{value: "4"}04
+              %option{value: "5"}05
+              %option{value: "6"}06
+              %option{value: "7"}07
+              %option{value: "8"}08
+              %option{value: "9"}09
+              %option{value: "10"}10
+              %option{value: "11"}11
+              %option{value: "12"}12
             .card-inner-wrap-input__text-month
               月
-            = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            // id付与のためにselect,optionに変更
+            -# = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            %select.card-inner-wrap-input__select-year#exp_year{name: "exp_year", type: "text"}
+              %option{value: ""} --
+              %option{value: "2020"}20
+              %option{value: "2021"}21
+              %option{value: "2022"}22
+              %option{value: "2023"}23
+              %option{value: "2024"}24
+              %option{value: "2025"}25
+              %option{value: "2026"}26
+              %option{value: "2027"}27
+              %option{value: "2028"}28
+              %option{value: "2029"}29
             .card-inner-wrap-input__text-year
               年
           .card-inner-wrap-security
@@ -37,8 +65,8 @@
             .card-inner-wrap-security__form-required
               必須
           .card-inner-wrap-security-input-number
-            = f.text_field :code, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input"
+            = f.text_field :cvc, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input", id: 'cvc'
 
-          = f.submit "登録する", class: "submit"
+          = f.submit "登録する", class: "submit", id: "token_submit"
 
 = render "shared/footer-sub"
