@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :items
   resources :cards, only: [:new, :create]
   resources :categories, only: [:index]
+  resources :purhase, only: [:create]
 end
