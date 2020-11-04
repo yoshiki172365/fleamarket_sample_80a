@@ -16,9 +16,10 @@
         .setting__title 設定
       .lists-foot
         .list
-          .list__title クレジットカード登録
-        .list
-          .list__title クレジットカード詳細
+          - if current_user.card
+            = link_to "クレジットカード詳細", card_path(current_user), class:"list__title"
+          - else
+            = link_to "クレジットカード登録", new_card_path, calss:"list__title"
         .list
           .list__title ログアウト
 
