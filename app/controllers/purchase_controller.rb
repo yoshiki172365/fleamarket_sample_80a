@@ -6,7 +6,7 @@ class PurchaseController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "cards", action: "new"
+      redirect_to new_card_path, alert: "クレジットカード情報を登録してください"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       #保管した顧客IDでpayjpから情報取得
@@ -23,12 +23,12 @@ class PurchaseController < ApplicationController
       amount: 1111, #支払金額を入力（あとからitemに紐づける）
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
-  )
-  redirect_to action: 'done' #完了画面に移動
+    )
+    redirect_to action: 'done' #完了画面に移動
   end
 
-  def done
 
+  def done
   end
 
   end

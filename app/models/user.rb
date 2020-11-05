@@ -25,4 +25,5 @@ class User < ApplicationRecord
   format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
 
   has_one :card
+  has_many :items
 end
