@@ -38,9 +38,6 @@
         .main__showmain__content__confirmation__description
           郵便局/コンビニ受け取りを希望の方は、購入後に取引画面から受け取り場所を変更することが可能です。出品者が発送作業を開始した後は受け取り場所の変更が出来ませんので、早めに変更を行なってください。
         .main__showmain__content__confirmation__btn
-          -# %li= link_to '購入する', "#", class: "main__showmain__content__confirmation__btn__link"
-          -# = form_with url: pay_purhase_index_path, method: :post, do |f|
-          -#   = f.submit "購入する", class:"main__showmain__content__confirmation__btn__link"
           = form_tag(action: :pay, method: :post) do
             %button.main__showmain__content__confirmation__btn__link 購入する
 = render "shared/fotter"

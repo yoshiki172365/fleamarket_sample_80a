@@ -17,6 +17,13 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    @purchase = Purchase.new
+    @purchase.item_id = @item.id
+    @purchase.user_id = current_user.id
+    @purchase.save
+    @item.trading_status = 2
+    @item.save
+
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(

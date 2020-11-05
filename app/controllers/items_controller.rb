@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      logger.debug @item.errors.inspect
       @item.images.new
       @categories = Category.where(ancestry: nil)
       render :new
