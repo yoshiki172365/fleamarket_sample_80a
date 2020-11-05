@@ -21,7 +21,10 @@
           - else
             = link_to "クレジットカード登録", new_card_path, calss:"list__title"
         .list
-          .list__title ログアウト
+          - if user_signed_in?
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, calss:"list__title"
+          - else
+            = link_to "ログイン", new_user_session_path, method: :get, calss:"list__title"
 
 
     .main-contents

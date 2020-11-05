@@ -1,20 +1,14 @@
 Rails.application.routes.draw do
-
-  get 'purchase/index'
-  get 'users/show'
-  #仮ログインログアウト用
-  get 'users/index'
-
-
-  # ユーザーログイン機能実装後に get 'users/:id/logout', to 'users/logout'にする
-  get 'users/logout'
-
   devise_for :users, controllers: {
     resgistration: 'users/registrations'
   }
   devise_scope :user do
     get 'registrations', to: 'users/registrations#create_users'
   end
+
+  get 'purchase/index'
+
+  resources :users, only: [:show, :index]
 
   root to:'items#index'
   resources :addresses, only: [:new]

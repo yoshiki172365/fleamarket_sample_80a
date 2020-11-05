@@ -1,9 +1,9 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
+  before_action :set_card, only: [:index, :pay]
 
   def index #テーブルからpayjpの顧客IDを検索
-    card = Card.where(user_id: current_user.id).first
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path, alert: "クレジットカード情報を登録してください"
@@ -24,7 +24,6 @@ class PurchaseController < ApplicationController
     @item.trading_status = 2
     @item.save
 
-    card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
       amount: 1111, #支払金額を入力（あとからitemに紐づける）
@@ -36,6 +35,12 @@ class PurchaseController < ApplicationController
 
 
   def done
+  end
+
+  private
+
+  def set_card
+    card = Card.where(user_id: current_user.id).first
   end
 
   end
