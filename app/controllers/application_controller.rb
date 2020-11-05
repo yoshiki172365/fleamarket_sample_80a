@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # 一旦コメントアウトしておきます
-  # before_action :authenticate_user!
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   before_action :basic_auth, if: :production?
 

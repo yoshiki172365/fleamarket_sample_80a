@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :installs
   get 'purchase/index'
   devise_for :users, controllers: {
     resgistration: 'users/registrations'
