@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     get 'registrations', to: 'users/registrations#create_users'
   end
 
-  get 'purchase/index'
-
   resources :users, only: [:show, :index]
 
   root to:'items#index'
