@@ -6,13 +6,13 @@
         .card-inner__head--text
           クレジットカード情報入力
       .card-inner-wrap
-        = form_with model: @card do |f|
+        = form_with url: pay_cards_path, method: :post, id: 'charge-form',html:{name: "inputForm"} do |f|
           .card-inner-wrap__number-wrap
             .card-inner-wrap__number-wrap--text
               カード番号
             .card-inner-wrap__number-wrap--form-required
               必須
-          = f.text_field :number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield"
+          = f.text_field :card_number, placeholder: "半角英数字のみ", class: "card-inner-wrap__number--textfield", maxlength: "16"
           .card-inner-wrap__img
             = image_tag asset_path('cards_icon/visa.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
             = image_tag asset_path('cards_icon/jcb.png', alt: 'icon', class: 'card-inner-wrap__img--cards')
@@ -25,10 +25,14 @@
             .card-inner-wrap__validity-date--form-required
               必須
           .card-inner-wrap-input
-            = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name, {}, {class:"card-inner-wrap-input__select-month"})
+            // 新たなid付与のためにselect,optionに変更
+            -# = f.collection_select(:birth_month_id, BirthMonth.all, :id, :name,{class:"card-inner-wrap-input__select-month"})
+            = f.select :exp_month, [["--",0],["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'card-inner-wrap-input__select-month'
             .card-inner-wrap-input__text-month
               月
-            = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            // 新たなid付与のためにselect,optionに変更
+            -# = f.collection_select(:card_validity_year_id, CardValidityYear.all, :id, :name, {class:"card-inner-wrap-input__select-year"})
+            = f.select :exp_year, [["--",0],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'card-inner-wrap-input__select-year'
             .card-inner-wrap-input__text-year
               年
           .card-inner-wrap-security
@@ -37,8 +41,8 @@
             .card-inner-wrap-security__form-required
               必須
           .card-inner-wrap-security-input-number
-            = f.text_field :code, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input"
+            = f.text_field :cvc, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input", maxlength: "4"
 
-          = f.submit "登録する", class: "submit"
+          = f.submit "登録する", class: "submit", id: "token_submit"
 
 = render "shared/footer-sub"

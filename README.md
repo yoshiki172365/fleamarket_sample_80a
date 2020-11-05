@@ -132,11 +132,6 @@
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
-|paymet_way_id|integer|null: false|
-|prefecture_id|integer|null: false|
-|paymet_status_id|integer|null: false|
-|shipping_status_id|integer|null: false|
-|delivery_status_id|integer|null: false|
 
 ### Association
 - belongs_to :item

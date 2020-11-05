@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
-
-  before_action :set_item, except: [:index, :new, :create, ]
+  before_action :authenticate_user!, except:[:index, :show]
+  before_action :set_item, except: [:index, :new, :create, :show]
   before_action :set_parents, only: [:new, :create]
 
   def index
+    @items = Item.all
   end
 
   def show
@@ -23,7 +24,6 @@ class ItemsController < ApplicationController
       @item.images.new
       @categories = Category.where(ancestry: nil)
       render :new
-      # logger.debug @item.errors.inspect
     end
   end
 
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
                   :price,
                   :brand,
                   images_attributes:
-                  [:src, :_destroy, :id]).merge(trading_status: 1)
+                  [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status: 1)
   end
 
   def set_item

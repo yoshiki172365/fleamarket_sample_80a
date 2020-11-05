@@ -61,3 +61,24 @@ p {
   background-color: $gray;
   margin-top: 20px;
 }
+
+.item-sold-out-box {
+  width: 0;
+  height: 0;
+  border-top: 60px solid #ea352d;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #ea352d;
+  z-index: 100;
+  position: relative;
+  top: -230px;
+  left: -15px;
+  &__inner {
+    transform: rotate(-45deg);
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    margin: -35px 0 0 -55px;
+    letter-spacing: 1px;
+  }
+}
