@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :show]
+  before_action :set_item, except: [:index, :new, :create]
   before_action :set_parents, only: [:new, :create]
 
   def index
@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = User.find(@item.user_id)
   end
 
   def new
@@ -34,6 +35,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if current_user.id == @item.user_id && @item.destroy
+      redirect_to root_path, notice: "削除しました"
+    else
+      render :show
+    end
   end
 
   private
@@ -61,4 +67,5 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
+
 end

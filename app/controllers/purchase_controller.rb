@@ -4,15 +4,15 @@ class PurchaseController < ApplicationController
   before_action :set_card, only: [:index, :pay]
 
   def index #テーブルからpayjpの顧客IDを検索
-    if card.blank?
+    if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path, alert: "クレジットカード情報を登録してください"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       #保管した顧客IDでpayjpから情報取得
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
@@ -24,10 +24,10 @@ class PurchaseController < ApplicationController
     @item.trading_status = 2
     @item.save
 
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
     Payjp::Charge.create(
       amount: 1111, #支払金額を入力（あとからitemに紐づける）
-      customer: card.customer_id, #顧客ID
+      customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
     redirect_to action: 'done' #完了画面に移動
@@ -40,7 +40,7 @@ class PurchaseController < ApplicationController
   private
 
   def set_card
-    card = Card.where(user_id: current_user.id).first
+    @card = Card.where(user_id: current_user.id).first
   end
 
   end

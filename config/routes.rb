@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
 
-  resources :purhase, only: [:index] do
+  resources :purchase, only: [:index] do
     collection do
       get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
