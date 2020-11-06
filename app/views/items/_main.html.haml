@@ -5,9 +5,7 @@
       %p FURIMAはだれでも簡単に出品・購入できる
       %p フリマアプリです
     .First-img__contents__install
-      -# =link_to "#" do
       = image_tag asset_path('App_Store_Badge_US-UK_RGB_blk_092917.svg', alt: 'apple', class: 'First-img__contents__install__app')
-      -# =link_to "#" do
       = image_tag asset_path('google-play-badge_UK.png', alt: 'google', class: 'First-img__contents__install__google')
 
 .Reason
@@ -112,9 +110,6 @@
                 .item-sold-out-box
                   .item-sold-out-box__inner
                     SOLD
--# = link_to image_tag ("#{item.images.first.src.url}", size:'220*150'),new_item_path
--# = link_to "出品する",new_item_path, class:"list__title"
-
 
 .Pickup-brand
   %h2.Pickup-brand__title ピックアップブランド

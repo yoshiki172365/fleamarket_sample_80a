@@ -27,35 +27,4 @@ class Item < ApplicationRecord
   validates :user_id, presence: true
   validates :trading_status, numericality: { greater_than_or_equal_to: 1 }
 
-
-
-
-#activehashに変更のために一度コメントアウト
-  # enum status: {
-  #   status_sentaku:0,
-  #   shinpin:1,
-  #   hobomishi:2,
-  #   kizunahi:3,
-  #   yayakizuari:4,
-  #   kizuari:5
-  # }
-
-  # enum delivery_charge: {
-  #   delivery_charge_sentaku:0,
-  #   seller:1,
-  #   buyer:2
-  # }
-
-  # enum delivery_date: {
-  #   delivery_date_sentaku:0,
-  #   until_two_days:1,
-  #   until_three_days:2,
-  #   until_seven_days:3
-  # }
-
-  # enum trading_status: {
-  #   trading_sentaku:0,
-  #   sale:1,
-  #   sold:2
-  # }
 end
