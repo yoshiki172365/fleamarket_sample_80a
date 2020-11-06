@@ -21,7 +21,11 @@
                 (税込)
               %span
                 送料込み
-          = link_to "購入画面に進む",purhase_index_path, class:"snow-itemBox__buyscreen"
+          - if user_signed_in?
+            - if current_user.id == @item.user_id
+              = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
+          - elsif current_user.id != @item.user_id
+            = link_to "購入画面に進む",purchase_index_path, class:"snow-itemBox__buyscreen"
           .show-itemBox__table
             %table
               %tbody
