@@ -72,16 +72,11 @@ group :production do
   gem 'unicorn'
 end
 
-gem "haml-rails"
-gem 'font-awesome-sass'
-gem "devise"
-gem "active_hash"
 gem "payjp"
-gem "ancestry"
 gem "jquery-rails"
 gem "enum_help"
 gem "carrierwave"
 gem "mini_magick"
-gem "pry-rails"
 gem "fog-aws"
 gem 'factory_bot_rails'
+gem 'gretel'
