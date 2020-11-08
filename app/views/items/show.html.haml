@@ -9,10 +9,10 @@
           .show-itemBox__photo
             %ul
               %li
-                = image_tag "#{@image.src}", alt: 'シャツ', height: '346px', width: '100%'
+                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '346px', width: '100%'
             .show-itemBox__photo__inner-photo
               .show-itemBox__photo__inner-photo__under-photo
-                = image_tag "#{@image.src}", alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
+                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
           .show-itemBox__price
             %span
               = "¥#{@item.price}"
@@ -20,9 +20,13 @@
               %span
                 (税込)
               %span
-                = @item.delivery_charge_id
-          .snow-itemBox__buyscreen
-            購入画面に進む
+                送料込み
+          - if user_signed_in?
+            - if current_user.id == @item.user_id
+              = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
+              = link_to "商品を編集する", "#", method: :edit, class:"snow-itemBox__buyscreen"
+            - elsif current_user.id != @item.user_id
+              = link_to "購入画面に進む", purchase_index_path, class:"snow-itemBox__buyscreen"
           .show-itemBox__table
             %table
               %tbody
@@ -74,4 +78,4 @@
             %ul.optional
               %li.optionalBtn
                 不適切な商品の通報
-= render "shared/fotter"
+= render "shared/footer"

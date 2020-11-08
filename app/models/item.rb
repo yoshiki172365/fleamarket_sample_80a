@@ -1,18 +1,15 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :status
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :delivery_charge
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :delivery_date
 
+  belongs_to :user
   belongs_to :category
-  has_many :images
+  #一旦コメントアウト
+  # belongs_to :purchase
+  has_many :images, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
@@ -27,35 +24,7 @@ class Item < ApplicationRecord
 
   validates :images, length: {minimum: 1}
 
+  validates :user_id, presence: true
+  validates :trading_status, numericality: { greater_than_or_equal_to: 1 }
 
-
-
-#activehashに変更のために一度コメントアウト
-  # enum status: {
-  #   status_sentaku:0,
-  #   shinpin:1,
-  #   hobomishi:2,
-  #   kizunahi:3,
-  #   yayakizuari:4,
-  #   kizuari:5
-  # }
-
-  # enum delivery_charge: {
-  #   delivery_charge_sentaku:0,
-  #   seller:1,
-  #   buyer:2
-  # }
-
-  # enum delivery_date: {
-  #   delivery_date_sentaku:0,
-  #   until_two_days:1,
-  #   until_three_days:2,
-  #   until_seven_days:3
-  # }
-
-  # enum trading_status: {
-  #   trading_sentaku:0,
-  #   sale:1,
-  #   sold:2
-  # }
 end

@@ -21,7 +21,7 @@
 
                   = f.fields_for :images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
-                      = image.file_field :src, class: 'js-file', multipart: true
+                      = image.file_field :src, class: 'js-file'
 
                     - if @item.persisted?
                       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
@@ -66,8 +66,6 @@
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
-            //以下説明の為enumを使った記法は一旦コメントアウト
-            -# = f.select :status, Item.statuses_i18n.invert, class: "products_new-product_explanation__condition--box"
             = f.collection_select(:status_id, Status.all, :id, :name, {}, class: "products_new-product_explanation__condition--box")
             #required_error_status
 
@@ -77,7 +75,6 @@
             .products_new-product__headline
               .products_new-product__headline--title 配送料の負担
               .products_new-product__headline--required 必須
-            -# = f.select :delivery_charge, Item.delivery_charges_i18n.invert, class: "products_new-product_delivery__fee--box"
             = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, {}, class: "products_new-product_delivery__fee--box")
             #required_error_delivery_charge
 
@@ -92,7 +89,6 @@
             .products_new-product__headline
               .products_new-product__headline--title 発送までの日数
               .products_new-product__headline--required 必須
-            -# = f.select :delivery_date, Item.delivery_dates_i18n.invert, class: "products_new-product_delivery__shipping_days--box"
             = f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, {}, class: "products_new-product_delivery__shipping_days--box")
             #required_error_delivery_date
 
@@ -109,4 +105,4 @@
 
         .products_new-product__submit
           = f.submit '出品する', class: "products_new-product__submit--btn"
-= render "shared/fotter"
+= render "shared/footer"
