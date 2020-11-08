@@ -77,39 +77,25 @@
       = link_to "#" do
         %h3.Pickup-category__product__subtitle__name 新規投稿商品
     .Pickup-category__product__lists
-      .Pickup-category__product__lists__list
-        = link_to "#" do
-          .Pickup-category__product__lists__list__picture
-            = image_tag asset_path("material/icon/icon-01.png")
-          .Pickup-category__product__lists__list__body
-            .Pickup-category__product__lists__list__body__name test
-            .Pickup-category__product__lists__list__body__details
-              %ul
-                %li 10000円
-                %li
-                  =icon('fa','star')
-                  4
-              %p （税込）
-
-      .Pickup-category__product__lists__list
-        - @items.each do |item|
-          .Pickup-category__product__lists__list__picture
-            = link_to item_path(item.id) do
+      - @items.each do |item|
+        = link_to item_path(item.id) do
+          .Pickup-category__product__lists__list
+            .Pickup-category__product__lists__list__picture
               = image_tag item.images.first.src.url, size:'220*150'
-          .Pickup-category__product__lists__list__body
-            .Pickup-category__product__lists__list__body__name
-              = item.name
-            .Pickup-category__product__lists__list__body__details
-              %ul
-                %li= "#{item.price}円"
-                %li
-                  =icon('fa','star')
-                  4
-              %p（税込）
-              - if item.trading_status == 2
-                .item-sold-out-box
-                  .item-sold-out-box__inner
-                    SOLD
+            .Pickup-category__product__lists__list__body
+              .Pickup-category__product__lists__list__body__name
+                = item.name
+              .Pickup-category__product__lists__list__body__details
+                %ul
+                  %li= "#{item.price}円"
+                  %li
+                    =icon('fa','star')
+                    4
+                %p（税込）
+                - if item.trading_status == 2
+                  .item-sold-out-box
+                    .item-sold-out-box__inner
+                      SOLD
 
 .Pickup-brand
   %h2.Pickup-brand__title ピックアップブランド
@@ -118,16 +104,22 @@
       =link_to "#" do
         %h3.Pickup-brand__product__subtitle__name アーカイバ
     .Pickup-brand__product__lists
-      .Pickup-brand__product__lists__list
-        =link_to "#" do
-          .Pickup-brand__product__lists__list__picture
-            = image_tag asset_path("material/icon/icon-01.png")
-          .Pickup-brand__product__lists__list__body
-            .Pickup-brand__product__lists__list__body__name test2
-            .Pickup-brand__product__lists__list__body__details
-              %ul
-                %li 10000円
-                %li
-                  =icon('fa','star')
-                  1
-              %p （税込）
+      - @items.each do |item|
+        = link_to item_path(item.id) do
+          .Pickup-brand__product__lists__list
+            .Pickup-brand__product__lists__list__picture
+              = image_tag item.images.first.src.url, size:'220*150'
+            .Pickup-brand__product__lists__list__body
+              .Pickup-brand__product__lists__list__body__name
+                = item.name
+              .Pickup-brand__product__lists__list__body__details
+                %ul
+                  %li= "#{item.price}円"
+                  %li
+                    =icon('fa','star')
+                    1
+                %p （税込）
+                - if item.trading_status == 2
+                  .item-sold-out-box
+                    .item-sold-out-box__inner
+                      SOLD
