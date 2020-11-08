@@ -15,14 +15,15 @@
       height: 600px;
       .lists-head {
         height: auto;
-        .list {
+        .list-inner {
           background-color: $white;
-          border-radius: 10px;
+          background-color: $gray;
           &__title {
-            color: black;
             font-size: 1.2em;
             padding: 15px 15px 15px;
             @include m-top10;
+            background-color: $white;
+            border-radius: 10px;
           }
         }
       }
@@ -36,14 +37,15 @@
         }
       }
       .lists-foot {
-        .list {
+        .list-inner {
           background-color: $white;
           border-radius: 10px;
           &__title {
-            color: black;
             font-size: 1.2em;
             padding: 15px 15px 15px;
             @include m-top10;
+            background-color: $white;
+            border-radius: 10px;
           }
         }
       }
@@ -83,6 +85,63 @@
           .user-trading-result {
             font-weight: bold;
             @include m-top10;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-detail-warp {
+  background-color: $gray;
+  margin: 0 auto;
+  .card-detail-inner {
+    background-color: $white;
+    width: 700px;
+    height: auto;
+    padding-bottom: 20px;
+    .card-detail-header {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 30px 15px;
+      border-bottom: 1px $gray solid;
+      text-align: center;
+      width: 700px;
+      }
+    .card-detail-inner-wrap{
+      width: 400px;
+      height: auto;
+      background-color: $white;
+      margin: 0 auto;
+
+      .card-detail-contents {
+        margin-top: 20px;
+        .card-detail-contents-inner {
+          width: 300px;
+          height: auto;
+          background-color: $white;
+          margin: 0 auto;
+          position: relative;
+          padding: 10px 10px;
+          border-bottom: 1px $gray solid;
+          &__content {
+            font-size: 1.2em;
+          }
+          &__exp {
+            font-size: 1.2em;
+          }
+          &__delete-btn {
+            position: absolute;
+            left: 200px;
+            top: 20px;
+            color: red;
+            .card-delete-btn {
+              color: red;
+              background-color: $white;
+              border-color: red;
+              border-radius: 10px;
+              padding: 5px 10px;
+            }
           }
         }
       }
