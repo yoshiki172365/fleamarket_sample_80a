@@ -94,7 +94,7 @@
       .Pickup-category__product__lists__list
         - @items.each do |item|
           .Pickup-category__product__lists__list__picture
-            = link_to item_path(:id) do
+            = link_to item_path(item.id) do
               = image_tag item.images.first.src.url, size:'220*150'
           .Pickup-category__product__lists__list__body
             .Pickup-category__product__lists__list__body__name
