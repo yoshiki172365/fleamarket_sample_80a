@@ -83,8 +83,5 @@ gem "enum_help"
 gem "carrierwave"
 gem "mini_magick"
 gem "pry-rails"
-<<<<<<< HEAD
-=======
 gem "fog-aws"
 gem 'factory_bot_rails'
->>>>>>> origin
