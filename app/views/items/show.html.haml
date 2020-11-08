@@ -5,22 +5,22 @@
       .show-contents__topContent
         .show-itemBox
           %h2.show-itemBox__name
-            Tシャツ
+            = @item.name
           .show-itemBox__photo
             %ul
               %li
-                = image_tag '2029.jpg', alt: 'シャツ', height: '346px', width: '100%', class: 'image'
+                = image_tag "#{@image.src}", alt: 'シャツ', height: '346px', width: '100%'
             .show-itemBox__photo__inner-photo
               .show-itemBox__photo__inner-photo__under-photo
-                = image_tag '2029.jpg', alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
+                = image_tag "#{@image.src}", alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
           .show-itemBox__price
             %span
-              = "¥9000"
+              = "¥#{@item.price}"
             .show-itemBox__price__tax
               %span
                 (税込)
               %span
-                送料込み
+                = @item.delivery_charge_id
           .snow-itemBox__buyscreen
             購入画面に進む
           .show-itemBox__table
@@ -29,27 +29,43 @@
                 %tr
                   %th 出品者
                   %td
-                    太郎
+                    = @user.nickname
                 %tr
                   %th カテゴリー
                   %td
-                    メンズなど
+                    - @categories.each do |parent|
+                      - parent.children.each do |child|
+                        - child.children.each do |grandchild|
+                          -if @item.category_id == grandchild.id
+                            = link_to '#' do
+                              = parent.name
+                            %br
+                            = link_to '#' do
+                              = child.name
+                            %br
+                            =link_to '#' do
+                              = grandchild.name
+                            %br
+                %tr
+                  %th ブランド
+                  %td 
+                    = link_to "#{@item.brand}", "#"
                 %tr
                   %th 商品の状態
                   %td
-                    未使用に近い
+                    = @item.status.name
                 %tr
                   %th 配送料の負担
                   %td
-                    送料込み
+                    = @item.delivery_charge.name
                 %tr
                   %th 配送元の地域
                   %td
-                    福岡県
+                    = link_to "#{@item.prefecture.name}", "#"
                 %tr
                   %th 発送日の目安
                   %td
-                    1~2日で発送
+                    = @item.delivery_date.name
 
           .optionalArea
             %ul

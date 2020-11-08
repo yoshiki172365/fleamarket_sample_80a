@@ -1,12 +1,16 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :show]
   before_action :set_parents, only: [:new, :create]
 
   def index
   end
 
   def show
+    @user = User.find(1)
+    @item = Item.find(0)
+    @image = Image.find(1)
+    @categories = Category.where(ancestry: nil)
   end
 
   def new
