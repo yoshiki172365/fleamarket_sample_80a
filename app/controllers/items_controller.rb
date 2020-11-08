@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(1)
-    @item = Item.find(0)
-    @image = Image.find(1)
+    @user = User.find(params[:id])
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
     @categories = Category.where(ancestry: nil)
   end
 
