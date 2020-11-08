@@ -13,49 +13,26 @@
     .Header__inner__nav
       %ul.Header__inner__nav__left
         %li.Header__inner__nav__left__category
-          = link_to "#", id: "catBtn" do
-            カテゴリー
-          .Header__inner__nav__left__category__tree
-            %ul.Header__inner__nav__left__category__tree__category-tree
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "1" do
-                  レディース
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "2" do
-                  メンズ
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "3" do
-                  ベビー・キッズ
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "4" do
-                  インテリア・住まい・小物
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "5" do
-                  本・音楽・ゲーム
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "6" do
-                  おもちゃ・ホビー・グッズ
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "7" do
-                  コスメ・香水・美容
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "8" do
-                  家電・スマホ・カメラ
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "9" do
-                  スポーツ・レジャー
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "10" do
-                  ハンドメイド
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "11" do
-                  チケット
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "12" do
-                  自動車・オートバイ
-              %li.Header__inner__nav__left__category__tree__category-tree__item
-                =link_to "#", id: "13" do
-                  その他
+          %ul
+            %li
+            = link_to "#", class: "category__search search__btn" do
+              カテゴリー
+            %ul.category__parent.category__list
+              - @parents.each do |parent|
+                %li
+                  = link_to "#", class: "category__parent--name" do
+                    = parent.name
+                  %ul.category__child.category__list
+                    - parent.children.each do |child|
+                      %li
+                        = link_to "#", class: "category__child--name" do
+                          = child.name
+                        %ul.category__grandchild.category__list
+                          - child.children.each do |grandchild|
+                            %li
+                              = link_to "#", class: "category__grandchild--name" do
+                                = grandchild.name
+            
         %li.Header__inner__nav__left__brand
           = link_to "#", id: "brandBtn" do
             ブランド

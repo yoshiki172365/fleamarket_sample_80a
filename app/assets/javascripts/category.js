@@ -30,4 +30,3 @@ $(document).on('turbolinks:load',()=>{
       })
   }
 })
-})
