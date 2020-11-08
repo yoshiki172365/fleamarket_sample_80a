@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_item, except: [:index, :new, :create, :show]
-  before_action :set_parents, only: [:new, :create]
+  before_action :set_parents, only: [:index, :new, :create, :show]
 
   def index
     @items = Item.all
@@ -62,14 +62,6 @@ class ItemsController < ApplicationController
                   :brand,
                   images_attributes:
                   [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status: 1)
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
-  def set_parents
-    @parents = Category.where(ancestry: nil)
   end
 
   private
