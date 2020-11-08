@@ -1,5 +1,5 @@
 /Purchase-confirmation/
-= render "shared/header"
+= render "shared/header-sub"
 .main
   .main__showmain
     .main__showmain__title
@@ -40,4 +40,4 @@
         .main__showmain__content__confirmation__btn
           = form_tag(action: :pay, method: :post) do
             %button.main__showmain__content__confirmation__btn__link 購入する
-= render "shared/footer"
+= render "shared/footer-sub"
