@@ -1,0 +1,64 @@
+= render "shared/header"
+.show-main
+  .show-wrapper
+    .show-contents
+      .show-contents__topContent
+        .show-itemBox
+          %h2.show-itemBox__name
+            Tシャツ
+          .show-itemBox__photo
+            %ul
+              %li
+                = image_tag '2029.jpg', alt: 'シャツ', height: '346px', width: '100%', class: 'image'
+            .show-itemBox__photo__inner-photo
+              .show-itemBox__photo__inner-photo__under-photo
+                = image_tag '2029.jpg', alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
+          .show-itemBox__price
+            %span
+              = "¥9000"
+            .show-itemBox__price__tax
+              %span
+                (税込)
+              %span
+                送料込み
+          - if user_signed_in?
+            - if current_user.id == @item.user_id
+              = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
+          - elsif current_user.id != @item.user_id
+            = link_to "購入画面に進む",purchase_index_path, class:"snow-itemBox__buyscreen"
+          .show-itemBox__table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    太郎
+                %tr
+                  %th カテゴリー
+                  %td
+                    メンズなど
+                %tr
+                  %th 商品の状態
+                  %td
+                    未使用に近い
+                %tr
+                  %th 配送料の負担
+                  %td
+                    送料込み
+                %tr
+                  %th 配送元の地域
+                  %td
+                    福岡県
+                %tr
+                  %th 発送日の目安
+                  %td
+                    1~2日で発送
+
+          .optionalArea
+            %ul
+              %li.optionalBtnlikebtn
+                お気に入り
+            %ul.optional
+              %li.optionalBtn
+                不適切な商品の通報
+= render "shared/footer"

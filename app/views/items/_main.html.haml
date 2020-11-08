@@ -5,9 +5,7 @@
       %p FURIMAはだれでも簡単に出品・購入できる
       %p フリマアプリです
     .First-img__contents__install
-      -# =link_to "#" do
       = image_tag asset_path('App_Store_Badge_US-UK_RGB_blk_092917.svg', alt: 'apple', class: 'First-img__contents__install__app')
-      -# =link_to "#" do
       = image_tag asset_path('google-play-badge_UK.png', alt: 'google', class: 'First-img__contents__install__google')
 
 .Reason
@@ -93,6 +91,25 @@
                   4
               %p （税込）
 
+      .Pickup-category__product__lists__list
+        - @items.each do |item|
+          .Pickup-category__product__lists__list__picture
+            = link_to item_path(item.id) do
+              = image_tag item.images.first.src.url, size:'220*150'
+          .Pickup-category__product__lists__list__body
+            .Pickup-category__product__lists__list__body__name
+              = item.name
+            .Pickup-category__product__lists__list__body__details
+              %ul
+                %li= "#{item.price}円"
+                %li
+                  =icon('fa','star')
+                  4
+              %p（税込）
+              - if item.trading_status == 2
+                .item-sold-out-box
+                  .item-sold-out-box__inner
+                    SOLD
 
 .Pickup-brand
   %h2.Pickup-brand__title ピックアップブランド
@@ -106,7 +123,7 @@
           .Pickup-brand__product__lists__list__picture
             = image_tag asset_path("material/icon/icon-01.png")
           .Pickup-brand__product__lists__list__body
-            .Pickup-brand__product__lists__list__body__name %test2
+            .Pickup-brand__product__lists__list__body__name test2
             .Pickup-brand__product__lists__list__body__details
               %ul
                 %li 10000円

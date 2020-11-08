@@ -90,16 +90,14 @@
 |name|string|null: false, limit: 40, add_index: true|
 |description|string|null: false, limit: 1000|
 |category|references|null: false, foreign_key: true|
-|size_id|integer|null: false|
+|size|integer|null: false|
 |brand|string||
-|status_id|integer|null: false|
-|delivery_charge_id|integer|null: false|
-|delivery_way_id|integer|null: false|
+|status|integer|null: false|
+|delivery_charge|integer|null: false|
+|delivery_way|integer|null: false|
 |prefecture_id|integer|null: false|
-|delivery_date_id|integer|null: false|
+|delivery_date|integer|null: false|
 |price|integer|null: false|
-|buyer_id|integer|foreign_key: true|
-|seller_id|integer|null:false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -118,7 +116,7 @@
 ### Association
 - has_many :items
 
-## item_imagesテーブル
+## imagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -134,11 +132,6 @@
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
-|paymet_way_id|integer|null: false|
-|prefecture_id|integer|null: false|
-|paymet_status_id|integer|null: false|
-|shipping_status_id|integer|null: false|
-|delivery_status_id|integer|null: false|
 
 ### Association
 - belongs_to :item

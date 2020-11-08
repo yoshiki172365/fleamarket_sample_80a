@@ -1,0 +1,18 @@
+= render "shared/header"
+
+.user-finish-wrap
+  .finish-form
+    .finishWrap
+      .user-infoWrap
+        .user-finish__info
+          ログアウトしました。
+
+      = form_with model: @users, local: true do |f|
+        .user-login__button
+          = f.submit "ログインする", class: "submit"
+        .card-info
+          *購入の際にはログインが必要となります。
+        .user-mypage__button
+          = f.submit "トップページへ戻る", class: "submit"
+
+= render "shared/footer"
