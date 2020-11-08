@@ -3,6 +3,16 @@ crumb :root do
   link "トップページ", root_path
 end
 
+#ログイン
+crumb :login do
+  link "ログイン", new_user_session_path
+end
+
+#新規会員登録
+crumb :signup do
+  link "新規会員登録", new_user_registration_path
+end
+
 #出品ページ
 crumb :items_new do
   link "出品する", new_item_path

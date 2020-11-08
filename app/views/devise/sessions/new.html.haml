@@ -1,4 +1,7 @@
-= render "shared/header-sub"
+= render "shared/header"
+
+- breadcrumb :login
+= render "layouts/breadcrumbs"
 
 .user-signIn-wrap
   .signIn-form
@@ -19,4 +22,4 @@
         .user-login__button
           = f.submit "ログイン", class: "submit"
 
-= render "shared/footer-sub"
+= render "shared/footer"
