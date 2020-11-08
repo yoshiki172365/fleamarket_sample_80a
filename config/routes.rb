@@ -10,10 +10,6 @@ Rails.application.routes.draw do
 
   root to:'items#index'
   resources :addresses, only: [:new]
-<<<<<<< HEAD
-  resources :items, only: [:index, :new]
-  resources :categories, only: [:index]
-=======
   resources :items
 
   resources :cards, only: [:new, :show] do
@@ -35,5 +31,4 @@ Rails.application.routes.draw do
     end
   end
 
->>>>>>> origin
 end
