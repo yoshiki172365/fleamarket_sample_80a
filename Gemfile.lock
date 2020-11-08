@@ -170,10 +170,7 @@ GEM
     image_processing (1.12.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-<<<<<<< HEAD
-=======
     ipaddress (0.8.3)
->>>>>>> origin
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -266,8 +263,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-<<<<<<< HEAD
-=======
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.3)
@@ -285,7 +280,6 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.4)
->>>>>>> origin
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -380,11 +374,8 @@ DEPENDENCIES
   carrierwave
   devise
   enum_help
-<<<<<<< HEAD
-=======
   factory_bot_rails
   fog-aws
->>>>>>> origin
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.7)
