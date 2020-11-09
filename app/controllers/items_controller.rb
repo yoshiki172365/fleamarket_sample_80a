@@ -64,12 +64,6 @@ class ItemsController < ApplicationController
                   [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status: 1)
   end
 
-  private
-
-  def item_params
-    params.require(:item).permit(:name, :description, :category, :size, :status, :delivery_charge, :delivery_way, :prefecture_id, :delivery_date, :price, images_attributes: [:image_src])
-  end
-
   def set_item
     @item = Item.find(params[:id])
   end
