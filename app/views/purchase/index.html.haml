@@ -6,7 +6,7 @@
       購入内容の確認
     .main__showmain__product
       .main__showmain__product__right
-        = image_tag asset_path("material/icon/icon-01.png")
+        = image_tag @item.images.first.src.url, alt: '出品商品画像', height: '80px', width: '80%', class: 'image-sub'
       .main__showmain__product__left
         %h1 素敵な色のパンツ
         %p ¥1,111 (税込) 送料込み
@@ -22,7 +22,6 @@
           - if @default_card_information.blank?
             %br /
           - else
-          -#以下カード情報を表示
           = "**** **** **** " + @default_card_information.last4
           - exp_month = @default_card_information.exp_month.to_s
           %br

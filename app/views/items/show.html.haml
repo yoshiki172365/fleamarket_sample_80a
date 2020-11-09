@@ -9,10 +9,10 @@
           .show-itemBox__photo
             %ul
               %li
-                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '346px', width: '100%'
+                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '346px', width: '80%'
             .show-itemBox__photo__inner-photo
               .show-itemBox__photo__inner-photo__under-photo
-                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '80px', width: '50%', class: 'image-sub'
+                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '80px', width: '80%', class: 'image-sub'
           .show-itemBox__price
             %span
               = "¥#{@item.price}"
