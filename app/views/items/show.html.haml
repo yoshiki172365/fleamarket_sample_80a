@@ -21,12 +21,14 @@
                 (税込)
               %span
                 送料込み
-          - if user_signed_in?
-            - if current_user.id == @item.user_id
-              = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
-              = link_to "商品を編集する", "#", method: :edit, class:"snow-itemBox__buyscreen"
-            - elsif current_user.id != @item.user_id
-              = link_to "購入確認画面に進む", "/items/#{@item.id}/purchase", method: :get, class:"snow-itemBox__buyscreen"
+          - if @item.trading_status == 1
+            - if user_signed_in?
+              - if current_user.id == @item.user_id
+                = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
+                = link_to "商品を編集する", "#", method: :edit, class:"snow-itemBox__buyscreen"
+              - elsif current_user.id != @item.user_id
+                = link_to "購入確認画面に進む", "/items/#{@item.id}/purchase", method: :get, class:"snow-itemBox__buyscreen"
+            - else
           .show-itemBox__table
             %table
               %tbody

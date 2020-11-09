@@ -6,11 +6,15 @@
       .user-infoWrap
         .user-finish__info
           購入が完了しました！
-          %p Tシャツ
-          %p ¥1,111(送料込み)
+          %p
+            = @item.name
+          %p
+            ¥
+            = @item.price
 
-        .user-login__button
+
+        .purchase-done-return-btn
           = link_to "トップページへ", root_path
-        .user-mypage__button
-          = link_to "マイページへ", '/users/:id', method: :get
+        .purchase-done-return-btn
+          = link_to "マイページへ", '/users/:id', method: :getm
 = render "shared/footer-sub"

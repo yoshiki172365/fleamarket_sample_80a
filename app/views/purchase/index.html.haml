@@ -8,15 +8,24 @@
       .main__showmain__product__right
         = image_tag @item.images.first.src.url, alt: '出品商品画像', height: '80px', width: '80%', class: 'image-sub'
       .main__showmain__product__left
-        %h1 素敵な色のパンツ
-        %p ¥1,111 (税込) 送料込み
+        %h1
+          = @item.name
+        %p
+          ¥
+          = @item.price
+          (税込)
+          - if @item.delivery_charge_id == 2
+            送料込み
+          - else
+            着払い
     .main__showmain__content
       .main__showmain__content__confirmation
         .main__showmain__content__confirmation__price
           .main__showmain__content__confirmation__price__right
             支払い金額
           .main__showmain__content__confirmation__price__left
-            ￥1,111
+            ¥
+            = @item.price
         .main__showmain__content__confirmation__method
           %h6 支払い方法
           - if @default_card_information.blank?

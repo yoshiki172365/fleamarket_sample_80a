@@ -2,7 +2,7 @@ class PurchaseController < ApplicationController
 
   require 'payjp'
   before_action :set_card, only: [:index, :pay]
-  before_action :set_item, only: [:index, :pay]
+  before_action :set_item, only: [:index, :pay, :done]
 
   def index #テーブルからpayjpの顧客IDを検索
     if @card.blank?

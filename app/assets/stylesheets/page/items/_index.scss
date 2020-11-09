@@ -270,6 +270,7 @@
           }
           &__details {
             font-size: 16px;
+            height: 30px;
           }
           &__details ul {
             display: flex;
@@ -336,9 +337,10 @@
           background-color: white;
           color: #333;
           padding: 16px;
+          height: 90px;
           &__name {
             overflow: hidden;
-            line-height: 1.5;
+            line-hight: 1.5;
             font-size: 16px;
             text-align: left;
           }
