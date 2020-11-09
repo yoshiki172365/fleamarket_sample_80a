@@ -45,7 +45,7 @@ class PurchaseController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
 end
