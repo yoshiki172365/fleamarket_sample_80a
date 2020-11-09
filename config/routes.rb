@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'registrations', to: 'users/registrations#create_users'
   end
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show]
 
   root to:'items#index'
   resources :addresses, only: [:new]
