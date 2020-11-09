@@ -42,7 +42,7 @@
               必須
           .card-inner-wrap-security-input-number
             = f.text_field :cvc, placeholder: "カード背面3桁または4桁の番号", class: "card-inner-wrap-security-input-number__input", maxlength: "4"
-
-          = f.submit "登録する", class: "submit", id: "token_submit"
+          #card_token
+            = f.submit "登録する", class: "submit", id: "token_submit"
 
 = render "shared/footer-sub"

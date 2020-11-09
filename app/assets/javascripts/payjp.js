@@ -17,7 +17,7 @@ window.addEventListener('turbolinks:load', function(){
         $("#cvc").removeAttr("name");
         $("#exp_month").removeAttr("name");
         $("#exp_year").removeAttr("name");
-        $("#token_submit").append(
+        $("#card_token").append(
           $('<input type="hidden" name="token">').val(response.id)
         );
         document.inputForm.submit();
