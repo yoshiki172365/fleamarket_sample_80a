@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-
-  devise_for :installs
-  get 'purchase/index'
   devise_for :users, controllers: {
-    resgistration: 'users/registrations'
+    resgistration: 'users/registrations',
   }
   devise_scope :user do
     get 'registrations', to: 'users/registrations#create_users'
