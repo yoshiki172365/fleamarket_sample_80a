@@ -10,7 +10,16 @@ Rails.application.routes.draw do
 
   root to:'items#index'
   resources :addresses, only: [:new]
-  resources :items
+
+  resources :items do
+    resources :purchase, only: [:index] do
+      collection do
+        get 'index', to: 'purchase#index'
+        post 'pay', to: 'purchase#pay'
+        get 'done', to: 'purchase#done'
+      end
+    end
+  end
 
   resources :cards, only: [:new, :show] do
     collection do
@@ -23,12 +32,12 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
 
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
-    end
-  end
+  # resources :purchase, only: [:index] do
+  #   collection do
+  #     get 'index', to: 'purchase#index'
+  #     post 'pay', to: 'purchase#pay'
+  #     get 'done', to: 'purchase#done'
+  #   end
+  # end
 
 end

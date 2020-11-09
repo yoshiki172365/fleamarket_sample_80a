@@ -26,7 +26,7 @@
               = link_to "商品を削除する", item_path(@item), method: :delete, class:"snow-itemBox__buyscreen"
               = link_to "商品を編集する", "#", method: :edit, class:"snow-itemBox__buyscreen"
             - elsif current_user.id != @item.user_id
-              = link_to "購入画面に進む", purchase_index_path, class:"snow-itemBox__buyscreen"
+              = link_to "購入確認画面に進む", "/items/#{@item.id}/purchase", method: :get, class:"snow-itemBox__buyscreen"
           .show-itemBox__table
             %table
               %tbody
@@ -52,7 +52,7 @@
                             %br
                 %tr
                   %th ブランド
-                  %td 
+                  %td
                     = link_to "#{@item.brand}", "#"
                 %tr
                   %th 商品の状態
