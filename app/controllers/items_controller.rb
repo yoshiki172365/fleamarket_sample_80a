@@ -30,6 +30,8 @@ class ItemsController < ApplicationController
     @image = @item.images
     @categories = Category.where(ancestry: nil)
     @user = User.find(@item.user_id)
+    @comment = Comment.new
+    @commentALL = @item.commetns
   end
 
   def edit
