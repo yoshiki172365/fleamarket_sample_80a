@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_11_04_144514) do
+ActiveRecord::Schema.define(version: 2020_11_11_042205) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "zip_code", null: false
@@ -39,6 +38,17 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
     t.string "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "delete_check", default: 0
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,14 +86,6 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -95,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
     t.integer "birth_year_id", null: false
     t.integer "birth_month_id", null: false
     t.integer "birth_day_id", null: false
-    t.string "phone_number", null: false
+    t.integer "phone_number", null: false
     t.string "introduction"
     t.string "icon_image"
     t.string "reset_password_token"
@@ -109,6 +111,8 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"

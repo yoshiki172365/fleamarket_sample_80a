@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         get 'done', to: 'purchase#done'
       end
     end
+
+    resources :comments, only: [:create, :destroy, :edit]
   end
 
   resources :cards, only: [:new, :show] do
