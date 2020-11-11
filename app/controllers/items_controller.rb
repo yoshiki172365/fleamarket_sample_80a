@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :show]
+  before_action :set_item, except: [:index, :new, :create, :show, :search]
   before_action :set_parents, only: [:index, :new, :create, :show]
 
   def index
@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def search
+
   end
 
   private

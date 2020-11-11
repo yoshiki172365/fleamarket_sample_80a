@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :addresses, only: [:new]
 
   resources :items do
+    collection do
+      get :search
+    end
+
     resources :purchase, only: [:index] do
       collection do
         get 'index', to: 'purchase#index'
