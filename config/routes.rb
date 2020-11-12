@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
+      get :search_index
       get :search
     end
 

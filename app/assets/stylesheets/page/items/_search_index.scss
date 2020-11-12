@@ -1,0 +1,17 @@
+.search-index-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkolivegreen;
+  padding-top: 40px;
+  .search-index-inner {
+    display: flex;
+    &__left {
+      margin-right: 40px;
+    }
+    &__right {
+
+    }
+
+  }
+}
