@@ -28,15 +28,20 @@
       height: 1280px;
       padding: 10px 10px;
       .head-text {
-        font-weight: bold;
         font-size: 1.2em;
       }
       .search-form-keyword{
         margin-top: 20px;
+        .icon-plus {
+          color: darkgrey;
+        }
       }
       .search-form {
         margin-top: 40px;
         position: relative;
+        .icon-list {
+          color: darkgrey;
+        }
         .icon-down {
         position: absolute;
         top: 45%;
@@ -48,10 +53,17 @@
       }
       .search-form-extend-brand {
         margin-top: 40px;
+        .icon-tag {
+          color: darkgrey;
+          transform: rotate(-45deg);
+        }
       }
       .search-form {
         margin-top: 40px;
         position: relative;
+        .icon-expand {
+          color: darkgrey;
+        }
         .icon-down {
         position: absolute;
         top: 45%;
@@ -64,9 +76,12 @@
       .search-form-price {
         margin-top: 40px;
         position: relative;
+        .icon-coins {
+          color: darkgrey;
+        }
         .icon-down {
         position: absolute;
-        top: 45%;
+        top: 30%;
         right: 20px;
         z-index: 2;
         font-size: 20px;
@@ -75,12 +90,22 @@
       }
       .search-form-clearfix {
         margin-top: 40px;
+        .icon-star {
+          color: darkgrey;
+        }
       }
       .search-form-clearfix {
         margin-top: 40px;
+        .icon-truck {
+          color: darkgrey;
+          transform:rotateY(180deg);
+        }
       }
       .search-form-clearfix {
         margin-top: 40px;
+        .icon-cart {
+          color: darkgrey;
+        }
       }
       .btn-wrap {
         margin-top: 40px;
