@@ -12,6 +12,15 @@
       background-color: $gray;
       width: 280px;
       height: 90px;
+      position: relative;
+      .icon-down {
+        position: absolute;
+        top: 30%;
+        right: 20px;
+        z-index: 2;
+        font-size: 20px;
+        color: #888;
+      }
     }
     .detail-search-wrap {
       background-color: $white;
@@ -27,15 +36,42 @@
       }
       .search-form {
         margin-top: 40px;
+        position: relative;
+        .icon-down {
+        position: absolute;
+        top: 45%;
+        right: 20px;
+        z-index: 2;
+        font-size: 20px;
+        color: #888;
+        }
       }
       .search-form-extend-brand {
         margin-top: 40px;
       }
       .search-form {
         margin-top: 40px;
+        position: relative;
+        .icon-down {
+        position: absolute;
+        top: 45%;
+        right: 20px;
+        z-index: 2;
+        font-size: 20px;
+        color: #888;
+        }
       }
       .search-form-price {
         margin-top: 40px;
+        position: relative;
+        .icon-down {
+        position: absolute;
+        top: 45%;
+        right: 20px;
+        z-index: 2;
+        font-size: 20px;
+        color: #888;
+        }
       }
       .search-form-clearfix {
         margin-top: 40px;
@@ -61,6 +97,7 @@
             justify-content: center;
             align-items: center;
             .btn-text {
+              font-weight: bolder;
             }
           }
           .btn-complete {
@@ -75,12 +112,11 @@
             align-items: center;
 
             .btn-text {
-
+              font-weight: bolder;
             }
           }
         }
       }
-
-      }
     }
   }
+}
