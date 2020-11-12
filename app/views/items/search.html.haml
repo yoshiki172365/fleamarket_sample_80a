@@ -1,28 +1,54 @@
 .l-search-wrap
   .sort-menu
-    ソートメニュー
+    %select{name: "menu"}
+      %option{value: "0"}  並び替え
+      %option{value: "1"}  価格の安い順
+      %option{value: "2"}  価格の高い順
+      %option{value: "3"}  出品の新しい順
+      %option{value: "4"}  いいね！の多い順
   .detail-search-wrap
-    %h3.head-text
+    .head-text
       詳細検索
     .search-form
       キーワードを追加する（検索する）
+      %input{placeholder: "例）値下げ"}
     .search-form
       カテゴリを選択する
+      %select{name: "category"}
+        %option{value: "0"}  すべて
     .search-form
       ブランド名から探す
+      %input{placeholder: "例）シャネル"}
+
     .search-form
       サイズを指定する
+      %select{name: "size"}
+        %option{value: "0"}  すべて
+
     .search-form
       価格
+      %select{name: "size"}
+        %option{value: "0"}  すべて
+
     .search-form
       商品の状態
+      = check_box_tag :check1
+      = label_tag :check1, "すべて"
     .search-form
       配送料の負担
+      = check_box_tag :check1
+      = label_tag :check1, "すべて"
+
     .search-form
       販売状況
+      = check_box_tag :check1
+      = label_tag :check1, "すべて"
+
     .btn-wrap
       .btn-inner
         .btn-clear
-          クリアボタン
+          .btn-text
+            クリア
         .btn-complete
-          完了ボタン
+          .btn-text
+            完了
