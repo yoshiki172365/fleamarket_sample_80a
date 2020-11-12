@@ -5,7 +5,7 @@
       会員情報入力
     .form-user-wrapper
       .form-user
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = form_for(@user, url: user_registration_path) do |f|
           .form-user__nickname
             = f.label :ニックネーム
             %span.form-required
