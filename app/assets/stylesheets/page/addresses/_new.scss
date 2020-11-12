@@ -29,6 +29,12 @@
       margin: 0 auto;
       .form-user {
         .address {
+          &__form {
+            @include m-top15;
+            &__name{
+              display: flex;
+            }
+          }
           &__zipCode {
             @include m-top15;
           }
