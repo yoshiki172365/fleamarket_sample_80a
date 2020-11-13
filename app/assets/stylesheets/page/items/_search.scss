@@ -42,9 +42,9 @@
         .icon-list {
           color: darkgrey;
         }
-        .icon-down {
+        .icon-down-category {
         position: absolute;
-        top: 45%;
+        top: 40px;
         right: 20px;
         z-index: 2;
         font-size: 20px;
@@ -135,9 +135,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             .btn-text {
               font-weight: bolder;
+              .btn-text-inner {
+                color: $white;
+                background-color: #e21d23;
+                border: none;
+              }
             }
           }
         }

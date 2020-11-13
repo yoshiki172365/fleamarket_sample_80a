@@ -29,6 +29,8 @@
               - elsif current_user.id != @item.user_id
                 = link_to "購入確認画面に進む", "/items/#{@item.id}/purchase", method: :get, class:"snow-itemBox__buyscreen"
             - else
+          .show-item-description
+            = @item.description
           .show-itemBox__table
             %table
               %tbody

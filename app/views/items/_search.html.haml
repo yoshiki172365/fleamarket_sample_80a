@@ -10,74 +10,76 @@
           %option{value: "3"}  出品の新しい順
           %option{value: "4"}  いいね！の多い順
     .detail-search-wrap
-      .head-text
-        詳細検索
-        .search-form-keyword
+      = search_form_for(@q, url:search_index_items_path) do |f|
+
+        .head-text
+          詳細検索
+          .search-form-keyword
+            %label
+              = icon("fas", "plus", class: "icon-plus")
+              キーワードを追加する（検索する）
+              = f.text_field :name_cont, placeholder: "例）値下げ", class: "input-default-search"
+
+        .search-form
           %label
-            = icon("fas", "plus", class: "icon-plus")
-            キーワードを追加する（検索する）
-            %input{type: "text", placeholder: "例）値下げ", class: "input-default-search"}
+            = icon("fas", "list", class: "icon-list")
+            カテゴリを選択する
+            = icon("fas", "angle-down", class: "icon-down-category")
+            .products_new-product_explanation__category--box
+              = f.collection_select :category_id_eq, @parents, :id, :name, { include_blank: "すべて", selected:"" }, id: "category_form"
 
-      .search-form
-        %label
-          = icon("fas", "list", class: "icon-list")
-          カテゴリを選択する
-          = icon("fas", "angle-down", class: "icon-down")
-          %select{name: "category"}
-            %option{value: "0"}  すべて
+        .search-form-extend-brand
+          %label
+            = icon("fas", "tag", class: "icon-tag")
+            ブランド名から探す
+            %input{type: "text", placeholder: "例）シャネル", class: "input-default-search"}
 
-      .search-form-extend-brand
-        %label
-          = icon("fas", "tag", class: "icon-tag")
-          ブランド名から探す
-          %input{type: "text", placeholder: "例）シャネル", class: "input-default-search"}
+        .search-form
+          %label
+            = icon("fas", "expand", class: "icon-expand")
+            サイズを指定する
+            = icon("fas", "angle-down", class: "icon-down")
 
-      .search-form
-        %label
-          = icon("fas", "expand", class: "icon-expand")
-          サイズを指定する
-          = icon("fas", "angle-down", class: "icon-down")
+            %select{name: "size"}
+              %option{value: "0"}  すべて
 
-          %select{name: "size"}
-            %option{value: "0"}  すべて
+        .search-form-price
+          %label
+            = icon("fas", "coins", class: "icon-coins")
+            価格
+            = icon("fas", "angle-down", class: "icon-down")
+            %select{name: "size"}
+              %option{value: "0"}  選択してください
+            %input{type: "text", placeholder: "¥ Min", class: "input-default-price"}
+            〜
+            %input{type: "text", placeholder: "¥ Max", class: "input-default-price"}
 
-      .search-form-price
-        %label
-          = icon("fas", "coins", class: "icon-coins")
-          価格
-          = icon("fas", "angle-down", class: "icon-down")
-          %select{name: "size"}
-            %option{value: "0"}  選択してください
-          %input{type: "text", placeholder: "¥ Min", class: "input-default-price"}
-          〜
-          %input{type: "text", placeholder: "¥ Max", class: "input-default-price"}
+        .search-form-clearfix
+          %label
+            = icon("fas", "star", class: "icon-star")
+            商品の状態
+            = check_box_tag :check1
+            = label_tag :check1, "すべて"
 
-      .search-form-clearfix
-        %label
-          = icon("fas", "star", class: "icon-star")
-          商品の状態
-          = check_box_tag :check1
-          = label_tag :check1, "すべて"
+        .search-form-clearfix
+          %label
+            = icon("fas", "truck", class: "icon-truck")
+            配送料の負担
+            = check_box_tag :check1
+            = label_tag :check1, "すべて"
 
-      .search-form-clearfix
-        %label
-          = icon("fas", "truck", class: "icon-truck")
-          配送料の負担
-          = check_box_tag :check1
-          = label_tag :check1, "すべて"
+        .search-form-clearfix
+          %label
+            = icon("fas", "shopping-cart", class: "icon-cart")
+            販売状況
+            = check_box_tag :check1
+            = label_tag :check1, "すべて"
 
-      .search-form-clearfix
-        %label
-          = icon("fas", "shopping-cart", class: "icon-cart")
-          販売状況
-          = check_box_tag :check1
-          = label_tag :check1, "すべて"
-
-      .btn-wrap
-        .btn-inner
-          .btn-clear
-            .btn-text
-              クリア
-          .btn-complete
-            .btn-text
-              完了
+        .btn-wrap
+          .btn-inner
+            .btn-clear
+              .btn-text
+                クリア
+            %label.btn-complete
+              .btn-text
+                = f.submit "完了", class: "btn-text-inner"

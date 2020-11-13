@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_item, except: [:index, :new, :create, :show, :search, :result, :search_index]
-  before_action :set_parents, only: [:index, :new, :create, :show]
+  before_action :set_parents, only: [:index, :new, :create, :show, :search, :search_index]
+
+  before_action :set_item_search_query
 
   def index
     @items = Item.all
@@ -54,6 +56,7 @@ class ItemsController < ApplicationController
 
   end
 
+
   def search_index
 
   end
@@ -83,4 +86,5 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
+
 end

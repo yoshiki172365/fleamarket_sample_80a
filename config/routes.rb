@@ -13,8 +13,9 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
-      get :search_index
-      get :search
+      get 'search_index', to: 'items#search_index'
+      get 'search', to: 'items#search'
+      get 'result', to: 'items#result'
     end
 
     resources :purchase, only: [:index] do

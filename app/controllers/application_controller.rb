@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
 
+  def set_item_search_query
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+  end
+
   protected
 
   def configure_permitted_parameters
