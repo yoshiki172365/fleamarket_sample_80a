@@ -123,6 +123,11 @@
             align-items: center;
             .btn-text {
               font-weight: bolder;
+              .btn-text-clear {
+              color: $white;
+              background-color: #999999;
+              border: none;
+              }
             }
           }
           .btn-complete {
@@ -137,7 +142,7 @@
             align-items: center;
             .btn-text {
               font-weight: bolder;
-              .btn-text-inner {
+              .btn-text-complete {
                 color: $white;
                 background-color: #e21d23;
                 border: none;

@@ -79,7 +79,7 @@
           .btn-inner
             .btn-clear
               .btn-text
-                クリア
-            %label.btn-complete
+                = f.submit "クリア", class: "btn-text-clear", id: "js_search_clear"
+            .btn-complete
               .btn-text
-                = f.submit "完了", class: "btn-text-inner"
+                = f.submit "完了", class: "btn-text-complete"
