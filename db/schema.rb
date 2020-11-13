@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
@@ -76,49 +77,42 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_item_images_on_item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
     t.bigint "category_id", null: false
-    t.integer "size", null: false
     t.string "brand"
-    t.integer "status", null: false
-    t.integer "delivery_charge", null: false
-    t.integer "delivery_way", null: false
-    t.integer "prefecture", null: false
-    t.integer "delivery_date", null: false
+    t.integer "status_id", null: false
+    t.integer "delivery_charge_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "delivery_date_id", null: false
     t.integer "price", null: false
-    t.integer "buyer"
-    t.integer "seller", null: false
+    t.integer "trading_status", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
     t.bigint "user_id", null: false
-    t.integer "paymet_way_id", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "paymet_status_id", null: false
-    t.integer "shipping_status_id", null: false
-    t.integer "delivery_status_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider", null: false
-    t.string "uid", null: false
-    t.bigint "user_id", null: false
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -132,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.integer "birth_year_id", null: false
     t.integer "birth_month_id", null: false
     t.integer "birth_day_id", null: false
+    t.string "phone_number", null: false
     t.string "introduction"
     t.string "icon_image"
     t.string "reset_password_token"
@@ -145,13 +140,9 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
-  add_foreign_key "favorite_items", "items"
-  add_foreign_key "favorite_items", "users"
-  add_foreign_key "item_images", "items"
+  add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
-  add_foreign_key "sns_credentials", "users"
 end

@@ -8,11 +8,9 @@ class User < ApplicationRecord
   belongs_to_active_hash :birth_year
   validates :birth_year_id, numericality: { other_than: 0 }
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :birth_month
   validates :birth_month_id, numericality: { other_than: 0 }
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :birth_day
   validates :birth_day_id, numericality: { other_than: 0 }
 
@@ -26,4 +24,6 @@ class User < ApplicationRecord
   validates :last_name_kana,
   format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
   has_one :address
+  has_one :card
+  has_many :items
 end

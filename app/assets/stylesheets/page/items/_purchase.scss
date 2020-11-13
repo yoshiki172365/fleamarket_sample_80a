@@ -1,0 +1,102 @@
+.main {
+  background-color: $gray;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  &__showmain {
+    background-color: $white;
+    width: 700px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    &__title {
+      padding-bottom: 20px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: whitesmoke solid 1px;
+    }
+    &__product {
+      width: 343px;
+      height: auto;
+      margin-right: auto;
+      margin-left: auto;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      border-bottom: whitesmoke solid 1px;
+      display: flex;
+      justify-content: start;
+      &__right {
+        display: flex;
+        position: relative;
+        width: 100px;
+        height: 30px;
+      }
+      &__right img {
+        position: absolute;
+        width: 100%;
+        z-index: auto;
+        object-fit: cover;
+      }
+      &__left {
+        margin: 20px 30px;
+      }
+      &__left p {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+    &__content {
+      width: 343px;
+      height: auto;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 15px;
+      &__confirmation {
+        &__price {
+          margin-top: 25px;
+          font-size: 16px;
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          &__right {
+            font-size: 12px;
+          }
+          &__left {
+            font-size: 20px;
+          }
+        }
+        &__method {
+          margin-top: 50px;
+        }
+        &__method h6 {
+          font-weight: bold;
+        }
+        &__address {
+          margin-top :50px;
+        }
+        &__address h6 {
+          font-weight: bold;
+        }
+        &__description {
+          color: #c0c6c9;
+          margin-top: 50px;
+        }
+        &__btn {
+          margin-top: 60px;
+          margin-bottom: 40px;
+          list-style: none;
+          width: 343px;
+          &__link {
+            border: 1px solid #3ccace;
+            background-color: #3ccace;
+            font-size: 18px;
+            color: white;
+            padding: 15px 130px;
+          }
+        }
+      }
+    }
+  }
+}

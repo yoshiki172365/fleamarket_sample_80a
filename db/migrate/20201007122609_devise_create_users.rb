@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :birth_year_id,         null: false
       t.integer :birth_month_id,        null: false
       t.integer :birth_day_id,          null: false
+      t.string  :phone_number,       null: false
       t.string  :introduction
       t.string  :icon_image
 

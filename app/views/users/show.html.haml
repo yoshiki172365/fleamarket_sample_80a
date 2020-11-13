@@ -1,0 +1,45 @@
+= render "shared/header-sub"
+
+.mypage-wrap
+  .mypage-wrap-contents
+    .left-contents
+      .lists-head
+        .list-inner
+          .list-inner__title
+            = link_to "出品する",new_item_path
+            -# root_path 仮置き
+          .list-inner__title
+            = link_to "出品した商品 出品中",root_path
+          .list-inner__title
+            = link_to "出品した商品 売却済み",root_path
+          .list-inner__title
+            = link_to "購入した商品 過去の取引",root_path
+      .setting
+        .setting__title 設定
+      .lists-foot
+        .list
+          .list-inner__title
+            - if current_user.card
+              = link_to "クレジットカード詳細", card_path(current_user)
+            - else
+              = link_to "クレジットカード登録", new_card_path
+        .list
+          .list-inner__title
+            - if user_signed_in?
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+            - else
+              = link_to "ログイン", new_user_session_path, method: :get
+
+
+    .main-contents
+      .user-contents
+        .user-inner
+          = image_tag asset_path('icon/member_photo_noimage_thumb.png', alt: 'icon', class: 'user-icon')
+          .user-name
+            = current_user.nickname
+          .user-trading-num
+            出品数
+          .user-trading-result
+            0
+
+= render "shared/footer-sub"
