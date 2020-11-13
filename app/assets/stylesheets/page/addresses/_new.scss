@@ -33,6 +33,7 @@
             @include m-top15;
             &__name{
               display: flex;
+              color: red;
             }
           }
           &__zipCode {
