@@ -30,10 +30,9 @@
       .form-user {
         .address {
           &__form {
-            @include m-top15;
+            margin-top: 15px;
             &__name{
               display: flex;
-              color: red;
             }
           }
           &__zipCode {
