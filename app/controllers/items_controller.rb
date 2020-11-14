@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
 
-  before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :show, :search, :result, :search_index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, except: [:index, :new, :create, :search_index, :result]
   before_action :set_parents, only: [:index, :new, :create, :show, :search, :search_index]
 
-  before_action :set_item_search_query
+  before_action :set_item_search_query, except: [:result]
 
   def index
     @items = Item.all
@@ -28,8 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @image = @item.images
     @categories = Category.where(ancestry: nil)
     @user = User.find(@item.user_id)
   end
@@ -53,12 +51,42 @@ class ItemsController < ApplicationController
   end
 
   def result
+    # @q = Item.includes(:images).search(search_params)
+    # sort = params[:sort] || "created_at DESC"
+    # # jsから飛んできたパラーメーターが"likes_count_desc"の場合に、子モデルの多い順にソートする記述を
+    # if sort == "likes_count_desc"
+    #   @items = @q.result(distinct: true).select('items.*', 'count(likes.id) AS likes')
+    #     .left_joins(:likes)
+    #     .group('items.id')
+    #     .order('likes DESC').order('created_at DESC')
+    # else
+    #   @items = @q.result(distinct: true).order(sort)
+    # end
 
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Item.ransack(search_params)
+      @items = @search.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Item.ransack()
+      @items = Item.all
+    end
   end
 
 
   def search_index
-
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Item.ransack(search_params)
+      @items = @search.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Item.ransack()
+      @items = Item.all
+    end
   end
 
   private
@@ -85,6 +113,10 @@ class ItemsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
 end

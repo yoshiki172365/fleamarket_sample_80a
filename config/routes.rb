@@ -13,12 +13,12 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
-      get 'search_index', to: 'items#search_index'
+      match 'search_index', to: 'items#search_index', via: [:get, :post]
       get 'search', to: 'items#search'
       get 'result', to: 'items#result'
     end
 
-    resources :purchase, only: [:index] do
+    resources :purchase do
       collection do
         get 'index', to: 'purchase#index'
         post 'pay', to: 'purchase#pay'
