@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_031919) do
+ActiveRecord::Schema.define(version: 2020_11_04_144514) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
     t.string "zip_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
@@ -41,39 +45,8 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", null: false
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_comments_on_item_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "favorite_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_favorite_items_on_item_id"
-    t.index ["user_id"], name: "index_favorite_items_on_user_id"
-  end
-
-  create_table "installs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_installs_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
-  end
-
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image_src", null: false
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "src", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -107,14 +80,6 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -126,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.integer "birth_year_id", null: false
     t.integer "birth_month_id", null: false
     t.integer "birth_day_id", null: false
-    t.string "phone_number", null: false
     t.string "introduction"
     t.string "icon_image"
     t.string "reset_password_token"
