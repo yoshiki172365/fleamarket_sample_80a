@@ -21,9 +21,11 @@
           &__title {
             font-size: 1.2em;
             padding: 15px 15px 15px;
-            @include m-top10;
+            margin-top: 2px;
             background-color: $white;
-            border-radius: 10px;
+          }
+          &__title:hover {
+            background-color: #3ac7ca;
           }
         }
       }
@@ -43,9 +45,11 @@
           &__title {
             font-size: 1.2em;
             padding: 15px 15px 15px;
-            @include m-top10;
+            margin-top: 2px;
             background-color: $white;
-            border-radius: 10px;
+          }
+          &__title:hover {
+            background-color: #3ac7ca;
           }
         }
       }
