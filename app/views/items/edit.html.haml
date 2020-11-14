@@ -10,9 +10,9 @@
             .products_new-product__headline--required 必須
           %p.products_new-product__explanation 画像をアップロードしてください
           #required_error_image
-          .products_new-image
-            .products_new-image-box
-              .products_new-content
+          .products_edit-image
+            .products_edit-image-box
+              .products_edit-content
                 #image-box
                   #previews
                     - if @item.persisted?
@@ -53,7 +53,9 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+              = f.collection_select(:category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent_id})
+              = f.collection_select(:category_id, @item.category.parent.siblings, :id, :name, {prompt: "選択して下さい"})
+              = f.collection_select(:category_id, @item.category.siblings, :id, :name, {prompt: "選択して下さい"})
               #required_error_category_id
 
           .products_new-product_explanation__brand

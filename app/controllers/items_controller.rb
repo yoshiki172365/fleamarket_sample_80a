@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create]
-  before_action :set_parents, only: [:index, :new, :create, :show, :edit]
+  before_action :set_item, except: [:index, :new, :create, :update]
+  before_action :set_parents, only: [:index, :new, :create, :show, :edit, :update]
 
   def index
     @items = Item.all
