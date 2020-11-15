@@ -8,6 +8,10 @@
           アカウントをお持ちでない方はこちら
         .user-signUp__button
           = link_to '新規会員登録', new_user_registration_path, class: 'btn-blue'
+        .user-signUp__button
+          = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post, class: 'btn-blue'
+        .user-signUp__button
+          = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn-blue'
 
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .user-signUp__email
@@ -18,5 +22,10 @@
 
         .user-login__button
           = f.submit "ログイン", class: "submit"
+        .user-login__button
+          = link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post, class: "submit-sns"
+        .user-login__button
+          = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post, class: "submit-sns"
+
 
 = render "shared/footer-sub"
