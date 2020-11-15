@@ -1,0 +1,8 @@
+.Comment-form
+  .Comment-form__contents
+    = form_with model: @item, local: true do |form|
+      = form.text_area :text, placeholder: "コメントする"
+      .Comment-form__contents__warning
+        相手のことを考えて丁寧なコメントを心がけましょう。
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = form.submit "コメントする"
