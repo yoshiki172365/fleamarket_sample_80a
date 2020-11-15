@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params) #登録1ページ目から送られてきたパラメータを@userに代入
     unless @user.valid? #validメソッドを使ってバリデーションチェック
-      flash.now[:aleart] = @user.errors.full_messages
+      flash.now[:alert] = @user.errors.full_messages
       render :new and return #and returnを使って条件分岐を明示的に終了させている。
     end
     session["devise.regist_data"] = {user: @user.attributes}
@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @address = Address.new(address_params)
     unless @address.valid?
-      flash.now[:aleart] = @address.errors.full_messages
+      flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
     @user.build_address(@address.attributes) #送られてきたparamsをbuild_addressを用いて@userに代入
