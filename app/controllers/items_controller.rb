@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :update]
+  before_action :set_item, except: [:index, :new, :create]
   before_action :set_parents, only: [:index, :new, :create, :show, :edit, :update]
 
   def index
@@ -32,9 +32,32 @@ class ItemsController < ApplicationController
 
   def edit
     @categories = Category.where(ancestry: nil)
+
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+    render  action: :edit
+    end
   end
 
   def destroy

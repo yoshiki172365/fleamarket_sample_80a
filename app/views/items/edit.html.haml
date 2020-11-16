@@ -3,7 +3,7 @@
 .products_new-main
   .products_new-main__form
     .products_new-main__f--product_new
-      = form_with model: @item, local: true, id:"new_product" do |f|
+      = form_with model: @item, local: true, id:"edit_product" do |f|
         .products_new-newimage
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
@@ -18,6 +18,8 @@
                     - if @item.persisted?
                       - @item.images.each_with_index do |image, i|
                         = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                        .products_edit-preview-box{"data-index" => "#{i}"}
+                      .products_edit-upper-box
 
                   = f.fields_for :images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
@@ -108,3 +110,4 @@
         .products_new-product__submit
           = f.submit '変更する', class: "products_new-product__submit--btn"
 = render "shared/footer"
+
