@@ -42,12 +42,12 @@ class ItemsController < ApplicationController
     end
 
     @category_children_array = []
-    Category.where(ancestry: child_category.ancestry).each do |children|
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
       @category_children_array << children
     end
 
     @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
       @category_grandchildren_array << grandchildren
     end
   end
