@@ -1,4 +1,4 @@
-= render "shared/header"
+= render "shared/header-sub"
 
 - breadcrumb :mypage
 = render "layouts/breadcrumbs"
@@ -8,6 +8,8 @@
     .left-contents
       .lists-head
         .list-inner
+          .list-inner__title
+            = link_to "マイページ",user_path(current_user.id)
           .list-inner__title
             = link_to "出品する",new_item_path
             -# root_path 仮置き
@@ -38,8 +40,11 @@
       .user-contents
         .user-inner
           = image_tag asset_path('icon/member_photo_noimage_thumb.png', alt: 'icon', class: 'user-icon')
-          .user-name フリマ太郎
-          .user-trading-num 出品数
-          .user-trading-result 0
+          .user-name
+            = current_user.nickname
+          .user-trading-num
+            出品数
+          .user-trading-result
+            0
 
-= render "shared/footer"
+= render "shared/footer-sub"

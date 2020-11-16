@@ -1,28 +1,36 @@
 /Purchase-confirmation/
-= render "shared/header"
+= render "shared/header-sub"
 .main
   .main__showmain
     .main__showmain__title
       購入内容の確認
     .main__showmain__product
       .main__showmain__product__right
-        = image_tag asset_path("material/icon/icon-01.png")
+        = image_tag @item.images.first.src.url, alt: '出品商品画像', height: '80px', width: '80%', class: 'image-sub'
       .main__showmain__product__left
-        %h1 素敵な色のパンツ
-        %p ¥1,111 (税込) 送料込み
+        %h1
+          = @item.name
+        %p
+          ¥
+          = @item.price
+          (税込)
+          - if @item.delivery_charge_id == 2
+            送料込み
+          - else
+            着払い
     .main__showmain__content
       .main__showmain__content__confirmation
         .main__showmain__content__confirmation__price
           .main__showmain__content__confirmation__price__right
             支払い金額
           .main__showmain__content__confirmation__price__left
-            ￥1,111
+            ¥
+            = @item.price
         .main__showmain__content__confirmation__method
           %h6 支払い方法
           - if @default_card_information.blank?
             %br /
           - else
-          -#以下カード情報を表示
           = "**** **** **** " + @default_card_information.last4
           - exp_month = @default_card_information.exp_month.to_s
           %br
@@ -30,14 +38,21 @@
           = exp_month + " / " + exp_year
         .main__showmain__content__confirmation__address
           %h6 配送先
-          %p 60
-          %p 北海道
-          %p 札幌市中央区大通西 11-44
-          %p 090 12345678
-          %p 山田 孝之
+          = @address.zip_code
+          %p
+            = @address.prefecture.name
+          %p
+            = @address.city
+            = @address.block_number
+            = @address.apartment_name
+          %p
+            = @address.phone_number
+          %p
+            = @address.first_name
+            = @address.last_name
         .main__showmain__content__confirmation__description
           郵便局/コンビニ受け取りを希望の方は、購入後に取引画面から受け取り場所を変更することが可能です。出品者が発送作業を開始した後は受け取り場所の変更が出来ませんので、早めに変更を行なってください。
         .main__showmain__content__confirmation__btn
           = form_tag(action: :pay, method: :post) do
             %button.main__showmain__content__confirmation__btn__link 購入する
-= render "shared/footer"
+= render "shared/footer-sub"

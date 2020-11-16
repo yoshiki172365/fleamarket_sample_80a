@@ -94,4 +94,32 @@ a {
 
 .breadcrumbs-list  {
   margin-left: 110px;
+.item-sold-out-box-show {
+  width: 0;
+  height: 0;
+  border-top: 75px solid #ea352d;
+  border-right: 75px solid transparent;
+  border-bottom: 75px solid transparent;
+  border-left: 75px solid #ea352d;
+  z-index: 100;
+  position: relative;
+  top: -345px;
+  left: -105px;
+  &__inner {
+    transform: rotate(-45deg);
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    margin: -30px 0 0 -60px;
+    letter-spacing: 1px;
+  }
+}
+
+.purchase-done-return-btn {
+  width: 100%;
+  height: auto;
+  background-color: $skyblue;
+  color: $white;
+  line-height: 40px;
+  margin-bottom: 10px;
 }

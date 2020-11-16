@@ -1,3 +1,20 @@
-%h2 購入が完了しました！
-%p Tシャツ
-%p ¥1,111(送料込み)
+= render "shared/header-sub"
+
+.user-finish-wrap
+  .finish-form
+    .finishWrap
+      .user-infoWrap
+        .user-finish__info
+          購入が完了しました！
+          %p
+            = @item.name
+          %p
+            ¥
+            = @item.price
+
+
+        .purchase-done-return-btn
+          = link_to "トップページへ", root_path
+        .purchase-done-return-btn
+          = link_to "マイページへ", '/users/:id', method: :getm
+= render "shared/footer-sub"

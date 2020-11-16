@@ -5,7 +5,7 @@
   display: flex;
   .mypage-wrap-contents {
     display: flex;
-    width: 80%;
+    width: 60%;
     height: auto;
     align-items: center;
     margin: 0 auto;
@@ -21,9 +21,11 @@
           &__title {
             font-size: 1.2em;
             padding: 15px 15px 15px;
-            @include m-top10;
+            margin-top: 2px;
             background-color: $white;
-            border-radius: 10px;
+          }
+          &__title:hover {
+            background-color: #3ac7ca;
           }
         }
       }
@@ -43,9 +45,11 @@
           &__title {
             font-size: 1.2em;
             padding: 15px 15px 15px;
-            @include m-top10;
+            margin-top: 2px;
             background-color: $white;
-            border-radius: 10px;
+          }
+          &__title:hover {
+            background-color: #3ac7ca;
           }
         }
       }
@@ -97,7 +101,7 @@
   margin: 0 auto;
   .card-detail-inner {
     background-color: $white;
-    width: 700px;
+    width: 500px;
     height: auto;
     padding-bottom: 20px;
     .card-detail-header {
@@ -106,7 +110,7 @@
       padding: 30px 15px;
       border-bottom: 1px $gray solid;
       text-align: center;
-      width: 700px;
+      width: 500px;
       }
     .card-detail-inner-wrap{
       width: 400px;

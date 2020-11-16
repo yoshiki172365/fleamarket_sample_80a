@@ -7,6 +7,22 @@
       .form-user
         = form_with model: @address, local: true do |f|
           .address
+            .address__form
+              = f.label :送付先お名前（全角）
+              %span.form-required
+                必須
+              .address__form__name
+                = f.text_field :first_name, autofocus: true, placeholder: "例) 山田", class: "input-default"
+                = f.text_field :last_name, autofocus: true, placeholder: "例) 太郎", class: "input-default"
+
+            .address__form
+              = f.label :name_kana, "送付先お名前カナ（全角）"
+              %span.form-required
+                必須
+              .address__form__name
+                = f.text_field :first_name_kana, autofocus: true, placeholder: "例) ヤマダ", class: "input-default"
+                = f.text_field :last_name_kana, autofocus: true, placeholder: "例) タロウ", class: "input-default"
+
             .address__zipCode
               = f.label :郵便番号
               %span.form-required
@@ -39,8 +55,8 @@
 
             .address__phoneNumber
               = f.label :電話番号
-              %span.form-required
-                必須
+              %span.form-any
+                任意
             = f.text_field :phone_number, placeholder: "例）09012345678", class: "input-default"
 
             .address__button

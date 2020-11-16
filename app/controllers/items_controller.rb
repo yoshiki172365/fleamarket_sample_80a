@@ -1,14 +1,11 @@
 class ItemsController < ApplicationController
+
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create]
-  before_action :set_parents, only: [:new, :create]
+  before_action :set_item, except: [:index, :new, :create, :show]
+  before_action :set_parents, only: [:index, :new, :create, :show]
 
   def index
     @items = Item.all
-  end
-
-  def show
-    @user = User.find(@item.user_id)
   end
 
   def new
@@ -26,6 +23,13 @@ class ItemsController < ApplicationController
       @categories = Category.where(ancestry: nil)
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @image = @item.images
+    @categories = Category.where(ancestry: nil)
+    @user = User.find(@item.user_id)
   end
 
   def edit
@@ -67,5 +71,4 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
-
 end
