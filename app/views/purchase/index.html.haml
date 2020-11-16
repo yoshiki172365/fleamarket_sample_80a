@@ -38,11 +38,18 @@
           = exp_month + " / " + exp_year
         .main__showmain__content__confirmation__address
           %h6 配送先
-          %p 60
-          %p 北海道
-          %p 札幌市中央区大通西 11-44
-          %p 090 12345678
-          %p 山田 孝之
+          = @address.zip_code
+          %p
+            = @address.prefecture.name
+          %p
+            = @address.city
+            = @address.block_number
+            = @address.apartment_name
+          %p
+            = @address.phone_number
+          %p
+            = @address.first_name
+            = @address.last_name
         .main__showmain__content__confirmation__description
           郵便局/コンビニ受け取りを希望の方は、購入後に取引画面から受け取り場所を変更することが可能です。出品者が発送作業を開始した後は受け取り場所の変更が出来ませんので、早めに変更を行なってください。
         .main__showmain__content__confirmation__btn

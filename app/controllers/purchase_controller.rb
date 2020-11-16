@@ -15,6 +15,8 @@ class PurchaseController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
+
+    @address = Address.find_by(user_id: current_user.id)
   end
 
   def pay
@@ -27,7 +29,7 @@ class PurchaseController < ApplicationController
 
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
     Payjp::Charge.create(
-      amount: 1111, #支払金額を入力（あとからitemに紐づける）
+      amount: @item.price, #支払金額を入力（あとからitemに紐づける）
       customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
