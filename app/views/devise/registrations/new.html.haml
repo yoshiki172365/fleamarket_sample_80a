@@ -5,13 +5,13 @@
       会員情報入力
     .form-user-wrapper
       .form-user
-        = form_for(@user, url: user_registration_path) do |f|
+        = form_for(@user, url: user_registration_path, method: :post) do |f|
           .form-user__nickname
             = f.label :ニックネーム
             %span.form-required
               必須
             %br/
-            = f.text_field :nickname, placeholder: "例）フリマ太郎", class: "input-default"
+            = f.text_field :nickname, placeholder: "例）フリマの王様", class: "input-default"
 
           .form-user__email
             = f.label :メールアドレス
@@ -20,21 +20,25 @@
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
 
-          .form-user__password
-            = f.label :パスワード
-            %span.form-required
-              必須
-            %br/
-            = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
-          %p
-            ＊英字と数字の両方を含めて設定してください。
+          -# 実際にマージ後に確認する
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .form-user__password
+              = f.label :パスワード
+              %span.form-required
+                必須
+              %br/
+              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
+            %p
+              ＊英字と数字の両方を含めて設定してください。
 
-          .form-user__password--confirmation
-            = f.label :パスワード再入力
-            %span.form-required
-              必須
-            %br/
-            = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
+            .form-user__password--confirmation
+              = f.label :パスワード再入力
+              %span.form-required
+                必須
+              %br/
+              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
 
           .form-user__identification
             本人確認
@@ -46,16 +50,16 @@
             %span.form-required
               必須
           .form-user__nameInput
-            = f.text_field :first_name, placeholder: "例)千年の", class: "input-default-name"
-            = f.text_field :last_name, placeholder: "例)眠り", class: "input-default-name"
+            = f.text_field :first_name, placeholder: "例)フリマ", class: "input-default-name"
+            = f.text_field :last_name, placeholder: "例)太郎", class: "input-default-name"
 
           .form-user__kana
             = f.label :お名前カナ（全角）
             %span.form-required
               必須
           .form-user__kanaInput
-            = f.text_field :first_name_kana, placeholder: "例)センネンノ", class: "input-default-name"
-            = f.text_field :last_name_kana, placeholder: "例)ネムリ", class: "input-default-name"
+            = f.text_field :first_name_kana, placeholder: "例)フリマ", class: "input-default-name"
+            = f.text_field :last_name_kana, placeholder: "例)タロウ", class: "input-default-name"
 
           .form-user__birthday
             = f.label :生年月日
