@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
     @categories = Category.where(ancestry: nil)
 
     grandchild_category = @item.category
+    child_category = grandchild_category.parent
 
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
@@ -41,6 +42,7 @@ class ItemsController < ApplicationController
       
       @category_children_array = []
       @category_grandchildren_array = []
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
     end
   end
 
