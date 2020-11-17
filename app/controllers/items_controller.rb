@@ -39,14 +39,13 @@ class ItemsController < ApplicationController
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
+      
+      @category_children_array = []
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
+      
+      @category_grandchildren_array = []
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
     end
-
-    @category_children_array = []
-    @category_children_array = Category.where(ancestry: child_category.ancestry)
-    end
-
-    @category_grandchildren_array = []
-    @category_children_array = Category.where(ancestry: child_category.ancestry
   end
 
   def update
@@ -90,4 +89,5 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
+
 end
