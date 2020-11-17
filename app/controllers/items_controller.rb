@@ -47,9 +47,8 @@ class ItemsController < ApplicationController
 
     @category_grandchildren_array = []
     @category_children_array = Category.where(ancestry: child_category.ancestry
-    end
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to root_path
