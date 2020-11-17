@@ -39,9 +39,6 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     @category_children_array = Category.where(ancestry: child_category.ancestry)
     @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
   end
 
   def update
