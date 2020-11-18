@@ -27,4 +27,9 @@ class Item < ApplicationRecord
   validates :user_id, presence: true
   validates :trading_status, numericality: { greater_than_or_equal_to: 1 }
 
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
+
 end

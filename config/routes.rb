@@ -18,9 +18,12 @@ Rails.application.routes.draw do
         get 'index', to: 'purchase#index'
         post 'pay', to: 'purchase#pay'
         get 'done', to: 'purchase#done'
-        get 'search'
       end
     end
+    collection do
+      get 'search'
+    end
+
   end
 
   resources :cards, only: [:new, :show] do
