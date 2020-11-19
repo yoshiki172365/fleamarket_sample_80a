@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       match 'search_index', to: 'items#search_index', via: [:get, :post]
       get 'search', to: 'items#search'
       get 'result', to: 'items#result'
+      get 'price_range', defaults: { format: 'json' }
     end
 
     resources :purchase do

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :search_index, :result]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_parents, only: [:index, :new, :create, :show, :search, :search_index]
 
   before_action :set_item_search_query, except: [:result]
@@ -86,6 +86,15 @@ class ItemsController < ApplicationController
       params[:q] = { sorts: 'id desc' }
       @search = Item.ransack()
       @items = Item.all
+    end
+  end
+
+  #ajax通信でデータ取得のためのメソッド
+  def price_range
+    if params[:price_id].nil?
+      @price_range = PriceRange.find(params[:min], params[:max])
+    else
+      @price_range = PriceRange.find(params[:price_id])
     end
   end
 

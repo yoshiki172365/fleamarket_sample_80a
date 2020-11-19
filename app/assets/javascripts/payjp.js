@@ -1,5 +1,5 @@
 //ターボリンクスで記述に変更　
-window.addEventListener('turbolinks:load', function(){
+$(function(){
   Payjp.setPublicKey ('pk_test_86c115def9e13cbe14f31065')
   var submit = document.getElementById("token_submit");
   submit.addEventListener('click', function(e){
