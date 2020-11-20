@@ -1,0 +1,25 @@
+.search__main {
+  &__content {
+      width: 80%;
+      margin: 30px auto 30px;
+      &__ttl {
+          color: gray;
+      }
+      &__ul {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 10px;
+          li {
+              width: 20%;
+              background-color: #fff;
+              margin: 10px;
+              text-align: center;
+              .search__main__content__item {
+                  text-decoration: none;
+                  text-align: center;
+                  color: #333;
+              }
+          }
+      }
+  }
+}
