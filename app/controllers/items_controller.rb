@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
                   :price,
                   :brand,
                   images_attributes:
-                  [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status: 1)
+                  [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status_id: 1)
   end
 
   def set_item
