@@ -1,24 +1,25 @@
-= render "shared/header-sub"
-
+= render "shared/header"
 .products_new-header
 .products_new-main
   .products_new-main__form
     .products_new-main__f--product_new
-      = form_with model: @item, local: true, id:"new_product" do |f|
+      = form_with model: @item, local: true, id:"edit_product" do |f|
         .products_new-newimage
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
             .products_new-product__headline--required 必須
           %p.products_new-product__explanation 画像をアップロードしてください
           #required_error_image
-          .products_new-image
-            .products_new-image-box
-              .products_new-content
+          .products_edit-image
+            .products_edit-image-box
+              .products_edit-content
                 #image-box
                   #previews
                     - if @item.persisted?
                       - @item.images.each_with_index do |image, i|
                         = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                        .products_edit-preview-box{"data-index" => "#{i}"}
+                      .products_edit-upper-box
 
                   = f.fields_for :images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
@@ -54,7 +55,9 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+              = f.collection_select(:category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent_id})
+              = f.collection_select(:category_id, @item.category.parent.siblings, :id, :name, {prompt: "選択して下さい"})
+              = f.collection_select(:category_id, @item.category.siblings, :id, :name, {prompt: "選択して下さい"})
               #required_error_category_id
 
           .products_new-product_explanation__brand
@@ -105,5 +108,6 @@
                 #required_error_price
 
         .products_new-product__submit
-          = f.submit '出品する', class: "products_new-product__submit--btn"
-= render "shared/footer-sub"
+          = f.submit '変更する', class: "products_new-product__submit--btn"
+= render "shared/footer"
+
