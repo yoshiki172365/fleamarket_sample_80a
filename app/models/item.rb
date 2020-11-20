@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :delivery_date
+  belongs_to_active_hash :trading_status
+
 
   belongs_to :user
   belongs_to :category

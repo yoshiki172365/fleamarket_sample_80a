@@ -84,12 +84,20 @@
               .delivery-charege-checbox-each-title
                 = d.label {d.text}
 
-        .search-form-clearfix
-          %label
-            = icon("fas", "shopping-cart", class: "icon-cart")
-            販売状況
-            = check_box_tag :check1
-            = label_tag :check1, "すべて"
+        .search-form-trading-status
+          = icon("fas", "shopping-cart", class: "icon-cart")
+          = f.label :trading_status_id,  "販売状況"
+          .trading-status-checkbox-all__btn
+            %input{type: 'checkbox', id:  "trading_status_all", class: "js-trading-status-all"}
+            .delivery-charege-all__label
+              = label_tag :trading_status_all, "すべて"
+          = f.collection_check_boxes :trading_status_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
+            .tradig-status-check-box
+              .trading-status-checkbox-each-box
+                = t.check_box
+              .trading-status-checbox-each-title
+                = t.label {t.text}
+
 
         .btn-wrap
           .btn-inner
