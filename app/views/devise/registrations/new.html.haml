@@ -20,7 +20,7 @@
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
 
-          -# 実際にマージ後に確認する
+          -# SNS認証の場合にはパスワード入力不要にする
           - if @sns_id.present?
             = hidden_field_tag :sns_auth, true
           - else
