@@ -48,24 +48,30 @@
               %option{value: "0"}  すべて
 
         .search-form-price
-          %label
-            = icon("fas", "coins", class: "icon-coins")
-            = f.label :price, '価格'
-            = icon("fas", "angle-down", class: "icon-down")
-            = select_tag :price_range, options_from_collection_for_select(PriceRange.all, :id, :name), { prompt: "選択してください" }
-            = f.number_field :price_gteq, placeholder: "¥ Min", class: "price-range__input"
-            〜
-            = f.number_field :price_lteq, placeholder: "¥ Max", class: "price-range__input"
+          = icon("fas", "coins", class: "icon-coins")
+          = f.label :price, '価格'
+          = icon("fas", "angle-down", class: "icon-down")
+          = select_tag :price_range, options_from_collection_for_select(PriceRange.all, :id, :name), { prompt: "選択してください" }
+          = f.number_field :price_gteq, placeholder: "¥ Min", class: "price-range__input"
+          〜
+          = f.number_field :price_lteq, placeholder: "¥ Max", class: "price-range__input"
+
+        .search-form-status
+          = icon("fas", "star", class: "icon-star")
+          = f.label :status_id, "商品の状態"
+          .status-checkbox-all__btn
+            %input{type: 'checkbox', id: "status_all", class: "js-status-all"}
+            .status-checkbox-all__label
+              = label_tag :status_all, "すべて"
+          = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
+            .status-check-box
+              .status-checkbox-each-box
+                = s.check_box
+              .status-checbox-each-title
+                = s.label {s.text}
 
         .search-form-clearfix
-          %label
-            = icon("fas", "star", class: "icon-star")
-            商品の状態
-            = check_box_tag :check1
-            = label_tag :check1, "すべて"
-
-        .search-form-clearfix
-          %label
+          %labe
             = icon("fas", "truck", class: "icon-truck")
             配送料の負担
             = check_box_tag :check1
