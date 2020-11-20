@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_144514) do
+ActiveRecord::Schema.define(version: 2020_11_15_134811) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
     t.integer "prefecture_id", null: false
     t.integer "delivery_date_id", null: false
     t.integer "price", null: false
-    t.integer "trading_status", null: false
+    t.integer "trading_status_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -109,4 +118,5 @@ ActiveRecord::Schema.define(version: 2020_11_04_144514) do
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "sns_credentials", "users"
 end
