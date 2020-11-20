@@ -78,3 +78,4 @@ gem "mini_magick"
 gem "fog-aws"
 gem 'factory_bot_rails'
 gem 'ransack'
+gem 'gretel'

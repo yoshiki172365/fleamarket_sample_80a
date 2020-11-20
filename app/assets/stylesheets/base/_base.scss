@@ -87,6 +87,20 @@ a {
   }
 }
 
+.breadcrumbs-wrap {
+  background-color: $gray;
+  border-top: 1px $white solid;
+  .breadcrumbs {
+    padding: 5px;
+    width: 950px;
+    margin: 0 auto;
+    background-color: $gray;
+  }
+  .breadcrumbs-list  {
+    font-weight: bolder;
+  }
+}
+
 .item-sold-out-box-show {
   width: 0;
   height: 0;
@@ -107,6 +121,7 @@ a {
     letter-spacing: 1px;
   }
 }
+
 
 .purchase-done-return-btn {
   width: 100%;
