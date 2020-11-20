@@ -123,11 +123,33 @@
         }
 
       }
-      .search-form-clearfix {
+      .search-form-delivery-charge {
         margin-top: 40px;
         .icon-truck {
           color: darkgrey;
           transform:rotateY(180deg);
+        }
+        .delivery-charge-checkbox-all__btn {
+          display: flex;
+          padding-top: 5px;
+          .js-delivery-charge-all {
+            margin-top: 3px;
+          }
+          .delivery-charege-all__label {
+            margin-left: 10px;
+            padding-bottom: 5px;
+          }
+        }
+        .delivery-charege-check-box {
+          display: flex;
+          .delivery-charge-checkbox-each-box {
+            margin-top: 5px;
+          }
+          .delivery-charege-checbox-each-title {
+            margin-left: 10px;
+            padding-bottom: 5px;
+            margin-top: 5px;
+          }
         }
       }
       .search-form-clearfix {

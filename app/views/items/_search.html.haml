@@ -70,12 +70,19 @@
               .status-checbox-each-title
                 = s.label {s.text}
 
-        .search-form-clearfix
-          %labe
-            = icon("fas", "truck", class: "icon-truck")
-            配送料の負担
-            = check_box_tag :check1
-            = label_tag :check1, "すべて"
+        .search-form-delivery-charge
+          = icon("fas", "truck", class: "icon-truck")
+          = f.label :derivery_charge_id, "配送料の負担"
+          .delivery-charge-checkbox-all__btn
+            %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-delivery-charge-all"}
+            .delivery-charege-all__label
+              = label_tag :delivery_charge_all, "すべて"
+          = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
+            .delivery-charege-check-box
+              .delivery-charge-checkbox-each-box
+                = d.check_box
+              .delivery-charege-checbox-each-title
+                = d.label {d.text}
 
         .search-form-clearfix
           %label
