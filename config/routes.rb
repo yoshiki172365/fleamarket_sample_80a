@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
-      get 'search', to: 'items#search'
+      match 'search', to: 'items#search', via: [:get, :post]
       get 'price_range', defaults: { format: 'json' }
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }

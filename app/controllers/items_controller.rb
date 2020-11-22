@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_parents, only: [:index, :new, :create, :show, :search]
+  before_action :set_item_search_query
 
   def index
     @items = Item.all
@@ -60,17 +61,16 @@ class ItemsController < ApplicationController
   def search
     @search_parents = Category.where(ancestry: nil).pluck(:name)
 
-    # sort = params[:sort] || "created_at DESC"
-    # @q = Item.includes(:images).search(search_params)
-    # # jsから飛んできたパラーメーターが"likes_count_desc"の場合に、子モデルの多い順にソートする記述を
-    # if sort == "likes_count_desc"
-    #   @items = @q.result(distinct: true).select('items.*', 'count(likes.id) AS likes')
-    #     .left_joins(:likes)
-    #     .group('items.id')
-    #     .order('likes DESC').order('created_at DESC')
-    # else
-    #   @items = @q.result(distinct: true).order(sort)
-    # end
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Item.ransack(search_params)
+      @items = @search.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Item.ransack()
+      @items = Item.all
+    end
 
     # if category_key = params.require(:q)[:category_id]
     #   if category_key.to_i == 0
@@ -99,6 +99,7 @@ class ItemsController < ApplicationController
   end
 
   def category_grandchildren
+    #選択された子供カテゴリに紐づく子供カテゴリの配列を取得
     @grandchildren = Category.find("#{params[:child_id]}").children
   end
 
@@ -129,7 +130,7 @@ class ItemsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(
+    params.require(:q).permit(:sorts,
       #親カテゴリのみ、子供カテゴリまでの検索を拾う
       :category_id,
       :price_gteq,
