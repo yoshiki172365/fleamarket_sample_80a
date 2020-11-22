@@ -5,8 +5,7 @@
   align-items: center;
   .l-search-wrap {
     width: 280px;
-    height: 1370px;
-    background-color: yellow;
+    height: 100%;
     .sort-menu {
       padding: 10px 10px;
       background-color: $gray;
@@ -25,7 +24,7 @@
     .detail-search-wrap {
       background-color: $white;
       width: 280px;
-      height: 1280px;
+      height: 100%;
       padding: 10px 10px;
       .head-text {
         font-size: 1.2em;
@@ -36,7 +35,7 @@
           color: darkgrey;
         }
       }
-      .search-form {
+      .search-form-category {
         margin-top: 40px;
         position: relative;
         .icon-list {
@@ -50,27 +49,40 @@
         font-size: 20px;
         color: #888;
         }
+        .items-search-category-form {
+          .grandchildren-checkbox__lists {
+            display: flex;
+            flex-wrap: wrap;
+            .search-form-grandChild-checkbox {
+              display: flex;
+              width: 120px;
+              height: 65px;
+              .grandchild-category-checkbox-btn {
+                margin-top: 10px;
+              }
+              .grandchild-checkbox-label {
+                margin-top: 10px;
+              }
+            }
+            .grandchild-search-category-checkbox__list {
+              display: flex;
+              width: 120px;
+              height: 50px;
+              .grandchild-search-category-checkbox__btn {
+                margin-top: 10px;
+              }
+              .grandchild-checkbox-label {
+                margin-top: 8px;
+              }
+            }
+          }
+        }
       }
       .search-form-extend-brand {
         margin-top: 40px;
         .icon-tag {
           color: darkgrey;
           transform: rotate(-45deg);
-        }
-      }
-      .search-form {
-        margin-top: 40px;
-        position: relative;
-        .icon-expand {
-          color: darkgrey;
-        }
-        .icon-down {
-        position: absolute;
-        top: 45%;
-        right: 20px;
-        z-index: 2;
-        font-size: 20px;
-        color: #888;
         }
       }
       .search-form-price {
@@ -152,10 +164,32 @@
           }
         }
       }
-      .search-form-clearfix {
+      .search-form-trading-status {
         margin-top: 40px;
         .icon-cart {
           color: darkgrey;
+        }
+        .trading-status-checkbox-all__btn {
+          display: flex;
+          padding-top: 5px;
+          .js-trading-status-all {
+            margin-top: 5px;
+          }
+          .trading-status-all__label {
+            margin-left: 10px;
+            padding-bottom: 5px;
+          }
+        }
+        .tradig-status-check-box {
+          display: flex;
+          .trading-status-checkbox-each-box {
+            margin-top: 5px;
+          }
+          .trading-status-checbox-each-title {
+            margin-left: 10px;
+            padding-bottom: 5px;
+            margin-top: 5px;
+          }
         }
       }
       .btn-wrap {

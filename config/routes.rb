@@ -15,10 +15,10 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
-      match 'search_index', to: 'items#search_index', via: [:get, :post]
       get 'search', to: 'items#search'
-      get 'result', to: 'items#result'
       get 'price_range', defaults: { format: 'json' }
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
     end
 
     resources :purchase do

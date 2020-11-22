@@ -27,6 +27,6 @@ class Item < ApplicationRecord
   validates :images, length: {minimum: 1}
 
   validates :user_id, presence: true
-  validates :trading_status, numericality: { greater_than_or_equal_to: 1 }
+  validates :trading_status_id, numericality: { greater_than_or_equal_to: 1 }
 
 end
