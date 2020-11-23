@@ -46,7 +46,7 @@
                       = label_tag :status_all, "すべて"
                   = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
                     .status-check-box
-                      .status-checkbox-each-box
+                      .status-checkbox-each-box.js_search_checkbox
                         = s.check_box
                       .status-checbox-each-title
                         = s.label {s.text}
@@ -61,7 +61,7 @@
                       = label_tag :delivery_charge_all, "すべて"
                   = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
                     .delivery-charege-check-box
-                      .delivery-charge-checkbox-each-box
+                      .delivery-charge-checkbox-each-box.js_search_checkbox
                         = d.check_box
                       .delivery-charege-checbox-each-title
                         = d.label {d.text}
@@ -76,7 +76,7 @@
                       = label_tag :trading_status_all, "すべて"
                   = f.collection_check_boxes :trading_status_id_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
                     .tradig-status-check-box
-                      .trading-status-checkbox-each-box
+                      .trading-status-checkbox-each-box.js_search_checkbox
                         = t.check_box
                       .trading-status-checbox-each-title
                         = t.label {t.text}
