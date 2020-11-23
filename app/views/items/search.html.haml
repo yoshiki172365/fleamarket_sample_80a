@@ -96,7 +96,7 @@
           .search-result-header
             検索結果
           .search-result-number
-            1-100件
+            = "#{@pages.total_count}件"
           .search-result-items
             .search-result-items-inner
               .serach-result-items-row
@@ -120,5 +120,5 @@
                               .item-sold-out-box
                                 .item-sold-out-box__inner
                                   SOLD
-  = paginate @pages
+      = paginate @pages
 = render "shared/footer"

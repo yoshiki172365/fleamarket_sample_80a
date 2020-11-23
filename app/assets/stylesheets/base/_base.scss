@@ -154,3 +154,24 @@ a {
   line-height: 1.5;
   font-size: 13px;
 }
+
+/*ページネーション*/
+.pagination>li>a {
+  border: none;
+  color: $skyblue;
+}
+.pagination {
+  justify-content: center;
+}
+
+/* 表示しているページ番号 */
+.pagination>.active>a {
+  background: $skyblue;
+  border-radius: 15px;
+}
+
+/*ホバー時*/
+.pagination>li>a:hover {
+  border-radius: 15px;
+  background-color: $skyblue;
+}
