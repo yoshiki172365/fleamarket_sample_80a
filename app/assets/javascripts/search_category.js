@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', () => {
     const grandchildselectHTML = `<div id="grandchildren_category_checkboxes" class="grandchildren-checkbox__lists">
                                     <div class="search-form-grandChild-checkbox js_search_checkbox">
                                       <div class="grandchild-category-checkbox-btn">
-                                        <input type="checkbox" class="js-checkbox-all" id="grandchild_all">
+                                        <input type="checkbox" class="js-checkbox-all" id="grandchildren_category_all">
                                       </div>
                                       <div class="grandchild-checkbox-label">
                                         <label for="grandchild_category_all">すべて</label>

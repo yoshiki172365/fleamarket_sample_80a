@@ -23,10 +23,9 @@
                   = f.select :category_id, options_for_select(@search_parents), {include_blank: "選択してください"}, {id: "parent_category_search"}
 
               .search-form-extend-brand
-                %label
-                  = icon("fas", "tag", class: "icon-tag")
-                  ブランド名から探す
-                  %input{type: "text", placeholder: "例）シャネル", class: "input-default-search"}
+                = icon("fas", "tag", class: "icon-tag")
+                = f.label :brand, "ブランド名から探す"
+                %input{type: "text", placeholder: "例）シャネル", class: "input-default-search"}
 
               .search-form-price
                 = icon("fas", "coins", class: "icon-coins")
@@ -41,7 +40,7 @@
                 = icon("fas", "star", class: "icon-star")
                 = f.label :status_id, "商品の状態"
                 .status-checkbox-all__btn
-                  %input{type: 'checkbox', id: "status_all", class: "js-status-all"}
+                  %input{type: 'checkbox', id: "status_all", class: "js-checkbox-all"}
                   .status-checkbox-all__label
                     = label_tag :status_all, "すべて"
                 = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
@@ -55,7 +54,7 @@
                 = icon("fas", "truck", class: "icon-truck")
                 = f.label :derivery_charge_id, "配送料の負担"
                 .delivery-charge-checkbox-all__btn
-                  %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-delivery-charge-all"}
+                  %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-checkbox-all"}
                   .delivery-charege-all__label
                     = label_tag :delivery_charge_all, "すべて"
                 = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
@@ -69,7 +68,7 @@
                 = icon("fas", "shopping-cart", class: "icon-cart")
                 = f.label :trading_status_id,  "販売状況"
                 .trading-status-checkbox-all__btn
-                  %input{type: 'checkbox', id:  "trading_status_all", class: "js-trading-status-all"}
+                  %input{type: 'checkbox', id:  "trading_status_all", class: "js-checkbox-all"}
                   .trading-status-all__label
                     = label_tag :trading_status_all, "すべて"
                 = f.collection_check_boxes :trading_status_id_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
