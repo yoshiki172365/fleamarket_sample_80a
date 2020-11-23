@@ -60,7 +60,8 @@ class ItemsController < ApplicationController
 
   def search
     @search_parents = Category.where(ancestry: nil).pluck(:name)
-
+    @keyword = params.require(:q)[:name_has_every_term]
+    
     if params[:q].present?
     # 検索フォームからアクセスした時の処理
       @search = Item.ransack(search_params)

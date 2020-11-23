@@ -94,7 +94,10 @@
       .search-result-wrap
         .search-result-container
           .search-result-header
-            検索結果
+            - if @keyword.present?
+              = "「#{@keyword}」の検索結果"
+            - else
+              検索結果
           .search-result-number
             = "#{@pages.total_count}件"
           .search-result-items
