@@ -72,14 +72,7 @@ class ItemsController < ApplicationController
       @items = Item.all
     end
 
-    # if category_key = params.require(:q)[:category_id]
-    #   if category_key.to_i == 0
-    #     @search_category = Category.find_by(name: category_key, ancestry: nil)
-    #   else
-    #     @search_category = Category.find(category_key)
-    #   end
-    # end
-
+    @pages = Kaminari.paginate_array(@items).page(params[:page]).per(5)
 
   end
 
@@ -130,14 +123,13 @@ class ItemsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:sorts,
-      #親カテゴリのみ、子供カテゴリまでの検索を拾う
-      :name_has_every_term,
+    params.require(:q).permit(
+      :sorts,
+      :name_has_every_term, #config/initializers/ransack.rb
       :category_id,
       :brand_cont,
       :price_gteq,
       :price_lteq,
-      #複数条件の検索を拾う
       category_id_in: [],
       status_id_in: [],
       delivery_charge_id_in: [],
