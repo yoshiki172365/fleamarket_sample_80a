@@ -39,44 +39,47 @@
               .search-form-status
                 = icon("fas", "star", class: "icon-star")
                 = f.label :status_id, "商品の状態"
-                .status-checkbox-all__btn
-                  %input{type: 'checkbox', id: "status_all", class: "js-checkbox-all"}
-                  .status-checkbox-all__label
-                    = label_tag :status_all, "すべて"
-                = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
-                  .status-check-box
-                    .status-checkbox-each-box
-                      = s.check_box
-                    .status-checbox-each-title
-                      = s.label {s.text}
+                .status-checkbox-all-wrap
+                  .status-checkbox-all__btn
+                    %input{type: 'checkbox', id: "status_all", class: "js-checkbox-all"}
+                    .status-checkbox-all__label
+                      = label_tag :status_all, "すべて"
+                  = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
+                    .status-check-box
+                      .status-checkbox-each-box
+                        = s.check_box
+                      .status-checbox-each-title
+                        = s.label {s.text}
 
               .search-form-delivery-charge
                 = icon("fas", "truck", class: "icon-truck")
                 = f.label :derivery_charge_id, "配送料の負担"
-                .delivery-charge-checkbox-all__btn
-                  %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-checkbox-all"}
-                  .delivery-charege-all__label
-                    = label_tag :delivery_charge_all, "すべて"
-                = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
-                  .delivery-charege-check-box
-                    .delivery-charge-checkbox-each-box
-                      = d.check_box
-                    .delivery-charege-checbox-each-title
-                      = d.label {d.text}
+                .delivery-charge-checkbox-all-wrap
+                  .delivery-charge-checkbox-all__btn
+                    %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-checkbox-all"}
+                    .delivery-charege-all__label
+                      = label_tag :delivery_charge_all, "すべて"
+                  = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
+                    .delivery-charege-check-box
+                      .delivery-charge-checkbox-each-box
+                        = d.check_box
+                      .delivery-charege-checbox-each-title
+                        = d.label {d.text}
 
               .search-form-trading-status
                 = icon("fas", "shopping-cart", class: "icon-cart")
                 = f.label :trading_status_id,  "販売状況"
-                .trading-status-checkbox-all__btn
-                  %input{type: 'checkbox', id:  "trading_status_all", class: "js-checkbox-all"}
-                  .trading-status-all__label
-                    = label_tag :trading_status_all, "すべて"
-                = f.collection_check_boxes :trading_status_id_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
-                  .tradig-status-check-box
-                    .trading-status-checkbox-each-box
-                      = t.check_box
-                    .trading-status-checbox-each-title
-                      = t.label {t.text}
+                .trading-status-checkbox-all-wrap
+                  .trading-status-checkbox-all__btn
+                    %input{type: 'checkbox', id:  "trading_status_all", class: "js-checkbox-all"}
+                    .trading-status-all__label
+                      = label_tag :trading_status_all, "すべて"
+                  = f.collection_check_boxes :trading_status_id_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
+                    .tradig-status-check-box
+                      .trading-status-checkbox-each-box
+                        = t.check_box
+                      .trading-status-checbox-each-title
+                        = t.label {t.text}
 
               .btn-wrap
                 .btn-inner

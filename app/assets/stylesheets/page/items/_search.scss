@@ -111,29 +111,36 @@
         .icon-star {
           color: darkgrey;
         }
-        .status-checkbox-all__btn {
+        .status-checkbox-all-wrap {
           display: flex;
-          padding-top: 5px;
-          .js-status-all {
-            margin-top: 3px;
+          flex-wrap: wrap;
+          .status-checkbox-all__btn {
+            display: flex;
+            width: 120px;
+            height: 45px;
+            margin-top: 5px;
+            .js-checkbox-all {
+              margin-top: 3px;
+            }
+            .status-checkbox-all__label {
+              margin-left: 10px;
+              padding-bottom: 5px;
+            }
           }
-          .status-checkbox-all__label {
-            margin-left: 10px;
-            padding-bottom: 5px;
+          .status-check-box {
+            display: flex;
+            width: 120px;
+            height: 45px;
+            .status-checkbox-each-box {
+              margin-top: 5px;
+            }
+            .status-checbox-each-title {
+              margin-left: 10px;
+              padding-bottom: 5px;
+              margin-top: 5px;
+            }
           }
         }
-        .status-check-box {
-          display: flex;
-          .status-checkbox-each-box {
-            margin-top: 5px;
-          }
-          .status-checbox-each-title {
-            margin-left: 10px;
-            padding-bottom: 5px;
-            margin-top: 5px;
-          }
-        }
-
       }
       .search-form-delivery-charge {
         margin-top: 40px;
@@ -141,26 +148,34 @@
           color: darkgrey;
           transform:rotateY(180deg);
         }
-        .delivery-charge-checkbox-all__btn {
+        .delivery-charge-checkbox-all-wrap {
           display: flex;
-          padding-top: 5px;
-          .js-delivery-charge-all {
-            margin-top: 3px;
+          flex-wrap: wrap;
+          .delivery-charge-checkbox-all__btn {
+            display: flex;
+            width: 120px;
+            height: 45px;
+            padding-top: 5px;
+            .js-checkbox-all {
+              margin-top: 3px;
+            }
+            .delivery-charege-all__label {
+              margin-left: 10px;
+              padding-bottom: 5px;
+            }
           }
-          .delivery-charege-all__label {
-            margin-left: 10px;
-            padding-bottom: 5px;
-          }
-        }
-        .delivery-charege-check-box {
-          display: flex;
-          .delivery-charge-checkbox-each-box {
-            margin-top: 5px;
-          }
-          .delivery-charege-checbox-each-title {
-            margin-left: 10px;
-            padding-bottom: 5px;
-            margin-top: 5px;
+          .delivery-charege-check-box {
+            display: flex;
+            width: 120px;
+            height: 45px;
+            .delivery-charge-checkbox-each-box {
+              margin-top: 5px;
+            }
+            .delivery-charege-checbox-each-title {
+              margin-left: 10px;
+              padding-bottom: 5px;
+              margin-top: 5px;
+            }
           }
         }
       }
@@ -169,26 +184,34 @@
         .icon-cart {
           color: darkgrey;
         }
-        .trading-status-checkbox-all__btn {
+        .trading-status-checkbox-all-wrap {
           display: flex;
-          padding-top: 5px;
-          .js-trading-status-all {
-            margin-top: 5px;
+          flex-wrap: wrap;
+          .trading-status-checkbox-all__btn {
+            display: flex;
+            width: 80px;
+            height: 45px;
+            padding-top: 5px;
+            .js-checkbox-all {
+              margin-top: 3px;
+            }
+            .trading-status-all__label {
+              margin-left: 10px;
+              padding-bottom: 5px;
+            }
           }
-          .trading-status-all__label {
-            margin-left: 10px;
-            padding-bottom: 5px;
-          }
-        }
-        .tradig-status-check-box {
-          display: flex;
-          .trading-status-checkbox-each-box {
-            margin-top: 5px;
-          }
-          .trading-status-checbox-each-title {
-            margin-left: 10px;
-            padding-bottom: 5px;
-            margin-top: 5px;
+          .tradig-status-check-box {
+            display: flex;
+            width: 80px;
+            height: 45px;
+            .trading-status-checkbox-each-box {
+              margin-top: 5px;
+            }
+            .trading-status-checbox-each-title {
+              margin-left: 10px;
+              padding-bottom: 5px;
+              margin-top: 5px;
+            }
           }
         }
       }
