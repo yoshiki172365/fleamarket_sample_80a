@@ -132,7 +132,9 @@ class ItemsController < ApplicationController
   def search_params
     params.require(:q).permit(:sorts,
       #親カテゴリのみ、子供カテゴリまでの検索を拾う
+      :name_has_every_term,
       :category_id,
+      :brand_cont,
       :price_gteq,
       :price_lteq,
       #複数条件の検索を拾う

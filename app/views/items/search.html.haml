@@ -1,10 +1,10 @@
-= render "shared/header-sub"
+= render "shared/header"
 .search-index-wrap
   .search-index-inner
     .search-index-inner__left
       .all-warp
         .l-search-wrap
-          = search_form_for @q, url: search_items_path ,html: { method: :post } do |f|
+          = search_form_for @q, url: search_items_path, id: "item_search_form", html: { method: :post } do |f|
             .sort-menu
               = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
             .detail-search-wrap
@@ -12,8 +12,8 @@
                 詳細検索
                 .search-form-keyword
                   = icon("fas", "plus", class: "icon-plus")
-                  = f.label :name_cont, "キーワードを追加する（検索する）"
-                  = f.text_field :name_cont, placeholder: "例）値下げ", class: "input-default-search"
+                  = f.label :name_has_every_term, "キーワードを追加する（検索する）"
+                  = f.text_field :name_has_every_term, placeholder: "例）値下げ", class: "input-default-search"
 
               .search-form-category
                 = icon("fas", "list", class: "icon-list")
@@ -24,8 +24,8 @@
 
               .search-form-extend-brand
                 = icon("fas", "tag", class: "icon-tag")
-                = f.label :brand, "ブランド名から探す"
-                %input{type: "text", placeholder: "例）シャネル", class: "input-default-search"}
+                = f.label :brand_cont, "ブランド名から探す"
+                = f.text_field :brand_cont, placeholder: "例）シャネル", class: "input-default-search"
 
               .search-form-price
                 = icon("fas", "coins", class: "icon-coins")
@@ -120,4 +120,4 @@
                               .item-sold-out-box
                                 .item-sold-out-box__inner
                                   SOLD
-= render "shared/footer-sub"
+= render "shared/footer"

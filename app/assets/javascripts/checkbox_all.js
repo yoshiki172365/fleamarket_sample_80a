@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', () => {
         all_checkbox.prop("checked", false);// すべてのチェックを外す
       } else {
         let flag = true //フラグを立てる
-        target.each(function(e) { //すべて以外のチェックボックスを順番に見ていく
+        target.each(function (e) { //すべて以外のチェックボックスを順番に見ていく
           if (target.eq(e).prop("checked") == false) { //チェックが外れていると
             flag = false; //フラグにfalse
           }
@@ -66,17 +66,38 @@ $(document).on('turbolinks:load', () => {
       case status_checkboxes.prop('name'):
         target_checkboxes = status_checkboxes;
         all_checkbox = status_all_checkbox;
-      break;
+        break;
       case delivery_charge_checkboxes.prop('name'):
         target_checkboxes = delivery_charge_checkboxes;
         all_checkbox = delivery_charge_all_checkbox;
-      break;
+        break;
       case trading_status_checkboxes.prop('name'):
         target_checkboxes = trading_status_checkboxes;
         all_checkbox = trading_status_all_checkbox;
+        break;
       default:
-      break;
     }
     allCheckboxChange(target_checkboxes, all_checkbox, $(this));
-  })
+  });
+
+  // ページを読み込んだ時に、"すべて"のチェックボックスにチェックを入れるかどうか判断
+  function loadCheckboxSlection(target, all_checkbox) {
+    let flag = true;
+    target.each(function(e) {
+      if (target.eq(e).prop("checked") == false) {
+        flag = false;
+      }
+    });
+    if (flag) {
+      all_checkbox.prop("checked", true);
+    }
+  }
+
+  //ページ読み込み時に、"すべて"のチェックボックスににチェックを入れるか判断する関数
+  if ($('#item_search_form').length) {
+    loadCheckboxSlection(grandchild_category_checkboxes, grandchild_category_all_checkbox)
+    loadCheckboxSlection(status_checkboxes, status_all_checkbox)
+    loadCheckboxSlection(delivery_charge_checkboxes, delivery_charge_all_checkbox)
+    loadCheckboxSlection(trading_status_checkboxes, trading_status_all_checkbox)
+  }
 })
