@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.string "block_number", null: false
     t.string "apartment_name"
     t.bigint "user_id", null: false
-    t.string "phone_number", null: false
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 2020_11_05_031919) do
     t.integer "birth_year_id", null: false
     t.integer "birth_month_id", null: false
     t.integer "birth_day_id", null: false
-    t.string "phone_number", null: false
     t.string "introduction"
     t.string "icon_image"
     t.string "reset_password_token"
