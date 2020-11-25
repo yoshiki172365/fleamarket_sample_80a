@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :show]
-  before_action :set_parents, only: [:index, :new, :create, :show]
+  before_action :set_item, except: [:index, :new, :create, :show, :search]
+  before_action :set_parents, only: [:index, :new, :create, :show, :edit, :update, :search]
 
   def index
     @items = Item.all
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @item = Item.search(params[:keyword]).limit(40).order("created_at DESC")
+    @items = Item.search(params[:keyword]).limit(40).order("created_at DESC")
     @keyword = params[:keyword]
   end
 
