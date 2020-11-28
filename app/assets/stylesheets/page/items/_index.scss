@@ -235,9 +235,10 @@
       width: 780px;
       margin: 26px auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
       &__list {
-        width: 220px;
+        width: 190px;
         display: inline-block;
         &__picture {
           width: 220px;
@@ -253,7 +254,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          width: 100%;
+          width: 80%;
           z-index: auto;
           height: 150px;
           object-fit: cover;
@@ -309,9 +310,10 @@
       width: 780px;
       margin: 26px auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
       &__list {
-        width: 220px;
+        width: 190px;
         display: inline-block;
         float: left;
         &__picture {
@@ -328,7 +330,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          width: 100%;
+          width: 80%;
           z-index: auto;
           height: 150px;
           object-fit: cover;

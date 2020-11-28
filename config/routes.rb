@@ -14,7 +14,14 @@ Rails.application.routes.draw do
   resources :addresses, only: [:new]
 
   resources :items do
-    resources :purchase, only: [:index] do
+    collection do
+      match 'search', to: 'items#search', via: [:get, :post]
+      get 'price_range', defaults: { format: 'json' }
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
+
+    resources :purchase do
       collection do
         get 'index', to: 'purchase#index'
         post 'pay', to: 'purchase#pay'

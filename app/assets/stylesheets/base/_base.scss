@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-size: 14px;
   text-decoration: none;
+  outline-color: $skyblue;
 }
 
 p {
@@ -130,4 +131,47 @@ a {
   color: $white;
   line-height: 40px;
   margin-bottom: 10px;
+}
+
+.input-default-search{
+  height: 48px;
+  width: 260px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.input-default-price {
+  height: 48px;
+  width: 118px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+/*ページネーション*/
+.pagination>li>a {
+  border: none;
+  color: $skyblue;
+}
+.pagination {
+  justify-content: center;
+}
+
+/* 表示しているページ番号 */
+.pagination>.active>a {
+  background: $skyblue;
+  border-radius: 15px;
+}
+
+/*ホバー時*/
+.pagination>li>a:hover {
+  border-radius: 15px;
+  background-color: $skyblue;
 }

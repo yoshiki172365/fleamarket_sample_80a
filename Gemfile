@@ -77,7 +77,9 @@ gem "carrierwave"
 gem "mini_magick"
 gem "fog-aws"
 gem 'factory_bot_rails'
+gem 'ransack'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'gretel'
+gem 'kaminari'
