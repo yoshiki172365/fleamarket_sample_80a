@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    collection do
+      get 'privacy', to: 'users/privacy'
+    end
+  end
 
   root to:'items#index'
   resources :addresses, only: [:new]
