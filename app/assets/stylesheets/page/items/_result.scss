@@ -22,7 +22,9 @@
           .Pickup-category__product__lists {
             display: flex;
             flex-wrap: wrap;
-
+            &__list {
+              margin-top: 20px;
+            }
           }
         }
       }
