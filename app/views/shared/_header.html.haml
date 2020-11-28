@@ -5,9 +5,13 @@
         =link_to root_path do
           = image_tag asset_path('material/logo/logo.png')
       .Header__inner__main__search
+        = form_with(url: search_items_path, method: :get, local: true) do |f|
+          = f.text_field :keyword, placeholder: 'キーワードから探す', class: "Header__inner__main__search__input"
+          %button{type: "submit"}
         = search_form_for(@q, url: search_items_path, class:"Header__inner__main__search__form") do |f|
           = f.text_field :name_has_every_term, class:"Header__inner__main__search__input", placeholder: "キーワードから探す"
           = button_tag type: "submit" do
+
             .Header__inner__main__search__icon
               = image_tag asset_path("material/icon/icon-search 1.png")
     .Header__inner__nav

@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_parents, only: [:index, :new, :create, :show, :search]
   before_action :set_item_search_query
+
 
   def index
     @items = Item.all
@@ -59,6 +61,10 @@ class ItemsController < ApplicationController
   end
 
   def search
+
+    @items = Item.search(params[:keyword]).limit(40).order("created_at DESC")
+    @keyword = params[:keyword]
+
     @search_parents = Category.where(ancestry: nil).pluck(:name)
     @keyword = params.require(:q)[:name_has_every_term]
     
@@ -95,6 +101,7 @@ class ItemsController < ApplicationController
   def category_grandchildren
     #選択された子供カテゴリに紐づく子供カテゴリの配列を取得
     @grandchildren = Category.find("#{params[:child_id]}").children
+
   end
 
   private
@@ -116,7 +123,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+     @item = Item.find(params[:id])
   end
 
   def set_parents
