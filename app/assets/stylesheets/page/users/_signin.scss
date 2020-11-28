@@ -1,12 +1,12 @@
 .user-signIn-wrap {
   width: 100vw;
-  height: 400px;
+  height: auto;
   background-color: $gray;
   padding-top: 25px;
   padding-bottom: 25px;
   .signIn-form {
     width: 450px;
-    height: 300px;
+    height: 550px;
     background-color: $white;
     @include m-rl-auto;
     .inputWrap {
@@ -35,6 +35,9 @@
           margin-bottom: 10px;
         }
       }
+      .user-signUp-prompt {
+        margin-top: 10px;
+      }
       .user-signUp__email {
         @include m-top15;
       }
@@ -43,6 +46,17 @@
       }
       .user-login__button {
         @include m-top15;
+        width: 100%;
+        height: auto;
+        background-color: #78C3C6;
+        color: #fff;
+        line-height: 40px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border: none;
+        .submit-sns {
+          color: $white;
+        }
       }
     }
   }

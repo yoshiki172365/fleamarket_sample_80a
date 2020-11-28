@@ -39,13 +39,6 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
-  gem 'haml-rails'
-  gem 'font-awesome-sass'
-  gem 'devise'
-  gem 'active_hash'
-  gem 'ancestry'
-  gem 'rspec-rails'
-
 end
 
 group :development do
@@ -66,22 +59,27 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   gem 'unicorn'
 end
 
-gem "haml-rails"
+gem 'haml-rails'
 gem 'font-awesome-sass'
-gem "devise"
-gem "active_hash"
+gem 'devise'
+gem 'active_hash'
+gem 'ancestry'
+gem 'rspec-rails'
 gem "payjp"
-gem "ancestry"
 gem "jquery-rails"
 gem "enum_help"
 gem "carrierwave"
 gem "mini_magick"
-gem "pry-rails"
 gem "fog-aws"
 gem 'factory_bot_rails'
+gem 'ransack'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+gem 'gretel'
+gem 'kaminari'

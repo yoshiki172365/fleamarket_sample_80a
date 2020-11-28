@@ -1,0 +1,112 @@
+= render "shared/header"
+.products_new-header
+.products_new-main
+  .products_new-main__form
+    .products_new-main__f--product_new
+      = form_with model: @item, local: true, id:"edit_product" do |f|
+        .products_new-newimage
+          .products_new-product__headline
+            .products_new-product__headline--title 出品画像
+            .products_new-product__headline--required 必須
+          %p.products_new-product__explanation 画像をアップロードしてください
+          #required_error_image
+          .products_edit-image
+            .products_edit-image-box
+              .products_edit-content
+                #image-box
+                  #previews
+                    - if @item.persisted?
+                      - @item.images.each_with_index do |image, i|
+                        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                        .products_edit-preview-box{"data-index" => "#{i}"}
+                      .products_edit-upper-box
+
+                  = f.fields_for :images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :src, class: 'js-file'
+
+                    - if @item.persisted?
+                      = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+                  - if @item.persisted?
+                    .js-file_group{"data-index" => "#{@item.images.count}"}
+                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+                      .js-remove 削除
+
+
+        .products_new-title
+          .products_new-product__headline
+            .products_new-product__headline--title 商品名
+            .products_new-product__headline--required 必須
+          = f.text_field :name, class:"products_new-title--box", placeholder:"40字まで", maxlength:'40'
+          #required_error_name
+
+        .products_new-product__detaile
+          .products_new-product__headline
+            .products_new-product__headline--title 商品の説明
+            .products_new-product__headline--required 必須
+          = f.text_area :description, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
+          #required_error_description
+
+        .products_new-product_explanation
+          .products_new-product_explanation__headline2 商品の詳細
+          .products_new-product_explanation__category
+            .products_new-product__headline
+              .products_new-product__headline--title カテゴリー
+              .products_new-product__headline--required 必須
+            .products_new-product_explanation__category--box
+              = f.collection_select(:category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent_id})
+              = f.collection_select(:category_id, @item.category.parent.siblings, :id, :name, {prompt: "選択して下さい"})
+              = f.collection_select(:category_id, @item.category.siblings, :id, :name, {prompt: "選択して下さい"})
+              #required_error_category_id
+
+          .products_new-product_explanation__brand
+            .products_new-product__headline
+              .products_new-product__headline--title ブランド
+              #products_new-product__headline--required 任意
+            = f.text_field :brand, class:"products_new-title--box", placeholder:"例)シャネル", maxlength:'40'
+
+          .products_new-product_explanation__condition
+            .products_new-product__headline
+              .products_new-product__headline--title 商品の状態
+              .products_new-product__headline--required 必須
+            = f.collection_select(:status_id, Status.all, :id, :name, {}, class: "products_new-product_explanation__condition--box")
+            #required_error_status
+
+        .products_new-product_delivery
+          .products_new-product_delivery__headline2 配送について
+          .products_new-product_delivery__fee
+            .products_new-product__headline
+              .products_new-product__headline--title 配送料の負担
+              .products_new-product__headline--required 必須
+            = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, {}, class: "products_new-product_delivery__fee--box")
+            #required_error_delivery_charge
+
+          .products_new-product_delivery__shipping_area
+            .products_new-product__headline
+              .products_new-product__headline--title 発送元の地域
+              .products_new-product__headline--required 必須
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},)
+            #required_error_prefecture_id
+
+          .products_new-product_delivery__shipping_days
+            .products_new-product__headline
+              .products_new-product__headline--title 発送までの日数
+              .products_new-product__headline--required 必須
+            = f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, {}, class: "products_new-product_delivery__shipping_days--box")
+            #required_error_delivery_date
+
+          .products_new-product_price
+            .products_new-product_price__headline2 価格（¥300〜9,999,999）
+            .products_new-product_price--displayflex
+              .products_new-product__headline
+                .products_new-product__headline--title 販売価格
+                .products_new-product__headline--required 必須
+              .products_new-product_price--select
+                %p.products_new-product_price--yen ¥
+                = f.number_field :price, class: "products_new-product_price--box", placeholder:"0"
+                #required_error_price
+
+        .products_new-product__submit
+          = f.submit '変更する', class: "products_new-product__submit--btn"
+= render "shared/footer"

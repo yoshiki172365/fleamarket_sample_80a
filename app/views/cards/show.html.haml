@@ -1,10 +1,13 @@
 = render "shared/header-sub"
-
+- breadcrumb :card_show
+= render "layouts/breadcrumbs"
 .mypage-wrap
   .mypage-wrap-contents
     .left-contents
       .lists-head
         .list-inner
+          .list-inner__title
+            = link_to "マイページ",user_path(current_user.id)
           .list-inner__title
             = link_to "出品する",new_item_path
             -# root_path 仮置き

@@ -35,7 +35,8 @@ class CardsController < ApplicationController
       customer.delete
       @card.delete
     end
-      redirect_to action: "new", alert: "登録カード情報を削除しました"
+      flash[:alert] = "登録カード情報を削除しました"
+      redirect_to action: "new"
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す

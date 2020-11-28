@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :delivery_date
+  belongs_to_active_hash :trading_status
+
 
   belongs_to :user
   belongs_to :category
@@ -25,7 +27,7 @@ class Item < ApplicationRecord
   validates :images, length: {minimum: 1}
 
   validates :user_id, presence: true
-  validates :trading_status, numericality: { greater_than_or_equal_to: 1 }
+  validates :trading_status_id, numericality: { greater_than_or_equal_to: 1 }
 
   def self.search(search)
     return Item.all unless search
