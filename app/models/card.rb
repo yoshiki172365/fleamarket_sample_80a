@@ -1,4 +1,7 @@
 class Card < ApplicationRecord
+  validates :user_id, :customer_id,  presence: true
+
+  belongs_to :user
   # pay.jpのためにview側でid付与のために、アクティブハッシュをコメントアウト
 
   # extend ActiveHash::Associations::ActiveRecordExtensions
@@ -13,5 +16,4 @@ class Card < ApplicationRecord
 
   validates :user_id, :customer_id, :card_id, presence: true
   validates :user_id, uniqueness: true
-
 end

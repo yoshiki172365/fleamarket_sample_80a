@@ -9,10 +9,14 @@
           .show-itemBox__photo
             %ul
               %li
-                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '346px', width: '80%'
-            .show-itemBox__photo__inner-photo
-              .show-itemBox__photo__inner-photo__under-photo
-                = image_tag @item.images.first.src.url, alt: 'シャツ', height: '80px', width: '80%', class: 'image-sub'
+                = image_tag @item.images.first.src.url, alt: '出品写真', height: '346px', width: '80%'
+                - if @item.trading_status == 2
+                  .item-sold-out-box-show
+                    .item-sold-out-box-show__inner
+                      SOLD
+          .show-itemBox__photo__inner-photo
+            .show-itemBox__photo__inner-photo__under-photo
+              = image_tag @item.images.first.src.url, alt: '出品写真', height: '80px', width: '80%', class: 'image-sub'
           .show-itemBox__price
             %span
               = "¥#{@item.price}"
@@ -28,7 +32,11 @@
                 = link_to "商品を編集する", "#", method: :edit, class:"snow-itemBox__buyscreen"
               - elsif current_user.id != @item.user_id
                 = link_to "購入確認画面に進む", "/items/#{@item.id}/purchase", method: :get, class:"snow-itemBox__buyscreen"
-            - else
+          - else
+            .item-sold-out
+              売り切れました
+          .show-itemBox__description
+            = @item.description
           .show-itemBox__table
             %table
               %tbody
@@ -80,5 +88,6 @@
             %ul.optional
               %li.optionalBtn
                 不適切な商品の通報
-= render "comments/comment"
+  -if user_signed_in?
+    = render "comments/comment"
 = render "shared/footer"

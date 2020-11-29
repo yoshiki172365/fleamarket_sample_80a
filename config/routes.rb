@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    resgistration: 'users/registrations'
+    registrations: 'users/registrations',
   }
   devise_scope :user do
-    get 'registrations', to: 'users/registrations#create_users'
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
   end
 
   resources :users, only: [:show]
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :comments, only: [:create, :destroy, :edit]
+    resources :comments, only: [:create, :show, :edit, :destroy]
   end
 
   resources :cards, only: [:new, :show] do
