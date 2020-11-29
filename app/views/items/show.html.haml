@@ -88,4 +88,6 @@
             %ul.optional
               %li.optionalBtn
                 不適切な商品の通報
+  -if user_signed_in?
+    = render "comments/comment"
 = render "shared/footer-sub"

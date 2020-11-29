@@ -31,6 +31,8 @@ class ItemsController < ApplicationController
   def show
     @categories = Category.where(ancestry: nil)
     @user = User.find(@item.user_id)
+    @comment = Comment.new
+    @commentALL = @item.comments
   end
 
   def edit

@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_one :address
   has_one :card
   has_many :items
+  has_many :comments, dependent: :destroy
 
   validates :nickname, :birth_day, :first_name, :last_name, :first_name_kana, :last_name_kana, :encrypted_password, :email, presence: true
 
@@ -63,5 +64,4 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
-
 end
