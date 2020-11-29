@@ -16,12 +16,6 @@ class CommentsController < ApplicationController
     redirect_to item_path(@comment.item.id)
   end
 
-  def edit
-    @comment = Comment.find(params[:id])
-    @comment.edit(delete_check:1)
-    redirect_to item_path(@comment.item.id)
-  end
-
 private
   def comment_params
     params.require(:comment)
