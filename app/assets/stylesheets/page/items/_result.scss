@@ -1,0 +1,34 @@
+.search-result-wrap {
+  .search-result-container {
+    width: 700px;
+    height: auto;
+    background-color: $gray;
+    .search-result-header {
+      font-size: large;
+      font-weight: bold;
+    }
+    .search-result-number {
+      font-size: small;
+      color: darkgrey;
+      margin-top: 20px;
+    }
+    .search-result-items {
+      background-color: $gray;
+      height: auto;
+      .search-result-items-inner {
+        height: auto;
+        .serach-result-items-row {
+          height: auto;
+          .Pickup-category__product__lists {
+            display: flex;
+            flex-wrap: wrap;
+            &__list {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

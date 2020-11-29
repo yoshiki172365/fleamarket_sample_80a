@@ -235,10 +235,12 @@
       width: 780px;
       margin: 26px auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
       &__list {
-        width: 220px;
+        width: 190px;
         display: inline-block;
+        margin-top: 20px;
         &__picture {
           width: 220px;
           height: 150px;
@@ -253,7 +255,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          width: 100%;
+          width: 80%;
           z-index: auto;
           height: 150px;
           object-fit: cover;
@@ -262,8 +264,11 @@
           background-color: white;
           color: #333;
           padding: 16px;
+          height: 90px;
           &__name {
             overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             line-height: 1.5;
             font-size: 16px;
             text-align: left;
@@ -309,10 +314,11 @@
       width: 780px;
       margin: 26px auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
       &__list {
-        width: 220px;
-        display: inline-block;
+        width: 190px;
+        margin-top: 20px;
         float: left;
         &__picture {
           width: 220px;
@@ -328,7 +334,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          width: 100%;
+          width: 80%;
           z-index: auto;
           height: 150px;
           object-fit: cover;
@@ -340,7 +346,9 @@
           height: 90px;
           &__name {
             overflow: hidden;
-            line-hight: 1.5;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 1.5;
             font-size: 16px;
             text-align: left;
           }
@@ -375,6 +383,10 @@
     display: block;
     &--text {
       margin-bottom: 10px;
+    }
+    &--text a {
+      text-decoration: none;
+      color: $white;
     }
     .item-icon {
     font-size: 4em;

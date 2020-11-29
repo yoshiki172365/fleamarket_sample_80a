@@ -3,8 +3,7 @@
   = render "main"
   = render "shared/footer"
   .item-icon-wrap
-    = link_to new_item_path do
-      .item-icon-wrap__inner
-        .item-icon-wrap__inner--text
-          出品する
-        = icon('fas', 'camera', class:'item-icon')
+    .item-icon-wrap__inner
+      .item-icon-wrap__inner--text
+        = link_to "出品する", new_item_path
+      = icon('fas', 'camera', class:'item-icon')

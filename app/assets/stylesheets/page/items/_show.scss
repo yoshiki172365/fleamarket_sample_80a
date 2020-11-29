@@ -85,6 +85,11 @@
             white-space: pre-wrap;
             margin-bottom: 20px;
           }
+          .show-item-description {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+          }
           .show-itemBox__table {
             margin-bottom: 20px;
             table {
@@ -100,14 +105,14 @@
                   display: table-row;
                   vertical-align: inherit;
                   border-color: inherit;
-                  th  {
+                  th {
                     width: 20%;
                     background-color: #eee;
                     font-weight: 400;
                     padding: 8px;
                     border: 1px solid #dedede;
                   }
-                  td{
+                  td {
                     width: 61%;
                     padding: 15px 15px;
                     border: 1px solid #dedede;
@@ -121,13 +126,13 @@
               }
             }
           }
-          .optionalArea{
+          .optionalArea {
             display: flex;
             justify-content: space-between;
-            ul{
+            ul {
               margin: 10px 0 0;
               display: flex;
-              li.optionalBtnlikebtn{
+              li.optionalBtnlikebtn {
                 margin-right: auto;
                 padding: 10px 16px;
                 border-radius: 40px;
@@ -136,10 +141,10 @@
                 font-size: 14px;
               }
             }
-            ul.optional{
+            ul.optional {
               margin: 15px 0 0;
               display: flex;
-              li.optionalBtn{
+              li.optionalBtn {
                 font-size: 14px;
               }
             }

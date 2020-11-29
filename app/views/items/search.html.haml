@@ -1,0 +1,145 @@
+= render "shared/header"
+
+
+-# .search_main
+-#   .search_main__content
+-#     %h3.search_main__content__ttl
+-#       = "#{@keyword}の検索結果"
+-#     %ul.search_main__content__ul
+-#       - @items.each do |item|
+-#         %li
+-#           = link_to item_path(item), class: 'search_main__content__item' do
+-#             = image_tag "#{item.images[0].src}", class: 'search_main__content__item__image'
+-#             %p.search_main__content__item__name
+-#               = item.name
+-#             %p.search_main__content__item__price
+-#               = "¥#{item.price}"
+
+
+.search-index-wrap
+  .search-index-inner
+    .search-index-inner__left
+      .all-warp
+        .l-search-wrap
+          = search_form_for @q, url: search_items_path, id: "item_search_form", html: { method: :post } do |f|
+            .sort-menu
+              = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
+            .detail-search-wrap
+              .head-text
+                詳細検索
+                .search-form-keyword
+                  = icon("fas", "plus", class: "icon-plus")
+                  = f.label :name_has_every_term, "キーワードを追加する（検索する）"
+                  = f.text_field :name_has_every_term, placeholder: "例）値下げ", class: "input-default-search"
+
+              .search-form-category
+                = icon("fas", "list", class: "icon-list")
+                = f.label :category_id, "カテゴリを選択する"
+                = icon("fas", "angle-down", class: "icon-down-category")
+                .items-search-category-form
+                  = f.select :category_id, options_for_select(@search_parents), {include_blank: "選択してください"}, {id: "parent_category_search"}
+
+              .search-form-extend-brand
+                = icon("fas", "tag", class: "icon-tag")
+                = f.label :brand_cont, "ブランド名から探す"
+                = f.text_field :brand_cont, placeholder: "例）シャネル", class: "input-default-search"
+
+              .search-form-price
+                = icon("fas", "coins", class: "icon-coins")
+                = f.label :price, '価格'
+                = icon("fas", "angle-down", class: "icon-down")
+                = select_tag :price_range, options_from_collection_for_select(PriceRange.all, :id, :name), { prompt: "選択してください" }
+                = f.number_field :price_gteq, placeholder: "¥ Min", class: "price-range__input"
+                〜
+                = f.number_field :price_lteq, placeholder: "¥ Max", class: "price-range__input"
+
+              .search-form-status
+                = icon("fas", "star", class: "icon-star")
+                = f.label :status_id, "商品の状態"
+                .status-checkbox-all-wrap
+                  .status-checkbox-all__btn
+                    %input{type: 'checkbox', id: "status_all", class: "js-checkbox-all"}
+                    .status-checkbox-all__label
+                      = label_tag :status_all, "すべて"
+                  = f.collection_check_boxes :status_id_in, Status.all, :id, :name, include_hidden: false do |s|
+                    .status-check-box
+                      .status-checkbox-each-box.js_search_checkbox
+                        = s.check_box
+                      .status-checbox-each-title
+                        = s.label {s.text}
+
+              .search-form-delivery-charge
+                = icon("fas", "truck", class: "icon-truck")
+                = f.label :derivery_charge_id, "配送料の負担"
+                .delivery-charge-checkbox-all-wrap
+                  .delivery-charge-checkbox-all__btn
+                    %input{type: 'checkbox', id:  "delivery_charge_all", class: "js-checkbox-all"}
+                    .delivery-charege-all__label
+                      = label_tag :delivery_charge_all, "すべて"
+                  = f.collection_check_boxes :delivery_charge_id_in, DeliveryCharge.all, :id, :name,include_hidden: false do |d|
+                    .delivery-charege-check-box
+                      .delivery-charge-checkbox-each-box.js_search_checkbox
+                        = d.check_box
+                      .delivery-charege-checbox-each-title
+                        = d.label {d.text}
+
+              .search-form-trading-status
+                = icon("fas", "shopping-cart", class: "icon-cart")
+                = f.label :trading_status_id,  "販売状況"
+                .trading-status-checkbox-all-wrap
+                  .trading-status-checkbox-all__btn
+                    %input{type: 'checkbox', id:  "trading_status_all", class: "js-checkbox-all"}
+                    .trading-status-all__label
+                      = label_tag :trading_status_all, "すべて"
+                  = f.collection_check_boxes :trading_status_id_in, TradingStatus.all, :id, :name,include_hidden: false do |t|
+                    .tradig-status-check-box
+                      .trading-status-checkbox-each-box.js_search_checkbox
+                        = t.check_box
+                      .trading-status-checbox-each-title
+                        = t.label {t.text}
+
+              .btn-wrap
+                .btn-inner
+                  .btn-clear
+                    .btn-text
+                      = f.submit "クリア", class: "btn-text-clear", id: "js_search_clear"
+                  .btn-complete
+                    .btn-text
+                      = f.submit "完了", class: "btn-text-complete"
+
+    .search-index-inner__right
+      .search-result-wrap
+        .search-result-container
+          .search-result-header
+            - if @keyword.present?
+              = "「#{@keyword}」の検索結果"
+            - else
+              検索結果
+          .search-result-number
+            = "#{@pages.total_count}件"
+          .search-result-items
+            .search-result-items-inner
+              .serach-result-items-row
+                .Pickup-category__product__lists
+                  - @items.each do |item|
+                    = link_to item_path(item.id) do
+                      .Pickup-category__product__lists__list
+                        .Pickup-category__product__lists__list__picture
+                          = image_tag item.images.first.src.url, size:'220*150'
+                        .Pickup-category__product__lists__list__body
+                          .Pickup-category__product__lists__list__body__name
+                            = item.name
+                          .Pickup-category__product__lists__list__body__details
+                            %ul
+                              %li= "#{item.price}円"
+                              %li
+                                =icon('fa','star')
+                                4
+                            %p（税込）
+                            - if item.trading_status == 2
+                              .item-sold-out-box
+                                .item-sold-out-box__inner
+                                  SOLD
+      = paginate @pages
+
+= render "shared/footer"
