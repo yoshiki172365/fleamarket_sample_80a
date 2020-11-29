@@ -264,8 +264,11 @@
           background-color: white;
           color: #333;
           padding: 16px;
+          height: 90px;
           &__name {
             overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             line-height: 1.5;
             font-size: 16px;
             text-align: left;
@@ -343,6 +346,8 @@
           height: 90px;
           &__name {
             overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             line-height: 1.5;
             font-size: 16px;
             text-align: left;
@@ -378,6 +383,10 @@
     display: block;
     &--text {
       margin-bottom: 10px;
+    }
+    &--text a {
+      text-decoration: none;
+      color: $white;
     }
     .item-icon {
     font-size: 4em;
