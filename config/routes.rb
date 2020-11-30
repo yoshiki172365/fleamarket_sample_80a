@@ -32,10 +32,11 @@ Rails.application.routes.draw do
         get 'done', to: 'purchase#done'
       end
     end
+
+    resources :comments, only: [:create, :show, :edit, :destroy]
     collection do
       get 'search'
     end
-
   end
 
   resources :cards, only: [:new, :show] do
