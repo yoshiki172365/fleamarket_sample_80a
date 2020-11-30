@@ -47,7 +47,7 @@
                 - exp_month = @default_card_information.exp_month.to_s
                 - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
-              = image_tag asset_path("cards_icon/#{@card_src}")
+              = image_tag asset_path("cards_icon/#{@card_image}")
               .card-detail-contents-inner__delete-btn
                 = form_with(url:delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do |f|
                   %input{ type: "hidden", name: "card_id", value: "" }

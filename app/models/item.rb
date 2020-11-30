@@ -9,8 +9,6 @@ class Item < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  #一旦コメントアウト
-  # belongs_to :purchase
   has_many :images, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
@@ -23,8 +21,6 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true, numericality: { other_than: 0 }
   validates :delivery_date_id, presence: true, numericality: { other_tnan: 0 }
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-
-  validates :images, length: {minimum: 1}
 
   validates :user_id, presence: true
   validates :trading_status_id, numericality: { greater_than_or_equal_to: 1 }

@@ -18,12 +18,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    if @item.save!
+        params[:item_images][:image].each do |image|
+          @item.images.create(image: image, item_id: @item.id)
+        end
+        redirect_to root_path
     else
-      logger.debug @item.errors.inspect
-      @item.images.new
-      @categories = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
 
     @search_parents = Category.where(ancestry: nil).pluck(:name)
     @keyword = params.require(:q)[:name_has_every_term]
-    
+
     if params[:q].present?
     # 検索フォームからアクセスした時の処理
       @search = Item.ransack(search_params)
@@ -119,7 +119,7 @@ class ItemsController < ApplicationController
                   :price,
                   :brand,
                   images_attributes:
-                  [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status_id: 1)
+                  [:image, :_destroy, :id]).merge(user_id: current_user.id, trading_status_id: 1)
   end
 
   def set_item

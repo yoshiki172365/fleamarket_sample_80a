@@ -50,15 +50,15 @@ class CardsController < ApplicationController
       @card_brand = @default_card_information.brand
       case @card_brand
       when "Visa"
-        @card_src = "visa.png"
+        @card_image = "visa.png"
       when "JCB"
-        @card_src = "jcb.png"
+        @card_image = "jcb.png"
       when "MasterCard"
-        @card_src = "mastercard.png"
+        @card_image = "mastercard.png"
       when "American Express"
-        @card_src = "americanExpress.png"
+        @card_image = "americanExpress.png"
       when "Diners Club"
-        @card_src = "diners.png"
+        @card_image = "diners.png"
       end
     end
   end

@@ -9,14 +9,14 @@
           .show-itemBox__photo
             %ul
               %li
-                = image_tag @item.images.first.src.url, alt: '出品写真', height: '346px', width: '80%'
+                = image_tag @item.images.first.image.url, alt: '出品写真', height: '346px', width: '80%'
                 - if @item.trading_status_id == 2
                   .item-sold-out-box-show
                     .item-sold-out-box-show__inner
                       SOLD
           .show-itemBox__photo__inner-photo
             .show-itemBox__photo__inner-photo__under-photo
-              = image_tag @item.images.first.src.url, alt: '出品写真', height: '80px', width: '80%', class: 'image-sub'
+              = image_tag @item.images.first.image.url, alt: '出品写真', height: '80px', width: '80%', class: 'image-sub'
           .show-itemBox__price
             %span
               = "¥#{@item.price}"

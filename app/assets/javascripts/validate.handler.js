@@ -13,10 +13,10 @@ $(document).on('turbolinks:load', () => {
         required: true
       },
       "item[status_id]": {
-        min: 1
+        required: true
       },
       "item[delivery_charge_id]": {
-        min: 1
+        required: true
       },
       "item[prefecture_id]": {
         min: 1
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', () => {
       "item[price]": {
         required: true
       },
-      "item[images_attributes][0][src]": {
+      "item_images[image][]": {
         required: true
       }
     },
@@ -44,10 +44,10 @@ $(document).on('turbolinks:load', () => {
         required: "カテゴリーを選択してください",
       },
       "item[status_id]": {
-        min: "商品の状態を選択してください",
+        required: "商品の状態を選択してください",
       },
       "item[delivery_charge_id]": {
-        min: "配送料の負担を選択してください",
+        required: "配送料の負担を選択してください",
       },
       "item[prefecture_id]": {
         min: "発送元の地域を選択してください",
@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', () => {
       "item[price]": {
         required: "300〜9,999,999の間で入力してください",
       },
-      "item[images_attributes][0][src]": {
+      "item_images[image][]": {
         required: "最低1枚は画像をアップロードしてください"
       }
     },
@@ -98,10 +98,33 @@ $(document).on('turbolinks:load', () => {
           error.insertAfter('#required_error_price');
           break;
 
-        case "item[images_attributes][0][src]":
-          error.insertAfter('#required_error_image');
+        case "item_images[image][]":
+          // error.insertAfter('#required_error_image');
+          error.insertAfter('#image-box-1');
           break;
       }
     }
   });
+
+  // $('#image-box-1').validate({
+  //   rules: {
+  //     'item_images[image][]': {
+  //       equalTo: 'input[type=file]'
+  //     }
+  //   },
+  //   message: {
+  //     'item_images[image][]': {
+  //       equalTo: "最低1枚は画像をアップロードしてください"
+  //     }
+  //   },
+  //   errorPlacement: function (error, element) {
+  //     const elAttName = element.attr("name")
+  //     switch (elAttName) {
+  //       case "item_images[image][]":
+  //         error.insertAfter('#image-box-1');
+  //         break;
+  //     }
+  //   }
+  // });
+
 });
