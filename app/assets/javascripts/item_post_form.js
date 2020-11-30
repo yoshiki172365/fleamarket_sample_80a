@@ -192,7 +192,11 @@ $(document).on('turbolinks:load', () => {
       if (!imageNext.hasClass('error')) {
         alert("画像は最低1枚アップロードしてください")
         $('.products_new-product__submit--btn').prop("disalbed", false)
+      } else {
+      if (imageNext.hasClass('error')) {
+        imageNext.remove();
       }
+    }
     }
   })
 });
