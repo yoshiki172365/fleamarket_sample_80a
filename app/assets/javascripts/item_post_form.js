@@ -183,20 +183,20 @@ $(document).on('turbolinks:load', () => {
   });
 
 
-  $('.products_new-product__submit--btn').click(function (e) {
-    // e.preventDefault();
-    const num = $('.item-image').length
-    const imageNext = $('#image-box-1').next();
+  // $('.products_new-product__submit--btn').click(function (e) {
+  //   // e.preventDefault();
+  //   const num = $('.item-image').length
+  //   const imageNext = $('#image-box-1').next();
 
-    if (num == 0) {
-      if (!imageNext.hasClass('error')) {
-        alert("画像は最低1枚アップロードしてください")
-        $('.products_new-product__submit--btn').prop("disalbed", false)
-      } else {
-      if (imageNext.hasClass('error')) {
-        imageNext.remove();
-      }
-    }
-    }
-  })
+  //   if (num == 0) {
+  //     if (!imageNext.hasClass('error')) {
+  //       alert("画像は最低1枚アップロードしてください")
+  //       $('.products_new-product__submit--btn').prop("disalbed", false)
+  //     } else {
+  //     if (imageNext.hasClass('error')) {
+  //       imageNext.remove();
+  //     }
+  //   }
+  //   }
+  // })
 });
