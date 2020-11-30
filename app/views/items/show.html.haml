@@ -16,7 +16,9 @@
                       SOLD
           .show-itemBox__photo__inner-photo
             .show-itemBox__photo__inner-photo__under-photo
-              = image_tag @item.images.first.image.url, alt: '出品写真', height: '80px', width: '80%', class: 'image-sub'
+              -# = image_tag @item.images.first.image.url, alt: '出品写真', height: '80px', width: '80%', class: 'image-sub'
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.image.url
           .show-itemBox__price
             %span
               = "¥#{@item.price}"

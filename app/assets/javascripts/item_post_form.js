@@ -5,8 +5,8 @@ $(document).on('turbolinks:load', () => {
   let fileIndex = 0;
   // 画像プレビュー関数
   function imagePreview(src, filename, i, num) {
-    const html = `
-      <div class='item-image add-image' data-image="${filename}" data-index-delete="${i}" name='add-image'>
+    const html= `
+      <div class='item-image add-image' data-image="${filename}" data-index-delete="${i}">
         <div class='item-image__content'>
           <div class='item-image__content--icon'>
             <img src=${src} width="114" height="80" index="${i}">
@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', () => {
   const file_field = document.querySelector('input[type=file]')
 
   //fileが選択された時に発火するイベント
-  $(document).on('change', '.img-file', function () {
+  $(document).on('change', '.img-file', function() {
     errorCheckOnAdd();
 
     //選択したfileのオブジェクトをpropで取得
@@ -61,7 +61,7 @@ $(document).on('turbolinks:load', () => {
       //画像が10枚になったら超えたらドロップボックスを削除する
       if (currentNum + i + 1 >= 10) {
         $('#image-box__container').css('display', 'none')
-        fileReader.onloadend = function () {
+        fileReader.onloadend = function() {
           fileIndex += 1;
           const src = fileReader.result
           imagePreview(src, file.name, fileIndex, inputNum)
@@ -72,7 +72,7 @@ $(document).on('turbolinks:load', () => {
         return false;
       }
       //読み込みが完了すると、srcにfileのURLを格納
-      fileReader.onloadend = function () {
+      fileReader.onloadend = function() {
         fileIndex += 1;
         const src = fileReader.result
         imagePreview(src, file.name, fileIndex, inputNum)
@@ -183,20 +183,20 @@ $(document).on('turbolinks:load', () => {
   });
 
 
-  // $('.products_new-product__submit--btn').click(function (e) {
-  //   // e.preventDefault();
-  //   const num = $('.item-image').length
-  //   const imageNext = $('#image-box-1').next();
+  $('.products_new-product__submit--btn').click(function (e) {
+    // e.preventDefault();
+    const num = $('.item-image').length
+    const imageNext = $('#image-box-1').next();
 
-  //   if (num == 0) {
-  //     if (!imageNext.hasClass('error')) {
-  //       alert("画像は最低1枚アップロードしてください")
-  //       $('.products_new-product__submit--btn').prop("disalbed", false)
-  //     } else {
-  //     if (imageNext.hasClass('error')) {
-  //       imageNext.remove();
-  //     }
-  //   }
-  //   }
-  // })
+    if (num == 0) {
+      if (!imageNext.hasClass('error')) {
+        alert("画像は最低1枚アップロードしてください")
+        $('.products_new-product__submit--btn').prop("disalbed", false)
+      } else {
+      if (imageNext.hasClass('error')) {
+        imageNext.remove();
+      }
+    }
+    }
+  })
 });
