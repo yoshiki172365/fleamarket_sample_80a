@@ -120,7 +120,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|image_src|string|null: false|
+|image|string|null: false|
 |item|references|null: false, foreign_key: true|
 
 ### Association

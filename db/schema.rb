@@ -13,6 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_11_29_074104) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
     t.string "zip_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
@@ -52,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -114,7 +120,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
     t.integer "birth_year_id", null: false
     t.integer "birth_month_id", null: false
     t.integer "birth_day_id", null: false
-    t.integer "phone_number", null: false
     t.string "introduction"
     t.string "icon_image"
     t.string "reset_password_token"

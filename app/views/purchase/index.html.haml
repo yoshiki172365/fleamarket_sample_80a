@@ -6,7 +6,7 @@
       購入内容の確認
     .main__showmain__product
       .main__showmain__product__right
-        = image_tag @item.images.first.src.url, alt: '出品商品画像', height: '80px', width: '80%', class: 'image-sub'
+        = image_tag @item.images.first.image.url, alt: '出品商品画像', height: '80px', width: '80%', class: 'image-sub'
       .main__showmain__product__left
         %h1
           = @item.name

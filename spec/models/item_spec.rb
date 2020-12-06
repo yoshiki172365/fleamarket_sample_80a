@@ -81,7 +81,7 @@ describe Item do
     end
 
     it "画像が無い場合には出品出来ないこと" do
-      item = build(:image, src: nil)
+      item = build(:image, image: nil)
       item.valid?
       expect("最低1枚は画像をアップロードしてください").to include("最低1枚は画像をアップロードしてください")
     end

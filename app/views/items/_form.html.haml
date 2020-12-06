@@ -1,38 +1,39 @@
-= render "shared/header-sub"
 .products_new-header
 .products_new-main
   .products_new-main__form
     .products_new-main__f--product_new
-      = form_with model: @item, local: true, id:"edit_product" do |f|
-        .products_new-newimage
+      = form_with model: @item, local: true, id:"new_product" do |f|
+        .products_new-postimage
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
             .products_new-product__headline--required 必須
           %p.products_new-product__explanation 画像をアップロードしてください
+
+          #image-box-1
+            - if @item.persisted? && @item.images.count > 0
+              - @item.images.each_with_index do |image, i|
+                %div{class: "item-image", data:{ image: image.image.filename, index: i}}
+                  .item-image__content
+                    .item-image__content--icon
+                      = image_tag image.image.url, data: { index: i }, width: "114", height: '80'
+                  .item-image__operation
+                    .item-image__operation--delete 削除
+              = f.fields_for :images do |i|
+                = i.file_field :image, type: 'file', class: "img-file", name: "item[image][]", value:"", style: "display:none", multiple: :true
+                = i.check_box :_destroy, data: {index: i.index}, class: 'hidden-destroy'
+              %div{class: "item-num-#{@item.images.count} drag-area", id: "image-box__container"}
+                %div{class: "input-area", tabindex: 0}
+                  = file_field_tag :image, name: "item[image][]", class: "img-file", value:"", style: "display:none", multiple: :true
+                  %label{for: "image", class: "input-area__label"}
+                    %i.fas.fa-camera
+            - else
+              .item-num-0#image-box__container
+                = f.fields_for :item_images do |image|
+                  %div{class: "input-area", tabindex: 0}
+                    = image.file_field :image, type: 'file', class: "img-file", name: "item_images[image][]", value:"", style: "display:none", required: "required", multiple: :true
+                    %label{for: "item_item_images_image", class: "input-area__label"}
+                      %i.fas.fa-camera
           #required_error_image
-          .products_edit-image
-            .products_edit-image-box
-              .products_edit-content
-                #image-box
-                  #previews
-                    - if @item.persisted?
-                      - @item.images.each_with_index do |image, i|
-                        = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-                        .products_edit-preview-box{"data-index" => "#{i}"}
-                      .products_edit-upper-box
-
-                  = f.fields_for :images do |image|
-                    .js-file_group{"data-index" => "#{image.index}"}
-                      = image.file_field :image, class: 'js-file'
-
-                    - if @item.persisted?
-                      = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-
-                  - if @item.persisted?
-                    .js-file_group{"data-index" => "#{@item.images.count}"}
-                      = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
-                      -# .js-remove 削除
-
 
         .products_new-title
           .products_new-product__headline
@@ -55,9 +56,7 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select(:category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent_id})
-              = f.collection_select(:category_id, @item.category.parent.siblings, :id, :name, {prompt: "選択して下さい"})
-              = f.collection_select(:category_id, @item.category.siblings, :id, :name, {prompt: "選択して下さい"})
+              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
               #required_error_category_id
 
           .products_new-product_explanation__brand
@@ -70,7 +69,7 @@
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
-            = f.collection_select(:status_id, Status.all, :id, :name, {}, class: "products_new-product_explanation__condition--box")
+            = f.collection_select(:status_id, Status.all, :id, :name, { include_blank: "---", selected:"" }, class: "products_new-product_explanation__condition--box")
             #required_error_status
 
         .products_new-product_delivery
@@ -79,7 +78,7 @@
             .products_new-product__headline
               .products_new-product__headline--title 配送料の負担
               .products_new-product__headline--required 必須
-            = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, {}, class: "products_new-product_delivery__fee--box")
+            = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, { include_blank: "---", selected:""}, class: "products_new-product_delivery__fee--box")
             #required_error_delivery_charge
 
           .products_new-product_delivery__shipping_area
@@ -108,5 +107,4 @@
                 #required_error_price
 
         .products_new-product__submit
-          = f.submit '変更する', class: "products_new-product__submit--btn"
-= render "shared/footer-sub"
+          = f.submit '出品する', class: "products_new-product__submit--btn"
