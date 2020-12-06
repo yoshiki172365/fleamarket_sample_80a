@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get 'privacy', to: 'users/privacy'
     end
+    get :favorites, on: :collection
   end
 
   root to:'items#index'
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :cards, only: [:new, :show] do

@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_one :card
   has_many :items
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :nickname, :birth_day, :first_name, :last_name, :first_name_kana, :last_name_kana, :encrypted_password, :email, presence: true
 
