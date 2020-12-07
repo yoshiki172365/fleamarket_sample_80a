@@ -1,4 +1,4 @@
-$(function()　{
+$(function() {
   let imageNext;
   let fileIndex = 0;
   // 画像プレビュー関数
