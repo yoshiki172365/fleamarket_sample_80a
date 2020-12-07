@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function () {
     let grandchild_category_all_checkbox = $('#grandchildren_category_all');
     let grandchild_category_checkboxes = $('input[name="q[category_id_in][]"]');
     const status_all_checkbox = $('#status_all')

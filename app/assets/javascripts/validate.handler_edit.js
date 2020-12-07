@@ -60,41 +60,41 @@ $(document).on('turbolinks:load', () => {
         }
       },
       errorPlacement: function (error, element) {
-  
+
         const elAttName = element.attr("name")
         switch (elAttName) {
           case "item[name]":
             error.insertAfter('#required_error_name');
             break;
-  
+
           case "item[description]":
             error.insertAfter('#required_error_description');
             break;
-  
+
           case "item[category_id]":
             error.insertAfter('#required_error_category_id');
             break;
-  
+
           case "item[status_id]":
             error.insertAfter('#required_error_status');
             break;
-  
+
           case "item[delivery_charge_id]":
             error.insertAfter('#required_error_delivery_charge');
             break;
-  
+
           case "item[prefecture_id]":
             error.insertAfter('#required_error_prefecture_id');
             break;
-  
+
           case "item[delivery_date_id]":
             error.insertAfter('#required_error_delivery_date');
             break;
-  
+
           case "item[price]":
             error.insertAfter('#required_error_price');
             break;
-  
+
           case "item[images_attributes][0][src]":
             error.insertAfter('#required_error_image');
             break;
@@ -102,4 +102,3 @@ $(document).on('turbolinks:load', () => {
       }
     });
   });
-  

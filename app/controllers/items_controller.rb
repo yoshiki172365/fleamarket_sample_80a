@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
         params[:item_images][:image].each do |image|
           @item.images.create(image: image, item_id: @item.id)
         end

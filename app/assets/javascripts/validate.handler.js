@@ -105,26 +105,25 @@ $(document).on('turbolinks:load', () => {
       }
     }
   });
-
-  // $('#image-box-1').validate({
-  //   rules: {
-  //     'item_images[image][]': {
-  //       equalTo: 'input[type=file]'
-  //     }
-  //   },
-  //   message: {
-  //     'item_images[image][]': {
-  //       equalTo: "最低1枚は画像をアップロードしてください"
-  //     }
-  //   },
-  //   errorPlacement: function (error, element) {
-  //     const elAttName = element.attr("name")
-  //     switch (elAttName) {
-  //       case "item_images[image][]":
-  //         error.insertAfter('#image-box-1');
-  //         break;
-  //     }
-  //   }
-  // });
-
 });
+
+    // $('#image-box-1').validate({
+    //   rules: {
+    //     'item_images[image][]': {
+    //       equalTo: 'input[type=file]'
+    //     }
+    //   },
+    //   message: {
+    //     'item_images[image][]': {
+    //       equalTo: "最低1枚は画像をアップロードしてください"
+    //     }
+    //   },
+    //   errorPlacement: function (error, element) {
+    //     const elAttName = element.attr("name")
+    //     switch (elAttName) {
+    //       case "item_images[image][]":
+    //         error.insertAfter('#image-box-1');
+    //         break;
+    //     }
+    //   }
+    // });
