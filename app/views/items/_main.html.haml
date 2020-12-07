@@ -92,10 +92,10 @@
                     =icon('fa','star')
                     4
                 %p（税込）
-                -# - if item.trading_status_id == 2
-                -#   .item-sold-out-box
-                -#     .item-sold-out-box__inner
-                -#       SOLD
+                - if item.trading_status_id == 2
+                  .item-sold-out-box
+                    .item-sold-out-box__inner
+                      SOLD
 
 .Pickup-brand
   %h2.Pickup-brand__title ピックアップブランド
@@ -119,7 +119,7 @@
                     =icon('fa','star')
                     1
                 %p （税込）
-                -# - if item.trading_status_id == 2
-                -#   .item-sold-out-box
-                -#     .item-sold-out-box__inner
-                -#       SOLD
+                - if item.trading_status_id == 2
+                  .item-sold-out-box
+                    .item-sold-out-box__inner
+                      SOLD

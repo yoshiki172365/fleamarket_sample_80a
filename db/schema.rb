@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
     t.string "block_number", null: false
     t.string "apartment_name"
     t.bigint "user_id", null: false
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -56,8 +57,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src", null: false
+    t.string "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -83,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_074104) do
     t.integer "prefecture_id", null: false
     t.integer "delivery_date_id", null: false
     t.integer "price", null: false
-    t.integer "trading_status", null: false
+    t.integer "trading_status_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
