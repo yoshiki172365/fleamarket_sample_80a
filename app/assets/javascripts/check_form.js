@@ -124,7 +124,6 @@ $(function() {
         }
         break;
       default:
-        ;
     }
   }
 
