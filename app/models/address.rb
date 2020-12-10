@@ -7,6 +7,10 @@ class Address < ApplicationRecord
   validates :zip_code,
     format: { with: /\A\d{7}\z/, message: "をハイフン(-)無しで７桁の半角数字で入力してください" }
 
+
+    validates :prefecture_id,
+    format: { with: /\A(?!選択してください)/ , message: "選択してください"}
+
     enum prefecture:{
   北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
   茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -17,8 +21,4 @@ class Address < ApplicationRecord
   徳島県:36,香川県:37,愛媛県:38,高知県:39,
   福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
-
-  validates :prefecture_id,
-    format: { with: /\A(?!選択してください)/ , message: "選択してください"}
-
-end
+  end
