@@ -24,7 +24,7 @@ class PurchaseController < ApplicationController
     @purchase.item_id = @item.id
     @purchase.user_id = current_user.id
     @purchase.save
-    @item.trading_status = 2
+    @item.trading_status_id = 2
     @item.save
 
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function() {
 
   function appendOption(category) { //optionの作成 ディベロッパーツールで親のoption参考
     let html = `<option value="${category.id}">${category.name}</option>`;

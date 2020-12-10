@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function() {
   $('#new_product').validate({
     rules: {
       "item[name]": {
@@ -25,9 +25,6 @@ $(document).on('turbolinks:load', () => {
         min: 1
       },
       "item[price]": {
-        required: true
-      },
-      "item_images[image][]": {
         required: true
       }
     },
@@ -57,9 +54,6 @@ $(document).on('turbolinks:load', () => {
       },
       "item[price]": {
         required: "300〜9,999,999の間で入力してください",
-      },
-      "item_images[image][]": {
-        required: "最低1枚は画像をアップロードしてください"
       }
     },
     errorPlacement: function (error, element) {
@@ -96,11 +90,6 @@ $(document).on('turbolinks:load', () => {
 
         case "item[price]":
           error.insertAfter('#required_error_price');
-          break;
-
-        case "item_images[image][]":
-          // error.insertAfter('#required_error_image');
-          error.insertAfter('#image-box-1');
           break;
       }
     }
