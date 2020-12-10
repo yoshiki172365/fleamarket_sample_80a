@@ -374,18 +374,16 @@ select{
   display: none;
 }
 
-.products_new-product__submit{
-  &--btn{
-    height: 50px;
-    width: 50%;
-    background-color: red;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    display: block;
-    margin: 0 auto;
-  }
+.item-form-btn{
+  height: 50px;
+  width: 50%;
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
 }
 
 .products_new-footer{
