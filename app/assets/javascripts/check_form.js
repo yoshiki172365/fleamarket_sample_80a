@@ -6,8 +6,6 @@ $(function() {
   let textNext;
   let input_column;
   let cnt;
-  const cnt_area_name = $('.now_cnt_name')
-  const cnt_area_explanation = $('.now_cnt_explanation')
 
   // blur時の動作
   function fieldBlur(input) {
@@ -71,7 +69,7 @@ $(function() {
 
   // 出品ボタン押下時の処理
   $('.item-form-btn').click(function(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const submitID = $(this).attr('id')
     let flag = true;
     const num = $('.item-image').length
@@ -109,11 +107,6 @@ $(function() {
 
     if (flag) {
       if (submitID == 'item-post-btn') {
-        $("input[name='item[trading_status_id]']").val(1);
-        $('#new_item').submit();
-        $('.edit_item').submit();
-      } else {
-        $("input[name='item[trading_status_id]']").val(4);
         $('#new_item').submit();
         $('.edit_item').submit();
       }

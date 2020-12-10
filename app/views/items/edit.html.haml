@@ -9,6 +9,7 @@
             .products_new-product__headline--title 出品画像
             .products_new-product__headline--required 必須
           %p.products_new-product__explanation 画像をアップロードしてください
+
           #image-box-1
             - if @item.persisted? && @item.images.count > 0
               - @item.images.each_with_index do |image, i|
@@ -34,32 +35,6 @@
                     %label{for: "item_item_images_image", class: "input-area__label"}
                       %i.fas.fa-camera
           #required_error_image
-
-          -# #required_error_image
-          -# .products_edit-image
-          -#   .products_edit-image-box
-          -#     .products_edit-content
-          -#       #image-box
-          -#         #previews
-          -#           - if @item.persisted?
-          -#             - @item.images.each_with_index do |image, i|
-          -#               = image_tag image.image.url, data: { index: i }, width: "100", height: '100', class:"item-image"
-          -#               .products_edit-preview-box{"data-index" => "#{i}"}
-          -#                 .js-remove 削除
-          -#             .products_edit-upper-box
-
-          -#         = f.fields_for :images do |image|
-          -#           .js-file_group{"data-index" => "#{image.index}"}
-          -#             = image.file_field :image, class: 'js-file'
-
-          -#           - if @item.persisted?
-          -#             = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-
-          -#         - if @item.persisted?
-          -#           .js-file_group{"data-index" => "#{@item.images.count}"}
-          -#             = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
-          -#             -# .js-remove 削除
-
 
         .products_new-title
           .products_new-product__headline
@@ -135,5 +110,5 @@
                 #required_error_price
 
         .products_edit-product__submit
-          = f.submit '変更する', class: "products_new-product__submit--btn"
+          = f.submit '変更する', class: "item-form-btn"
 = render "shared/footer-sub"
