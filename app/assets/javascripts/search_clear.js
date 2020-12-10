@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', ()=> {
+$(function() {
     $('#js_search_clear').on('click', function () {
       clearForm(this.form);
     });

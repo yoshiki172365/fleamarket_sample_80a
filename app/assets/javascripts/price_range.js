@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function () {
   const min_price = $('#q_price_gteq')
   const max_price = $('#q_price_lteq')
 

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function() {
     $('#edit_product').validate({
       rules: {
         "item[name]": {

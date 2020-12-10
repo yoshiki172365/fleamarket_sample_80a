@@ -18,10 +18,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-        params[:item_images][:image].each do |image|
-          @item.images.create(image: image, item_id: @item.id)
-        end
+
+    if @item.save!
+      params[:item_images][:image].each do |image|
+        @item.images.create(image: image, item_id: @item.id)
+      end
         redirect_to root_path
     else
       render :new
@@ -47,10 +48,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update!(item_params)
+        if add_item_images = params[:item][:image]
+        add_item_images.each do|image|
+          @item.images.create(image: image, item_id: @item.id) if @item.images.count <= 10
+        end
+      end
       redirect_to root_path
     else
-    render  action: :edit
+    render :edit
     end
   end
 
@@ -125,7 +131,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-     @item = Item.find(params[:id])
+    @item = Item.find_by_id(params[:id])
   end
 
   def set_parents

@@ -2,7 +2,7 @@
 .products_new-main
   .products_new-main__form
     .products_new-main__f--product_new
-      = form_with model: @item, local: true, id:"new_product" do |f|
+      = form_with model: @item, local: true, id: "new_product" do |f|
         .products_new-postimage
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
@@ -39,14 +39,26 @@
           .products_new-product__headline
             .products_new-product__headline--title 商品名
             .products_new-product__headline--required 必須
-          = f.text_field :name, class:"products_new-title--box", placeholder:"40字まで", maxlength:'40'
+          = f.text_field :name, class:"products_new-title--box", placeholder:"40字まで", maxlength:'40',required: :true
+          .item-area__field__form__cnt
+            - if @item.persisted?
+              %span.now_cnt_name= @item.name.length
+            - else
+              %span.now_cnt_name 0
+            %span / 40
           #required_error_name
 
         .products_new-product__detaile
           .products_new-product__headline
             .products_new-product__headline--title 商品の説明
             .products_new-product__headline--required 必須
-          = f.text_area :description, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000'
+          = f.text_area :description, class:"products_new-product__detaile--box", placeholder:"商品の説明(必須 1000文字以内)", maxlength:'1000',required: :true
+          .item-area__field__form__cnt
+            - if @item.persisted?
+              %span.now_cnt_explanation= @item.explanation.length
+            - else
+              %span.now_cnt_explanation 0
+            %span / 1000
           #required_error_description
 
         .products_new-product_explanation
@@ -56,7 +68,7 @@
               .products_new-product__headline--title カテゴリー
               .products_new-product__headline--required 必須
             .products_new-product_explanation__category--box
-              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form"
+              = f.collection_select :category_id, @categories, :id, :name, { include_blank: "選択してください", selected:"" }, id: "category_form"
               #required_error_category_id
 
           .products_new-product_explanation__brand
@@ -69,7 +81,7 @@
             .products_new-product__headline
               .products_new-product__headline--title 商品の状態
               .products_new-product__headline--required 必須
-            = f.collection_select(:status_id, Status.all, :id, :name, { include_blank: "---", selected:"" }, class: "products_new-product_explanation__condition--box")
+            = f.collection_select(:status_id, Status.all, :id, :name, prompt: "選択してください", required: :true, class: "products_new-product_explanation__condition--box")
             #required_error_status
 
         .products_new-product_delivery
@@ -78,21 +90,21 @@
             .products_new-product__headline
               .products_new-product__headline--title 配送料の負担
               .products_new-product__headline--required 必須
-            = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, { include_blank: "---", selected:""}, class: "products_new-product_delivery__fee--box")
+            = f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, prompt: "選択してください", required: :true, class: "products_new-product_delivery__fee--box")
             #required_error_delivery_charge
 
           .products_new-product_delivery__shipping_area
             .products_new-product__headline
               .products_new-product__headline--title 発送元の地域
               .products_new-product__headline--required 必須
-            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},)
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", required: :true)
             #required_error_prefecture_id
 
           .products_new-product_delivery__shipping_days
             .products_new-product__headline
               .products_new-product__headline--title 発送までの日数
               .products_new-product__headline--required 必須
-            = f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, {}, class: "products_new-product_delivery__shipping_days--box")
+            = f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, prompt: "選択してください", required: :true, class: "products_new-product_delivery__shipping_days--box")
             #required_error_delivery_date
 
           .products_new-product_price
@@ -103,7 +115,7 @@
                 .products_new-product__headline--required 必須
               .products_new-product_price--select
                 %p.products_new-product_price--yen ¥
-                = f.number_field :price, class: "products_new-product_price--box", placeholder:"0"
+                = f.number_field :price, required: :true, class: "products_new-product_price--box", placeholder:"0"
                 #required_error_price
 
         .products_new-product__submit
