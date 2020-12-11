@@ -33,7 +33,8 @@
               = f.label :都道府県
               %span.form-required
                 必須
-            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefecutre-select"})
+            .prefecutre-select
+              = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください")
 
             .address__city
               = f.label :市区町村
