@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'privacy', to: 'users/privacy'
+      get 'exhibit', to: 'users/exhibit'
     end
     get :favorites, on: :collection
   end
