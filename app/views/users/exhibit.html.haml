@@ -1,8 +1,4 @@
 = render "shared/header-sub"
-
-- breadcrumb :mypage
-= render "layouts/breadcrumbs"
-
 .mypage-wrap
   .mypage-wrap-contents
     .left-contents
@@ -34,16 +30,23 @@
             - else
               = link_to "ログイン", new_user_session_path, method: :get
 
-
     .main-contents
-      .user-contents
-        .user-inner
-          = image_tag asset_path('icon/member_photo_noimage_thumb.png', alt: 'icon', class: 'user-icon')
-          .user-name
-            = current_user.nickname
-          .user-trading-num
-            出品数
-          .user-trading-result
-            0
+      .Pickup-category__product__lists
+      - @items.each do |item|
+        = link_to item_path(item.id) do
+          - if item.trading_status_id == 1 && item.user_id == current_user.id
+            .Pickup-category__product__lists__list
+              .Pickup-category__product__lists__list__picture
+                = image_tag item.images.first.image.url, size:'220*150'
+              .Pickup-category__product__lists__list__body
+                .Pickup-category__product__lists__list__body__name
+                  = item.name
+                .Pickup-category__product__lists__list__body__details
+                  %ul
+                    %li= "#{item.price}円"
+                    %li
+                      =icon('fa','star')
+                      4
+                  %p（税込）
 
 = render "shared/footer-sub"
