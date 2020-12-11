@@ -42,8 +42,8 @@
           .user-name
             = current_user.nickname
           .user-trading-num
-            出品数
+            これまでの出品数
           .user-trading-result
-            0
+            = Item.where(user_id: current_user.id).count
 
 = render "shared/footer-sub"

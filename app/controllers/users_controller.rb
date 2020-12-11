@@ -9,7 +9,4 @@ class UsersController < ApplicationController
     @favorite_list = Item.find(favorites)
   end
 
-  def privacy
-  end
-
 end
